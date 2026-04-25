@@ -37,11 +37,14 @@ class MockLLMClient(LLMClient):
 
 
 class PassThroughAuditor(AnswerAuditor):
-    """TODO: 检查答案是否包含「根据XX」、是否出现 evidence 外的具体数字等。"""
+    """基础审核：非空证据 + 最短答案长度（长度阈值可由 ``Settings`` 配置）。"""
+
+    def __init__(self, min_answer_length: int = 20) -> None:
+        self._min_len = min_answer_length
 
     def audit(self, answer: str, evidence_chunks: list[RetrievedChunk]) -> tuple[bool, str | None]:
         if not evidence_chunks:
             return False, "无检索证据，禁止输出臆测答案"
-        if len(answer.strip()) < 20:
+        if len(answer.strip()) < self._min_len:
             return False, "答案过短或未生成"
         return True, None

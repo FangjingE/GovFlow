@@ -1,8 +1,12 @@
 """应用配置。后续可接入 Vault / K8s ConfigMap。"""
 
 from functools import lru_cache
+from typing import Literal
 
+from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+AnswerAuditorMode = Literal["pass_through", "grounded"]
 
 
 class Settings(BaseSettings):
@@ -21,6 +25,17 @@ class Settings(BaseSettings):
     llm_model: str | None = None
     # 未来向量库
     chroma_persist_dir: str | None = None
+    # 答案审核：pass_through=仅长度+非空证据；grounded=额外校验证据外长数字
+    answer_auditor_mode: AnswerAuditorMode = Field(
+        default="pass_through",
+        description="pass_through | grounded",
+    )
+    answer_auditor_min_answer_length: int = Field(
+        default=20,
+        ge=1,
+        le=50_000,
+        description="审核：答案最短字符数（grounded / pass_through 均生效）",
+    )
 
 
 @lru_cache

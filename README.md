@@ -72,4 +72,4 @@ curl -s -X POST http://127.0.0.1:8000/v1/chat \
 
 ## 更多说明
 
-架构与模块划分见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。
+架构与模块划分见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。分阶段完善清单见 [docs/PLAN.md](docs/PLAN.md)。

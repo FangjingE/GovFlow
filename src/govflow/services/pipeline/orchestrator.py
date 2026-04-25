@@ -18,7 +18,8 @@ from govflow.domain.messages import ClarificationState, PipelineStage, Retrieved
 from govflow.repositories.session_store import ConversationSession, InMemorySessionStore
 from govflow.services.clarification.slot_engine import SlotClarificationEngine
 from govflow.services.intent.intent_service import IntentService, IntentStatus
-from govflow.services.llm.mock_llm import MockLLMClient, PassThroughAuditor
+from govflow.services.llm.auditors import build_answer_auditor
+from govflow.services.llm.mock_llm import MockLLMClient
 from govflow.services.rag.mock_retriever import MockKeywordRetriever
 from govflow.services.safety.sensitive_filter import SensitiveContentFilter
 
@@ -57,7 +58,7 @@ class ChatOrchestrator:
         self._slots = slot_engine or SlotClarificationEngine()
         self._retriever = retriever or MockKeywordRetriever()
         self._llm = llm or MockLLMClient()
-        self._auditor = auditor or PassThroughAuditor()
+        self._auditor = auditor or build_answer_auditor(self._settings)
 
     @property
     def sessions(self) -> InMemorySessionStore:
