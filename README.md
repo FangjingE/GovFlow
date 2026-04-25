@@ -48,7 +48,11 @@ uvicorn govflow.main:app --reload --app-dir src
 uvicorn govflow.main:app --reload --app-dir src --port 8001
 ```
 
-启动后可打开交互式 API 文档：
+启动后可在浏览器打开 **简单 Web 聊天界面**（与 API 同端口）：
+
+- 聊天 UI: http://127.0.0.1:8000/
+
+交互式 API 文档：
 
 - Swagger UI: http://127.0.0.1:8000/docs
 
@@ -69,6 +73,18 @@ curl -s -X POST http://127.0.0.1:8000/v1/chat \
   -H "Content-Type: application/json" \
   -d '{"message":"你好"}'
 ```
+
+## 接入 DeepSeek（大模型回答）
+
+默认使用内置 **Mock** 生成，不连外网。在仓库根目录的 `.env` 中（可参考 `.env.example`）配置：
+
+- `GOVFLOW_LLM_PROVIDER=deepseek`
+- `GOVFLOW_LLM_API_KEY=<在 DeepSeek 开放平台申请的 key>`
+- 可选：`GOVFLOW_LLM_MODEL=deepseek-chat`（或 `deepseek-reasoner` 等，缺省为 `deepseek-chat`）
+- 可选：`GOVFLOW_LLM_BASE_URL=…`（缺省为 `https://api.deepseek.com`，与官方 OpenAI 兼容接口一致）
+
+服务仍按 RAG 检索到的【知识库摘录】约束回答；答案再经审核器。若 `provider=deepseek` 但缺少有效 API Key，首请求会报错，请检查环境变量。  
+单测在 `tests/conftest.py` 中强制 `GOVFLOW_LLM_PROVIDER=mock`，避免本地 `.env` 里写了 DeepSeek 却误打真实外网。
 
 ## 更多说明
 

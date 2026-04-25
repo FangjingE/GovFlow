@@ -27,6 +27,64 @@ if TYPE_CHECKING:
     from govflow.services.llm.protocols import AnswerAuditor, LLMClient
     from govflow.services.rag.protocols import Retriever
 
+# 多轮中「当前句」较历史出现新的领域词时，仅用本句去检索/生成，避免上文的「社保/卡」等词一直留在 query 中导致错配（如已答社保卡后改问办身份证仍命中社保卡）。
+# 长词与语义块优先匹配（子串 社保 同时命中 社保卡 中的 社保 是故意的）。
+_RAG_SHIFT_TERMS: tuple[str, ...] = (
+    "社会保障卡",
+    "办理社保卡",
+    "养老保险",
+    "灵活就业",
+    "五险一金",
+    "身份证",
+    "社保卡",
+    "户口簿",
+    "被征地",
+    "企业",
+    "断缴",
+    "补缴",
+    "转移",
+    "退休",
+    "失业",
+    "生育",
+    "工伤",
+    "户籍",
+    "医保",
+    "养老",
+    "社保",
+    "办卡",
+)
+# 过泛、无法单独区分的词不把「新词」当主题切换
+_RAG_SHIFT_EXCLUDE: frozenset[str] = frozenset(
+    {
+        "补办",
+        "材料",
+        "什么",
+        "怎么办",
+        "哪里",
+        "查询",
+        "办理",
+    }
+)
+
+
+def _user_lines_from_session(session: ConversationSession) -> list[str]:
+    return [t.content for t in session.turns if t.role == "user"]
+
+
+def _topic_shift_for_rag(user_lines: list[str]) -> bool:
+    if len(user_lines) < 2:
+        return False
+    prev = "\n".join(user_lines[:-1])
+    if not prev.strip():
+        return False
+    cur = user_lines[-1]
+    for term in _RAG_SHIFT_TERMS:
+        if len(term) < 2 or term in _RAG_SHIFT_EXCLUDE:
+            continue
+        if term in cur and term not in prev:
+            return True
+    return False
+
 
 @dataclass
 class OrchestratorResult:
@@ -127,7 +185,9 @@ class ChatOrchestrator:
                 ),
             )
 
-        rag_query = self._build_rag_query(session, user_text, combined_for_intent)
+        user_lines = _user_lines_from_session(session)
+        topic_shift = _topic_shift_for_rag(user_lines)
+        rag_query = self._build_rag_query(user_text, combined_for_intent, topic_shift, user_lines)
         chunks = self._retriever.retrieve(rag_query, top_k=5)
         stages.append(PipelineStage.RAG.value)
 
@@ -146,7 +206,9 @@ class ChatOrchestrator:
                 stages_executed=stages,
             )
 
-        history_snippets = [t.content for t in session.turns[-6:] if t.role == "user"]
+        history_snippets: list[str] = (
+            [] if topic_shift else [t.content for t in session.turns[-6:] if t.role == "user"]
+        )
         answer = self._llm.generate_answer(rag_query, history_snippets, chunks)
         stages.append(PipelineStage.LLM.value)
 
@@ -174,11 +236,18 @@ class ChatOrchestrator:
             stages_executed=stages,
         )
 
-    def _build_rag_query(self, session: ConversationSession, user_text: str, combined: str) -> str:
-        # 取最近若干轮用户发言，增强多轮场景下的检索召回（TODO：查询改写 QR）
-        recent = [t.content for t in session.turns if t.role == "user"][-3:]
-        base = "\n".join([*recent, user_text]).strip() if recent else combined
-        return base or user_text
+    def _build_rag_query(
+        self,
+        user_text: str,
+        combined: str,
+        topic_shift: bool,
+        user_lines: list[str],
+    ) -> str:
+        if topic_shift and user_lines:
+            return user_lines[-1].strip()
+        if not user_lines:
+            return (combined or user_text).strip()
+        return "\n".join(user_lines[-3:]).strip() or user_text.strip()
 
 
 def _chunks_to_sources(chunks: list[RetrievedChunk]) -> list[dict[str, object]]:

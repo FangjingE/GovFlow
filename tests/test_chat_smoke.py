@@ -24,6 +24,13 @@ def test_healthz() -> None:
     assert r.json()["status"] == "ok"
 
 
+def test_index_ui() -> None:
+    r = client.get("/")
+    assert r.status_code == 200
+    assert "text/html" in r.headers.get("content-type", "")
+    assert b"GovFlow" in r.content
+
+
 def test_clarification_then_answer() -> None:
     r1 = client.post("/v1/chat", json={"message": "办社保"})
     assert r1.status_code == 200
@@ -43,3 +50,21 @@ def test_sensitive_block() -> None:
     assert r.status_code == 200
     j = r.json()
     assert j["kind"] == "blocked"
+
+
+def test_id_card_after_socsec_not_stuck_on_soccard_kb() -> None:
+    """澄清→社保卡回答后，同一 session 再问身份证：检索应以当前句为主，不应被历史「社保卡」拖死。"""
+    r1 = client.post("/v1/chat", json={"message": "办社保"})
+    assert r1.status_code == 200
+    sid = r1.json()["session_id"]
+    r2 = client.post("/v1/chat", json={"session_id": sid, "message": "办社保卡"})
+    assert r2.status_code == 200
+    assert r2.json()["kind"] == "answer"
+    r3 = client.post("/v1/chat", json={"session_id": sid, "message": "办身份证"})
+    assert r3.status_code == 200
+    j3 = r3.json()
+    assert j3["kind"] == "answer"
+    assert j3["sources"]
+    top = f'{j3["sources"][0].get("title", "")} {j3["sources"][0].get("uri", "")}'
+    assert "身份证" in top
+    assert "居民身份" in j3["reply"] or "身份证" in j3["reply"]

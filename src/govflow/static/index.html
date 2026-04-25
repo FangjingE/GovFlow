@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GovFlow · 政务办事助手</title>
+    <style>
+      :root {
+        --bg: #f4f6f8;
+        --panel: #ffffff;
+        --border: #d8dee4;
+        --text: #1a2333;
+        --muted: #5a6b7c;
+        --primary: #1565a8;
+        --primary-hover: #0f4d82;
+        --user-bubble: #e3f0fc;
+        --bot-bubble: #eef1f4;
+        --kind: #3d6a9a;
+        --err: #b3261e;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        font-family: system-ui, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0.75rem 0;
+      }
+      .shell {
+        width: 100%;
+        max-width: 42rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+      }
+      header {
+        margin-bottom: 0.75rem;
+      }
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 0.2rem;
+        flex-wrap: wrap;
+      }
+      .header-top h1 {
+        margin: 0;
+        flex: 1 1 12rem;
+        min-width: 0;
+      }
+      h1 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0 0 0.2rem 0;
+      }
+      button#new-chat {
+        padding: 0.4rem 0.75rem;
+        font: inherit;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--primary);
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 0.4rem;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+      button#new-chat:hover:not(:disabled) {
+        background: #e8f0f8;
+        border-color: #9bb8d4;
+      }
+      button#new-chat:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      .sub {
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin: 0;
+      }
+      #log {
+        flex: 1;
+        overflow: auto;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        min-height: 12rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      .msg {
+        max-width: 100%;
+        padding: 0.5rem 0.65rem;
+        border-radius: 0.4rem;
+        line-height: 1.5;
+        font-size: 0.95rem;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .msg.user {
+        align-self: flex-end;
+        background: var(--user-bubble);
+        border: 1px solid #b8d4f0;
+      }
+      .msg.assistant {
+        align-self: flex-start;
+        background: var(--bot-bubble);
+        border: 1px solid #cbd4dc;
+      }
+      .msg.system {
+        align-self: center;
+        font-size: 0.85rem;
+        color: var(--muted);
+        background: #fafbfc;
+        border: 1px dashed var(--border);
+      }
+      .msg.error {
+        color: var(--err);
+        border-color: #e8a4a0;
+        background: #fff5f5;
+      }
+      .meta {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 0.35rem;
+        padding-top: 0.35rem;
+        border-top: 1px solid #dde3e8;
+      }
+      .meta span {
+        display: inline-block;
+        margin-right: 0.75rem;
+      }
+      .badge {
+        display: inline-block;
+        font-size: 0.7rem;
+        padding: 0.1rem 0.35rem;
+        border-radius: 0.25rem;
+        background: #e8f0f8;
+        color: var(--kind);
+        font-weight: 500;
+      }
+      .sources {
+        margin-top: 0.4rem;
+        font-size: 0.8rem;
+      }
+      .sources ul {
+        margin: 0.2rem 0 0 1.1rem;
+        padding: 0;
+      }
+      .row {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.65rem;
+        align-items: flex-end;
+      }
+      textarea {
+        flex: 1;
+        min-height: 2.6rem;
+        max-height: 8rem;
+        padding: 0.5rem 0.6rem;
+        font: inherit;
+        border: 1px solid var(--border);
+        border-radius: 0.4rem;
+        resize: vertical;
+      }
+      textarea:focus {
+        outline: 2px solid #a8c4e0;
+        border-color: var(--primary);
+      }
+      button#send {
+        padding: 0.5rem 0.9rem;
+        font: inherit;
+        font-weight: 500;
+        color: #fff;
+        background: var(--primary);
+        border: none;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        white-space: nowrap;
+        height: 2.6rem;
+      }
+      button#send:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      button#send:hover:not(:disabled) {
+        background: var(--primary-hover);
+      }
+      footer {
+        width: 100%;
+        max-width: 42rem;
+        font-size: 0.7rem;
+        color: var(--muted);
+        padding: 0.5rem 0.25rem 0.6rem;
+        text-align: center;
+      }
+      code {
+        font-size: 0.7rem;
+        background: #e8ebef;
+        padding: 0.1rem 0.25rem;
+        border-radius: 0.2rem;
+        word-break: break-all;
+      }
+      a.doc {
+        font-size: 0.8rem;
+        color: var(--primary);
+        text-decoration: none;
+        margin-left: 0.4rem;
+      }
+      a.doc:hover {
+        text-decoration: underline;
+      }
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div class="header-top">
+          <h1>GovFlow 政务办事助手</h1>
+          <button type="button" id="new-chat" title="清除当前消息并开始新会话">新对话</button>
+        </div>
+        <p class="sub">基于本地知识库的问答与澄清。首次对话会创建会话，可连续多轮交流。点击「新对话」可清空消息并开始新的会话，无需刷新页面。</p>
+        <a class="doc" href="/docs" target="_blank" rel="noopener">OpenAPI 文档</a>
+      </header>
+      <div id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <form class="row" id="f" novalidate>
+        <label for="input" class="visually-hidden">输入</label>
+        <textarea
+          id="input"
+          rows="1"
+          placeholder="在此输入问题，按 Enter 发送，Shift+Enter 换行"
+          autocomplete="off"
+        ></textarea>
+        <button type="submit" id="send">发送</button>
+      </form>
+    </div>
+    <footer>
+      <span id="foot-session">未建立会话</span>
+    </footer>
+    <script>
+      (function () {
+        var log = document.getElementById("log");
+        var input = document.getElementById("input");
+        var form = document.getElementById("f");
+        var sendBtn = document.getElementById("send");
+        var newChatBtn = document.getElementById("new-chat");
+        var foot = document.getElementById("foot-session");
+        var sessionId = null;
+        var sending = false;
+        var WELCOME = "你好，可以问我社保、办事材料等问题。输入后点击发送。";
+
+        function el(tag, cls, text) {
+          var n = document.createElement(tag);
+          if (cls) n.className = cls;
+          if (text != null) n.textContent = text;
+          return n;
+        }
+
+        function appendUser(text) {
+          var m = el("div", "msg user", text);
+          log.appendChild(m);
+          log.scrollTop = log.scrollHeight;
+        }
+
+        function appendSystem(text) {
+          var m = el("div", "msg system", text);
+          log.appendChild(m);
+          log.scrollTop = log.scrollHeight;
+        }
+
+        function appendError(text) {
+          var m = el("div", "msg system error", text);
+          log.appendChild(m);
+          log.scrollTop = log.scrollHeight;
+        }
+
+        function formatSources(sources) {
+          if (!sources || !sources.length) return "";
+          var s = el("div", "sources");
+          s.appendChild(el("div", null, "参考来源"));
+          var ul = document.createElement("ul");
+          sources.forEach(function (o) {
+            var li = document.createElement("li");
+            li.textContent = o.title + (o.score != null ? " (" + o.score + ")" : "");
+            ul.appendChild(li);
+          });
+          s.appendChild(ul);
+          return s;
+        }
+
+        function appendAssistant(data) {
+          var wrap = el("div", "msg assistant", "");
+          var main = el("div", null, data.reply);
+          wrap.appendChild(main);
+          if (data.official_hotline) {
+            var hot = el("div", "meta", "咨询电话：" + data.official_hotline);
+            wrap.appendChild(hot);
+          }
+          var meta = el("div", "meta", "");
+          var k = el("span", null, "");
+          var badge = el("span", "badge", "kind: " + data.kind);
+          k.appendChild(badge);
+          if (data.stages_executed && data.stages_executed.length) {
+            var st = el("span", null, "阶段: " + data.stages_executed.join(" → "));
+            k.appendChild(st);
+          }
+          meta.appendChild(k);
+          wrap.appendChild(meta);
+          var src = formatSources(data.sources);
+          if (src) wrap.appendChild(src);
+          log.appendChild(wrap);
+          log.scrollTop = log.scrollHeight;
+        }
+
+        function setSession(id) {
+          sessionId = id;
+          foot.textContent = "会话: " + (id ? "已建立 (" + id.slice(0, 8) + "…)" : "未建立");
+        }
+
+        function resetChat() {
+          sessionId = null;
+          log.innerHTML = "";
+          appendSystem(WELCOME);
+          setSession(null);
+          input.value = "";
+          input.focus();
+        }
+
+        function setLoading(isLoading) {
+          sending = isLoading;
+          sendBtn.disabled = isLoading;
+          if (newChatBtn) newChatBtn.disabled = isLoading;
+        }
+
+        async function postMessage(text) {
+          setLoading(true);
+          try {
+            var body = { message: text };
+            if (sessionId) body.session_id = sessionId;
+            var res = await fetch("/v1/chat", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(body),
+            });
+            var j = null;
+            try {
+              j = await res.json();
+            } catch (e) {
+              appendError("无法解析服务响应 (HTTP " + res.status + ")");
+              return;
+            }
+            if (!res.ok) {
+              var d = (j && j.detail) || (j && j.message) || JSON.stringify(j);
+              if (res.status === 404 && d && String(d).indexOf("session") >= 0) {
+                setSession(null);
+                appendError("会话已失效，已清空。请重试。");
+              } else {
+                appendError("请求失败 (" + res.status + "): " + d);
+              }
+              return;
+            }
+            if (j.session_id) setSession(j.session_id);
+            appendAssistant(j);
+          } catch (e) {
+            appendError("网络错误: " + (e && e.message ? e.message : String(e)));
+          } finally {
+            setLoading(false);
+            input.focus();
+          }
+        }
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          if (sending) return;
+          var t = (input.value || "").trim();
+          if (!t) return;
+          appendUser(t);
+          input.value = "";
+          postMessage(t);
+        });
+
+        input.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            form.requestSubmit();
+          }
+        });
+
+        if (newChatBtn) {
+          newChatBtn.addEventListener("click", function () {
+            if (sending) return;
+            resetChat();
+          });
+        }
+
+        appendSystem(WELCOME);
+        input.focus();
+      })();
+    </script>
+  </body>
+</html>
