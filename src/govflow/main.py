@@ -4,7 +4,7 @@ GovFlow API 入口。
 启动：在项目根目录执行
   uvicorn govflow.main:app --reload --app-dir src
 
-简单 Web 界面：根路径 / 为政务聊天；/bmt 为边民通申报演示页（与 /docs、/v1 并存）。
+简单 Web 界面：根路径 / 为政务聊天（边民通互市申报已并入同一对话）；/bmt 重定向至首页。
 
 TODO: CORS 白名单、请求 ID 中间件、限流、健康检查探针、OpenAPI 鉴权。
 """
@@ -12,7 +12,7 @@ TODO: CORS 白名单、请求 ID 中间件、限流、健康检查探针、OpenA
 from pathlib import Path
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 
 from govflow.api.routes.bianmintong import router as bianmintong_router
 from govflow.api.routes.chat import router as chat_router
@@ -36,9 +36,9 @@ def serve_ui() -> FileResponse:
 
 
 @app.get("/bmt")
-def serve_bianmintong_ui() -> FileResponse:
-    """边民通：对话式互市申报演示页。"""
-    return FileResponse(_STATIC_DIR / "bmt.html")
+def bianmintong_ui_redirect() -> RedirectResponse:
+    """边民通申报已并入主页聊天；保留路径以免旧书签失效。"""
+    return RedirectResponse(url="/", status_code=302)
 
 
 @app.get("/healthz")

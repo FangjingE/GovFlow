@@ -18,7 +18,7 @@ router = APIRouter(prefix="/v1/bmt", tags=["边民通"])
 _BMT_FRIENDLY_TAIL = "\n\n如有不明白的，可以直接问我。"
 
 
-def _with_friendly_tail(text: str) -> str:
+def with_bmt_friendly_tail(text: str) -> str:
     t = (text or "").rstrip()
     if not t:
         return t
@@ -35,7 +35,7 @@ def get_bmt_store() -> BMTSessionStore:
 def _to_resp(s: BMTSession, r: BMTResult) -> BmtTurnResponse:
     return BmtTurnResponse(
         session_id=s.id,
-        reply=_with_friendly_tail(r.reply),
+        reply=with_bmt_friendly_tail(r.reply),
         kind=r.kind,
         step=r.step,
         form=r.form,
@@ -70,7 +70,7 @@ def bmt_turn(
         em = DeclarationForm()
         return BmtTurnResponse(
             session_id=s.id,
-            reply=_with_friendly_tail(eng.opening_message(s)),
+            reply=with_bmt_friendly_tail(eng.opening_message(s)),
             kind="collecting",
             step=s.step.value,
             form={},

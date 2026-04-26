@@ -29,14 +29,45 @@ def test_index_ui() -> None:
     assert r.status_code == 200
     assert "text/html" in r.headers.get("content-type", "")
     assert b"GovFlow" in r.content
+    assert b"bmt-aside" in r.content
 
 
-def test_bianmintong_ui() -> None:
-    r = client.get("/bmt")
-    assert r.status_code == 200
-    assert "text/html" in r.headers.get("content-type", "")
-    assert "边民通" in r.text
-    assert "/v1/bmt/turn" in r.text
+def test_bianmintong_ui_redirects_home() -> None:
+    r = client.get("/bmt", follow_redirects=False)
+    assert r.status_code == 302
+    assert r.headers.get("location") == "/"
+
+
+def test_chat_bmt_consent_then_form_and_can_leave_via_gov_topic() -> None:
+    """边民通相关先答问并征求确认；用户同意后再出侧栏与填报轨。"""
+    r1 = client.post("/v1/chat", json={"message": "我要进口商品"})
+    assert r1.status_code == 200
+    j1 = r1.json()
+    assert j1["bmt_sidebar_visible"] is False
+    assert "开始辅助填写" in j1["reply"] or "是否" in j1["reply"]
+    sid = j1["session_id"]
+
+    r2 = client.post("/v1/chat", json={"session_id": sid, "message": "是"})
+    assert r2.status_code == 200
+    j2 = r2.json()
+    assert j2["bmt_sidebar_visible"] is True
+    assert j2.get("bmt_form_preview")
+
+    r3 = client.post("/v1/chat", json={"session_id": sid, "message": "办社保卡需要带什么材料"})
+    assert r3.status_code == 200
+    j3 = r3.json()
+    assert j3["bmt_sidebar_visible"] is False
+
+
+def test_chat_bmt_consent_decline() -> None:
+    r1 = client.post("/v1/chat", json={"message": "边民互市进口有什么限制"})
+    assert r1.status_code == 200
+    sid = r1.json()["session_id"]
+    r2 = client.post("/v1/chat", json={"session_id": sid, "message": "不用了"})
+    assert r2.status_code == 200
+    j2 = r2.json()
+    assert j2["bmt_sidebar_visible"] is False
+    assert "取消" in j2["reply"] or "继续" in j2["reply"]
 
 
 def test_clarification_then_answer() -> None:

@@ -122,9 +122,32 @@ class ChatOrchestrator:
     def sessions(self) -> InMemorySessionStore:
         return self._sessions
 
+    @property
+    def intent_service(self) -> IntentService:
+        return self._intent
+
+    @property
+    def settings(self) -> Settings:
+        return self._settings
+
+    def sensitive_block_result(self, user_text: str) -> OrchestratorResult | None:
+        """敏感词不通过时返回 blocked 结果，否则 None（供主聊天与边民通轨共用）。"""
+        hotline = self.settings.default_hotline
+        fr = self._filter.check(user_text)
+        stages = [PipelineStage.FILTER.value]
+        if not fr.allowed:
+            return OrchestratorResult(
+                reply=f"该问题无法继续处理。{fr.reason or ''} 如需帮助请拨打 {hotline}。",
+                kind="blocked",
+                sources=[],
+                official_hotline=hotline,
+                stages_executed=stages,
+            )
+        return None
+
     def handle_message(self, session: ConversationSession, user_text: str) -> OrchestratorResult:
         stages: list[str] = []
-        hotline = self._settings.default_hotline
+        hotline = self.settings.default_hotline
 
         fr = self._filter.check(user_text)
         stages.append(PipelineStage.FILTER.value)

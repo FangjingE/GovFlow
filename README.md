@@ -50,7 +50,7 @@ uvicorn govflow.main:app --reload --app-dir src --port 8001
 
 启动后可在浏览器打开 **简单 Web 聊天界面**（与 API 同端口）：
 
-- 聊天 UI: http://127.0.0.1:8000/（**边民通**互市申报演示：http://127.0.0.1:8000/bmt ）
+- 聊天 UI: http://127.0.0.1:8000/（**边民通**互市申报已并入同一对话；`/bmt` 重定向到首页）
 
 交互式 API 文档：
 
@@ -88,7 +88,7 @@ curl -s -X POST http://127.0.0.1:8000/v1/chat \
 
 ## 边民通（互市申报演示）
 
-- **对话填报**：`POST /v1/bmt/turn`；浏览器可打开 **http://127.0.0.1:8000/bmt** 使用简单对话 + 申报表文字预览。JSON 可含 `session_id`（多轮必带）、`message`（用户话）、`locale`（`zh-CN` 已完整；`vi-VN` 预留，未译句会回退中文并带「越文待发布」前缀）、`start_only: true` 时仅返开场白。
+- **对话填报**：主界面走 `POST /v1/chat`（识别到互市/边民通相关话题时先照常 RAG 作答，并在文末征求是否开始辅助填写；用户回复「是」等确认后服务端再进入申报轨，JSON 中 `bmt_sidebar_visible` 为 true）；独立 API 仍为 `POST /v1/bmt/turn`。
 - **实现方式**：固定分步计划 + 每轮采一个槽（P&E 风格，无 LLM 工具环）；**非**主站 `POST /v1/chat` 的 RAG 流程。ASR/拍照/海关实联、真二维码未接，回执号为演示。
 
 ## 更多说明
