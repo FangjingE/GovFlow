@@ -21,17 +21,17 @@ class ChatResponse(BaseModel):
     session_id: str
     reply: str
     kind: str = Field(
-        description="answer | clarification | blocked | fallback；边民通轨为 collecting|preview|submitted|…"
+        description="answer | clarification | blocked | fallback；政务通分步轨为 collecting|preview|submitted|…"
     )
     sources: list[SourceRef] = Field(default_factory=list)
     official_hotline: str
     stages_executed: list[str] = Field(default_factory=list)
-    # 边民通：仅在意图进入互市/边民通主题后为 true，前端可展示侧边申报预览
-    bmt_sidebar_visible: bool = False
-    bmt_form_preview: str | None = None
-    bmt_step: str | None = None
-    bmt_track_kind: str | None = Field(
+    # 政务通：互市类分步填报侧栏（意图命中并确认后 true）
+    zwt_sidebar_visible: bool = False
+    zwt_form_preview: str | None = None
+    zwt_step: str | None = None
+    zwt_track_kind: str | None = Field(
         default=None,
-        description="边民通引擎 kind（collecting、knowledge 等），与顶层 kind 一致时便于兼容旧客户端",
+        description="分步填报引擎 kind（collecting、knowledge 等）",
     )
-    bmt_rag_sources: list[SourceRef] = Field(default_factory=list)
+    zwt_rag_sources: list[SourceRef] = Field(default_factory=list)

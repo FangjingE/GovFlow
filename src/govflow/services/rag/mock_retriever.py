@@ -14,6 +14,7 @@ from govflow.services.rag.protocols import Retriever
 
 # 用户问题与文档各命中其一即进入粗筛（再经锚词与计分）
 BROAD_KEYWORDS: tuple[str, ...] = (
+    "政务通",
     "社保",
     "毛重",
     "净重",
@@ -46,7 +47,7 @@ BROAD_KEYWORDS: tuple[str, ...] = (
 # 与 query、正文、路径求交叠计分（长词优先多给分由顺序体现）
 _SCORE_TERMS: tuple[str, ...] = (
     "边民互市",
-    "边民通",
+    "政务通",
     "毛重",
     "净重",
     "互市",
@@ -114,7 +115,7 @@ def _score(path: Path, text: str, query: str) -> float:
 
 # 边贸/边民等：query 与正文同时含同一词时允许弱召回（不依赖分词）
 _CROSS_TRADE_HINTS: tuple[str, ...] = (
-    "边民通",
+    "政务通",
     "边民",
     "互市",
     "互贸",

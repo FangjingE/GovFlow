@@ -1,11 +1,11 @@
-"""边民通会话存（MVP 内存，与会话 store 可合并或换 Redis）。"""
+"""政务通分步填报会话存（MVP 内存，与会话 store 可合并或换 Redis）。"""
 
 from __future__ import annotations
 
 import uuid
 from threading import Lock
 
-from govflow.bianmintong.domain import BMTSession
+from govflow.zhengwutong.domain import BMTSession
 
 
 class BMTSessionStore:

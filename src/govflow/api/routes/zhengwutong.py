@@ -1,4 +1,4 @@
-"""边民通：对话式互市申报（/v1/bmt）。"""
+"""政务通：互市类分步填报独立 API（/v1/zwt），与主聊天同一品牌与配置。"""
 
 from __future__ import annotations
 
@@ -6,36 +6,35 @@ from functools import lru_cache
 
 from fastapi import APIRouter, Depends, HTTPException
 
-from govflow.api.deps import get_bmt_engine
-from govflow.bianmintong.domain import BMTSession, DeclarationForm
-from govflow.bianmintong.engine import BMTDeclarationEngine, BMTResult, form_preview
-from govflow.bianmintong.store import BMTSessionStore
-from govflow.models.bmt_schemas import BmtTurnRequest, BmtTurnResponse
+from govflow.api.deps import get_zwt_declaration_engine
+from govflow.models.zwt_schemas import ZwtTurnRequest, ZwtTurnResponse
+from govflow.zhengwutong.domain import BMTSession, DeclarationForm
+from govflow.zhengwutong.engine import BMTDeclarationEngine, BMTResult, form_preview
+from govflow.zhengwutong.store import BMTSessionStore
 
-router = APIRouter(prefix="/v1/bmt", tags=["边民通"])
+router = APIRouter(prefix="/v1/zwt", tags=["政务通"])
 
-# 统一附在助手回复末尾（原右侧「字段说明」区已下线）
-_BMT_FRIENDLY_TAIL = "\n\n如有不明白的，可以直接问我。"
+_ZWT_FRIENDLY_TAIL = "\n\n如有不明白的，可以直接问我。"
 
 
-def with_bmt_friendly_tail(text: str) -> str:
+def with_zwt_friendly_tail(text: str) -> str:
     t = (text or "").rstrip()
     if not t:
         return t
     if "可以直接问我" in t:
         return t
-    return t + _BMT_FRIENDLY_TAIL
+    return t + _ZWT_FRIENDLY_TAIL
 
 
 @lru_cache
-def get_bmt_store() -> BMTSessionStore:
+def get_zwt_store() -> BMTSessionStore:
     return BMTSessionStore()
 
 
-def _to_resp(s: BMTSession, r: BMTResult) -> BmtTurnResponse:
-    return BmtTurnResponse(
+def _to_resp(s: BMTSession, r: BMTResult) -> ZwtTurnResponse:
+    return ZwtTurnResponse(
         session_id=s.id,
-        reply=with_bmt_friendly_tail(r.reply),
+        reply=with_zwt_friendly_tail(r.reply),
         kind=r.kind,
         step=r.step,
         form=r.form,
@@ -49,28 +48,28 @@ def _to_resp(s: BMTSession, r: BMTResult) -> BmtTurnResponse:
     )
 
 
-@router.post("/turn", response_model=BmtTurnResponse)
-def bmt_turn(
-    body: BmtTurnRequest,
-    store: BMTSessionStore = Depends(get_bmt_store),
-    eng: BMTDeclarationEngine = Depends(get_bmt_engine),
-) -> BmtTurnResponse:
+@router.post("/turn", response_model=ZwtTurnResponse)
+def zwt_turn(
+    body: ZwtTurnRequest,
+    store: BMTSessionStore = Depends(get_zwt_store),
+    eng: BMTDeclarationEngine = Depends(get_zwt_declaration_engine),
+) -> ZwtTurnResponse:
     loc: str = body.locale if body.locale in ("zh-CN", "vi-VN") else "zh-CN"
     s: BMTSession
     if body.session_id:
         got = store.get(body.session_id)
         if not got:
-            raise HTTPException(status_code=404, detail="bmt session not found")
+            raise HTTPException(status_code=404, detail="zwt session not found")
         s = got
         s.locale = loc  # type: ignore[assignment]
     else:
         s = store.create(loc)
 
-    def _opening() -> BmtTurnResponse:
+    def _opening() -> ZwtTurnResponse:
         em = DeclarationForm()
-        return BmtTurnResponse(
+        return ZwtTurnResponse(
             session_id=s.id,
-            reply=with_bmt_friendly_tail(eng.opening_message(s)),
+            reply=with_zwt_friendly_tail(eng.opening_message(s)),
             kind="collecting",
             step=s.step.value,
             form={},

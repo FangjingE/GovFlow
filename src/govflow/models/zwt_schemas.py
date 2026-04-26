@@ -1,14 +1,14 @@
-"""边民通 HTTP 契约。"""
+"""政务通：互市类分步填报 HTTP 契约（与主聊天统一品牌）。"""
 
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
 
 
-class BmtTurnRequest(BaseModel):
+class ZwtTurnRequest(BaseModel):
     """一轮对话：首次不传 session_id；可选 start_only 仅取开场白。"""
 
-    session_id: str | None = Field(default=None, description="边民通会话 ID")
+    session_id: str | None = Field(default=None, description="政务通分步填报会话 ID")
     message: str = Field(default="", max_length=12_000, description="用户语音/文字；start_only 时可为空")
     locale: str = Field(
         default="zh-CN",
@@ -20,7 +20,7 @@ class BmtTurnRequest(BaseModel):
     )
 
 
-class BmtTurnResponse(BaseModel):
+class ZwtTurnResponse(BaseModel):
     session_id: str
     reply: str
     kind: str = Field(
@@ -41,4 +41,4 @@ class BmtTurnResponse(BaseModel):
         description="knowledge 类 RAG 答问时返回的引用（title/uri/score 等）",
     )
     locale: str = "zh-CN"
-    product: str = Field(default="bianmintong", description="产品标识，供客户端换肤")
+    product: str = Field(default="zhengwutong", description="产品标识：政务通")

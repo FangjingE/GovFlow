@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>边民通 · 互市申报（演示）</title>
+    <title>政务通 · 互市申报分步填报（演示）</title>
     <style>
       :root {
         --bg: #f0f4f2;
@@ -199,13 +199,13 @@
   <body>
     <div class="wrap">
       <header>
-        <h1>边民通 · AI 对话式申报（演示）</h1>
+        <h1>政务通 · AI 对话式申报（演示）</h1>
         <div class="nav">
           <a href="/">GovFlow 主页</a>
           <a href="/docs" target="_blank" rel="noopener">API 文档</a>
         </div>
         <p class="sub">
-          与「政务办事助手」不同，本页直连 <code>POST /v1/bmt/turn</code>。分步问净重、<strong>毛重</strong>、件数、<strong>包装/携运方式</strong>、产地、金额、<strong>价格依据</strong>、自用/代购等。填写过程中可<strong>用自然话提问</strong>，回答由 <code>knowledge_base/边民通</code> 关键词 RAG + 配置的大模型（<code>GOVFLOW_LLM_PROVIDER</code>）据摘录生成。申报为演示预览，非实链关务系统。
+          与主站统一对话不同，本页直连 <code>POST /v1/zwt/turn</code>。分步问净重、<strong>毛重</strong>、件数、<strong>包装/携运方式</strong>、产地、金额、<strong>价格依据</strong>、自用/代购等。填写过程中可<strong>用自然话提问</strong>，回答由 <code>knowledge_base/政务通</code> 关键词 RAG + 配置的大模型（<code>GOVFLOW_LLM_PROVIDER</code>）据摘录生成。申报为演示预览，非实链关务系统。
         </p>
       </header>
       <div class="main">
@@ -293,10 +293,10 @@
           log.scrollTop = log.scrollHeight;
         }
 
-        async function postBmt(body) {
+        async function postZwt(body) {
           setBusy(true);
           try {
-            var res = await fetch("/v1/bmt/turn", {
+            var res = await fetch("/v1/zwt/turn", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(body),
@@ -344,7 +344,7 @@
           sessionId = null;
           showForm("");
           setStatus("正在开始…");
-          return postBmt({ message: "", locale: "zh-CN" });
+          return postZwt({ message: "", locale: "zh-CN" });
         }
 
         f.addEventListener("submit", function (e) {
@@ -356,7 +356,7 @@
           input.value = "";
           var body = { message: t, locale: "zh-CN" };
           if (sessionId) body.session_id = sessionId;
-          postBmt(body);
+          postZwt(body);
         });
 
         input.addEventListener("keydown", function (e) {

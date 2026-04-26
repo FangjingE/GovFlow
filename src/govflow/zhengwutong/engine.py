@@ -1,5 +1,5 @@
 """
-边民通智能填报引擎：分步计划（固定槽位顺序）+ 每轮执行一步（P&E 风格，无 LLM 工具环）。
+政务通分步填报引擎：分步计划（固定槽位顺序）+ 每轮执行一步（P&E 风格，无 LLM 工具环）。
 
 越南语：通过 i18n + session.locale 扩展；NLU 仅中文规则，越文轮次后续可接翻译再进同一管道。
 """
@@ -10,11 +10,11 @@ import re
 import uuid
 from dataclasses import dataclass
 
-from govflow.bianmintong.domain import BMTSession, BMTStep, DeclarationForm
-from govflow.bianmintong.field_explanations import get_explanation_for_step
-from govflow.bianmintong.i18n import t
-from govflow.bianmintong import knowledge as kn
-from govflow.bianmintong.faq_rag import run_bmt_faq
+from govflow.zhengwutong.domain import BMTSession, BMTStep, DeclarationForm
+from govflow.zhengwutong.field_explanations import get_explanation_for_step
+from govflow.zhengwutong.i18n import t
+from govflow.zhengwutong import knowledge as kn
+from govflow.zhengwutong.faq_rag import run_zwt_faq
 from govflow.config import Settings
 from govflow.services.llm.protocols import AnswerAuditor, LLMClient
 from govflow.services.rag.protocols import Retriever
@@ -276,7 +276,7 @@ class BMTDeclarationEngine:
 
         # 咨询类问句：RAG + 大模型（不推进分步，会话步与已填表不变）
         if self._retriever and self._llm and self._auditor and self._settings:
-            rfaq = run_bmt_faq(
+            rfaq = run_zwt_faq(
                 text, session, self._retriever, self._llm, self._auditor, self._settings
             )
             if rfaq is not None:
@@ -298,7 +298,7 @@ class BMTDeclarationEngine:
         if session.step == BMTStep.CONFIRM:
             if any(k in text for k in ("确认", "提交", "对", "没错")) and "不" not in text[:2]:
                 session.step = BMTStep.DONE
-                session.submit_token = f"BMT-{uuid.uuid4().hex[:12].upper()}"
+                session.submit_token = f"ZWT-{uuid.uuid4().hex[:12].upper()}"
                 return BMTResult(
                     reply=t("submitted", loc, token=session.submit_token),
                     kind="submitted",

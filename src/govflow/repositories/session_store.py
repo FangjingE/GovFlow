@@ -15,13 +15,13 @@ class ConversationSession:
     awaiting_clarification: bool = False
     # 用户首轮过于模糊时暂存，待补充后与下文合并再检索
     pending_vague_text: str | None = None
-    # 主聊天会话内嵌边民通：与独立 /v1/bmt 会话 ID 关联
-    active_track: str = "gov"  # "gov" | "bmt"
-    bmt_session_id: str | None = None
-    # 已答边民通相关咨询，正等待用户确认是否进入分步填报
-    awaiting_bmt_consent: bool = False
+    # 主聊天内嵌政务通分步填报：与独立 /v1/zwt 会话 ID 关联
+    active_track: str = "gov"  # "gov" | "zwt"
+    zwt_session_id: str | None = None
+    # 已答互市/政务相关咨询，正等待用户确认是否进入分步填报
+    awaiting_zwt_consent: bool = False
     # 触发「是否开始填报」追问时的用户原话（用于「是」后推断进/出口等）
-    bmt_seed_hint: str | None = None
+    zwt_seed_hint: str | None = None
 
 
 class InMemorySessionStore:

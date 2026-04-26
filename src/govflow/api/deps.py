@@ -2,7 +2,6 @@
 
 from functools import lru_cache
 
-from govflow.bianmintong.engine import BMTDeclarationEngine
 from govflow.config import get_settings
 from govflow.services.llm.auditors import build_answer_auditor
 from govflow.services.llm.deepseek_client import DeepSeekLLMClient
@@ -10,6 +9,7 @@ from govflow.services.llm.mock_llm import MockLLMClient
 from govflow.services.llm.protocols import LLMClient
 from govflow.services.pipeline.orchestrator import ChatOrchestrator
 from govflow.services.rag.mock_retriever import MockKeywordRetriever
+from govflow.zhengwutong.engine import BMTDeclarationEngine
 
 
 @lru_cache
@@ -25,8 +25,8 @@ def get_orchestrator() -> ChatOrchestrator:
 
 
 @lru_cache
-def get_bmt_engine() -> BMTDeclarationEngine:
-    """边民通：与主对话共用 provider / API Key 配置；RAG 为本地 knowledge_base 关键词召回。"""
+def get_zwt_declaration_engine() -> BMTDeclarationEngine:
+    """政务通分步填报：与主对话共用 provider / API Key；RAG 为本地 knowledge_base 关键词召回。"""
     s = get_settings()
     if s.llm_provider == "deepseek":
         if not (s.llm_api_key and str(s.llm_api_key).strip()):

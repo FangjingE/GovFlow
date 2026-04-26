@@ -131,7 +131,7 @@ class ChatOrchestrator:
         return self._settings
 
     def sensitive_block_result(self, user_text: str) -> OrchestratorResult | None:
-        """敏感词不通过时返回 blocked 结果，否则 None（供主聊天与边民通轨共用）。"""
+        """敏感词不通过时返回 blocked 结果，否则 None（供主聊天与政务通分步轨共用）。"""
         hotline = self.settings.default_hotline
         fr = self._filter.check(user_text)
         stages = [PipelineStage.FILTER.value]

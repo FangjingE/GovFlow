@@ -50,7 +50,7 @@ uvicorn govflow.main:app --reload --app-dir src --port 8001
 
 启动后可在浏览器打开 **简单 Web 聊天界面**（与 API 同端口）：
 
-- 聊天 UI: http://127.0.0.1:8000/（**边民通**互市申报已并入同一对话；`/bmt` 重定向到首页）
+- 聊天 UI: http://127.0.0.1:8000/（**政务通**互市类分步填报已并入同一对话；旧书签 `/bmt` 重定向到首页）
 
 交互式 API 文档：
 
@@ -86,10 +86,10 @@ curl -s -X POST http://127.0.0.1:8000/v1/chat \
 服务仍按 RAG 检索到的【知识库摘录】约束回答；答案再经审核器。若 `provider=deepseek` 但缺少有效 API Key，首请求会报错，请检查环境变量。  
 单测在 `tests/conftest.py` 中强制 `GOVFLOW_LLM_PROVIDER=mock`，避免本地 `.env` 里写了 DeepSeek 却误打真实外网。
 
-## 边民通（互市申报演示）
+## 政务通（互市类分步填报演示）
 
-- **对话填报**：主界面走 `POST /v1/chat`（识别到互市/边民通相关话题时先照常 RAG 作答，并在文末征求是否开始辅助填写；用户回复「是」等确认后服务端再进入申报轨，JSON 中 `bmt_sidebar_visible` 为 true）；独立 API 仍为 `POST /v1/bmt/turn`。
-- **实现方式**：固定分步计划 + 每轮采一个槽（P&E 风格，无 LLM 工具环）；**非**主站 `POST /v1/chat` 的 RAG 流程。ASR/拍照/海关实联、真二维码未接，回执号为演示。
+- **对话填报**：主界面走 `POST /v1/chat`（识别到互市等相关话题时先照常 RAG 作答，并在文末征求是否开始辅助填写；用户回复「是」等确认后服务端再进入分步填报轨，JSON 中 `zwt_sidebar_visible` 为 true）；独立调试 API 为 `POST /v1/zwt/turn`（演示页 `static/bmt.html` 亦调用该路径）。
+- **实现方式**：固定分步计划 + 每轮采一个槽（P&E 风格，无 LLM 工具环）；与主对话 RAG 流程解耦。ASR/拍照/海关实联、真二维码未接，回执号为演示。
 
 ## 更多说明
 

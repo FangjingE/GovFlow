@@ -1,4 +1,4 @@
-"""边民通领域对象：申报单与会话态（与 HTTP 解耦）。"""
+"""政务通分步填报领域对象：申报单与会话态（与 HTTP 解耦）。"""
 
 from __future__ import annotations
 

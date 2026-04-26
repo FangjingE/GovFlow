@@ -1,10 +1,10 @@
-"""边民通申报内嵌「政策/名词」问答：关键词粗筛 RAG + LLM，不推进分步采槽位。"""
+"""政务通分步填报内嵌「政策/名词」问答：关键词粗筛 RAG + LLM，不推进分步采槽位。"""
 
 from __future__ import annotations
 
 import re
 
-from govflow.bianmintong.domain import BMTSession
+from govflow.zhengwutong.domain import BMTSession
 from govflow.config import Settings
 from govflow.domain.messages import RetrievedChunk
 from govflow.services.llm.protocols import AnswerAuditor, LLMClient
@@ -98,13 +98,13 @@ def looks_like_knowledge_query(user_text: str) -> bool:
     return any(k in t for k in triggers)
 
 
-def build_bmt_rag_query(
+def build_zwt_rag_query(
     user_text: str, session: BMTSession, extra_hint: str = ""
 ) -> str:
     """在检索中拼接当前步与品名，提高 RAG 命中率。"""
     g = (session.form.goods_name or "").strip() or "（未填品名）"
     step = _STEP_CN.get(session.step.value, session.step.value)
-    h = f"（边民通申报上下文：{step}；品名 {g}）"
+    h = f"（政务通填报上下文：{step}；品名 {g}）"
     u = (user_text or "").strip()
     if extra_hint:
         return f"{u}\n{h}\n{extra_hint}"
@@ -122,7 +122,7 @@ def _source_dicts(chunks: list[RetrievedChunk]) -> list[dict[str, object]]:
     ]
 
 
-def run_bmt_faq(
+def run_zwt_faq(
     user_text: str,
     session: BMTSession,
     retriever: Retriever,
@@ -145,7 +145,7 @@ def run_bmt_faq(
             hist.append(s)
     history_snippets: list[str] = hist[-4:]
 
-    rag_q = build_bmt_rag_query(user_text, session)
+    rag_q = build_zwt_rag_query(user_text, session)
     chunks = retriever.retrieve(rag_q, top_k=5)
     hotline = settings.default_hotline
     # 分步表单的 field_explanation 不用于知识问答；主回复在 reply
@@ -153,7 +153,7 @@ def run_bmt_faq(
 
     if not chunks:
         reply = (
-            "当前「边民通」演示知识库中，没有和您的问题直接对应的可引用条目，"
+            "当前「政务通」演示知识库中，没有和您的问题直接对应的可引用条目，"
             "这里无法做有据答复。请补充关键词或更换问法，也可拨打"
             f" {hotline} 或到口岸/互市服务窗口现场咨询。"
         )

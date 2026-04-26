@@ -1,5 +1,5 @@
 """
-边民通复杂字段的通俗说明（MVP 为模板，后续可接 DeepSeek/专用模型动态生成 field_explanation）。
+政务通分步填报复杂字段的通俗说明（MVP 为模板，后续可接 DeepSeek/专用模型动态生成 field_explanation）。
 
 与 domain.BMTStep 中「需解释」的槽位一一对应；键名用 step 的 .value 字符串，便于按步查找。
 """

@@ -105,7 +105,7 @@ GovFlow/
 | POST | `/v1/chat` | Body: `{ "session_id"?: string, "message": string }` |
 | GET | `/healthz` | 存活探针 |
 
-响应字段：`reply`, `kind`, `sources[]`, `official_hotline`, `stages_executed`, `session_id`（边民通轨另有 `bmt_*` 字段，见 OpenAPI）。
+响应字段：`reply`, `kind`, `sources[]`, `official_hotline`, `stages_executed`, `session_id`（政务通分步填报轨另有 `zwt_*` 字段，见 OpenAPI）。
 
 ---
 

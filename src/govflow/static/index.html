@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GovFlow · 政务办事助手</title>
+    <title>政务通 · 政务办事助手</title>
     <style>
       :root {
         --bg: #f4f6f8;
@@ -48,11 +48,11 @@
         min-height: 0;
         align-items: stretch;
       }
-      .layout.with-bmt {
+      .layout.with-zwt {
         grid-template-columns: 1fr minmax(13rem, 20rem);
       }
       @media (max-width: 52rem) {
-        .layout.with-bmt {
+        .layout.with-zwt {
           grid-template-columns: 1fr;
         }
       }
@@ -62,7 +62,7 @@
         min-height: 0;
         min-width: 0;
       }
-      .bmt-aside {
+      .zwt-aside {
         display: none;
         flex-direction: column;
         background: var(--panel);
@@ -73,32 +73,32 @@
         min-height: 10rem;
         max-height: 70vh;
       }
-      .layout.with-bmt .bmt-aside {
+      .layout.with-zwt .zwt-aside {
         display: flex;
       }
       @media (max-width: 52rem) {
-        .layout.with-bmt .bmt-aside {
+        .layout.with-zwt .zwt-aside {
           max-height: 36vh;
         }
       }
-      .bmt-aside h2 {
+      .zwt-aside h2 {
         font-size: 0.85rem;
         margin: 0 0 0.35rem 0;
         font-weight: 600;
         color: var(--muted);
       }
-      .bmt-aside-hint {
+      .zwt-aside-hint {
         font-size: 0.78rem;
         color: var(--muted);
         margin: 0 0 0.4rem 0;
         line-height: 1.45;
       }
-      .bmt-form-scroll {
+      .zwt-form-scroll {
         flex: 1;
         overflow: auto;
         min-height: 4rem;
       }
-      .bmt-form-scroll pre {
+      .zwt-form-scroll pre {
         margin: 0;
         font-size: 0.78rem;
         line-height: 1.45;
@@ -304,11 +304,11 @@
     <div class="shell">
       <header>
         <div class="header-top">
-          <h1>GovFlow 政务办事助手</h1>
+          <h1>政务通</h1>
           <button type="button" id="new-chat" title="清除当前消息并开始新会话">新对话</button>
         </div>
         <p class="sub">
-          基于本地知识库的问答与澄清。<strong>边民通、互市进口</strong>等话题会先给出说明，并询问是否开始辅助填写；您回复「是」或「开始」后，右侧才会出现申报表预览。社保、材料等照常在此输入。首次对话会创建会话；「新对话」清空并开始新会话。
+          基于本地知识库的问答与澄清。<strong>互市进口、跨境农产品</strong>等话题会先给出说明，并询问是否开始辅助填写；您回复「是」或「开始」后，右侧会出现申报预览。社保、材料等其它政务问题也在此输入。首次对话会创建会话；「新对话」清空并开始新会话。
         </p>
         <a class="doc" href="/docs" target="_blank" rel="noopener">OpenAPI 文档</a>
       </header>
@@ -326,11 +326,11 @@
             <button type="submit" id="send">发送</button>
           </form>
         </div>
-        <aside id="bmt-aside" class="bmt-aside" aria-hidden="true">
-          <h2>边民通 · 申报预览</h2>
-          <p class="bmt-aside-hint" id="bmt-aside-hint">当您询问互市、边民通相关问题时，此处会同步显示当前填报预览（演示）。</p>
-          <div class="bmt-form-scroll">
-            <pre id="bmt-form-pre" style="display: none"></pre>
+        <aside id="zwt-aside" class="zwt-aside" aria-hidden="true">
+          <h2>政务通 · 申报预览</h2>
+          <p class="zwt-aside-hint" id="zwt-aside-hint">当您询问互市、跨境农产品等相关政务问题时，此处会同步显示当前填报预览（演示）。</p>
+          <div class="zwt-form-scroll">
+            <pre id="zwt-form-pre" style="display: none"></pre>
           </div>
         </aside>
       </div>
@@ -347,13 +347,13 @@
         var newChatBtn = document.getElementById("new-chat");
         var foot = document.getElementById("foot-session");
         var layout = document.getElementById("layout");
-        var bmtAside = document.getElementById("bmt-aside");
-        var bmtFormPre = document.getElementById("bmt-form-pre");
-        var bmtAsideHint = document.getElementById("bmt-aside-hint");
+        var zwtAside = document.getElementById("zwt-aside");
+        var zwtFormPre = document.getElementById("zwt-form-pre");
+        var zwtAsideHint = document.getElementById("zwt-aside-hint");
         var sessionId = null;
         var sending = false;
         var WELCOME =
-          "你好，可问社保、办事材料、边民互市进口等。涉及边民通时，助手会先说明并询问是否开始辅助填写；您回复「是」或「开始」后，右侧才会出现申报预览。";
+          "你好，这里是政务通。可问社保、办事材料、互市进口等政务问题；涉及分步填报时，助手会先说明并询问是否开始填写，您回复「是」或「开始」后右侧会出现申报预览。";
 
         function el(tag, cls, text) {
           var n = document.createElement(tag);
@@ -394,10 +394,10 @@
           return s;
         }
 
-        function appendBmtRagSources(list) {
+        function appendZwtRagSources(list) {
           if (!list || !list.length) return null;
           var s = el("div", "sources");
-          s.appendChild(el("div", null, "边民通知识库引用"));
+          s.appendChild(el("div", null, "政务通知识库引用"));
           var ul = document.createElement("ul");
           list.forEach(function (o, i) {
             var li = document.createElement("li");
@@ -421,8 +421,8 @@
           var k = el("span", null, "");
           var badge = el("span", "badge", "kind: " + data.kind);
           k.appendChild(badge);
-          if (data.bmt_step) {
-            k.appendChild(el("span", null, "边民通步骤: " + data.bmt_step));
+          if (data.zwt_step) {
+            k.appendChild(el("span", null, "填报步骤: " + data.zwt_step));
           }
           if (data.stages_executed && data.stages_executed.length) {
             var st = el("span", null, "阶段: " + data.stages_executed.join(" → "));
@@ -432,33 +432,33 @@
           wrap.appendChild(meta);
           var src = formatSources(data.sources);
           if (src) wrap.appendChild(src);
-          var br = appendBmtRagSources(data.bmt_rag_sources);
+          var br = appendZwtRagSources(data.zwt_rag_sources);
           if (br) wrap.appendChild(br);
           log.appendChild(wrap);
           log.scrollTop = log.scrollHeight;
         }
 
-        function syncBmtPanel(j) {
-          if (!layout || !bmtAside || !bmtFormPre || !bmtAsideHint) return;
-          if (j && j.bmt_sidebar_visible) {
-            layout.classList.add("with-bmt");
-            bmtAside.setAttribute("aria-hidden", "false");
-            var fp = (j.bmt_form_preview && String(j.bmt_form_preview).trim()) || "";
+        function syncZwtPanel(j) {
+          if (!layout || !zwtAside || !zwtFormPre || !zwtAsideHint) return;
+          if (j && j.zwt_sidebar_visible) {
+            layout.classList.add("with-zwt");
+            zwtAside.setAttribute("aria-hidden", "false");
+            var fp = (j.zwt_form_preview && String(j.zwt_form_preview).trim()) || "";
             if (fp) {
-              bmtFormPre.textContent = fp;
-              bmtFormPre.style.display = "block";
-              bmtAsideHint.style.display = "none";
+              zwtFormPre.textContent = fp;
+              zwtFormPre.style.display = "block";
+              zwtAsideHint.style.display = "none";
             } else {
-              bmtFormPre.textContent = "";
-              bmtFormPre.style.display = "none";
-              bmtAsideHint.style.display = "block";
+              zwtFormPre.textContent = "";
+              zwtFormPre.style.display = "none";
+              zwtAsideHint.style.display = "block";
             }
           } else {
-            layout.classList.remove("with-bmt");
-            bmtAside.setAttribute("aria-hidden", "true");
-            bmtFormPre.textContent = "";
-            bmtFormPre.style.display = "none";
-            bmtAsideHint.style.display = "block";
+            layout.classList.remove("with-zwt");
+            zwtAside.setAttribute("aria-hidden", "true");
+            zwtFormPre.textContent = "";
+            zwtFormPre.style.display = "none";
+            zwtAsideHint.style.display = "block";
           }
         }
 
@@ -472,7 +472,7 @@
           log.innerHTML = "";
           appendSystem(WELCOME);
           setSession(null);
-          syncBmtPanel({});
+          syncZwtPanel({});
           input.value = "";
           input.focus();
         }
@@ -512,7 +512,7 @@
             }
             if (j.session_id) setSession(j.session_id);
             appendAssistant(j);
-            syncBmtPanel(j);
+            syncZwtPanel(j);
           } catch (e) {
             appendError("网络错误: " + (e && e.message ? e.message : String(e)));
           } finally {
