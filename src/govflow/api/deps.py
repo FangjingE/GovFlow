@@ -9,6 +9,8 @@ from govflow.services.llm.mock_llm import MockLLMClient
 from govflow.services.llm.protocols import LLMClient
 from govflow.services.pipeline.orchestrator import ChatOrchestrator
 from govflow.services.rag.mock_retriever import MockKeywordRetriever
+from govflow.company_setup.engine import CompanySetupPAndE
+from govflow.company_setup.store import InMemoryCompanySetupStore
 from govflow.zhengwutong.engine import BMTDeclarationEngine
 
 
@@ -22,6 +24,16 @@ def get_orchestrator() -> ChatOrchestrator:
     else:
         impl = MockLLMClient()
     return ChatOrchestrator(settings=s, llm=impl)
+
+
+@lru_cache
+def get_company_setup_store() -> InMemoryCompanySetupStore:
+    return InMemoryCompanySetupStore()
+
+
+@lru_cache
+def get_company_setup_engine() -> CompanySetupPAndE:
+    return CompanySetupPAndE()
 
 
 @lru_cache

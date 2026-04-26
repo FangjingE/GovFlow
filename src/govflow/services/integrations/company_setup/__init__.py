@@ -1,0 +1,63 @@
+"""公司设立：外部接口协议与 mock 实现。"""
+
+from govflow.services.integrations.company_setup.mock_clients import (
+    MockCompanySetupExternals,
+    build_mock_company_setup_externals,
+)
+from govflow.services.integrations.company_setup.protocols import (
+    BasicBankAccountClient,
+    EstablishmentReviewClient,
+    IndustryPermitClient,
+    LicenseIssuanceClient,
+    MarketSupervisionNameClient,
+    SealFilingClient,
+    SocialAndHousingFundClient,
+    TaxRegistrationClient,
+    UnifiedEstablishmentPortalClient,
+)
+from govflow.services.integrations.company_setup.types import (
+    BankAccountReceipt,
+    BusinessLicense,
+    CompanyBasicProfile,
+    CompanySetupExternalState,
+    CompanyType,
+    EstablishmentMaterials,
+    IndustryPermitReceipt,
+    NameReservationRequest,
+    NameReservationResult,
+    ReviewPollResult,
+    ReviewStatus,
+    SealFilingReceipt,
+    SocialFundReceipt,
+    SubmissionReceipt,
+    TaxRegistrationReceipt,
+)
+
+__all__ = [
+    "BankAccountReceipt",
+    "BasicBankAccountClient",
+    "BusinessLicense",
+    "CompanyBasicProfile",
+    "CompanySetupExternalState",
+    "CompanyType",
+    "EstablishmentMaterials",
+    "EstablishmentReviewClient",
+    "IndustryPermitClient",
+    "IndustryPermitReceipt",
+    "LicenseIssuanceClient",
+    "MarketSupervisionNameClient",
+    "MockCompanySetupExternals",
+    "NameReservationRequest",
+    "NameReservationResult",
+    "ReviewPollResult",
+    "ReviewStatus",
+    "SealFilingClient",
+    "SealFilingReceipt",
+    "SocialAndHousingFundClient",
+    "SocialFundReceipt",
+    "SubmissionReceipt",
+    "TaxRegistrationClient",
+    "TaxRegistrationReceipt",
+    "UnifiedEstablishmentPortalClient",
+    "build_mock_company_setup_externals",
+]

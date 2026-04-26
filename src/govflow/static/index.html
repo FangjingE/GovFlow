@@ -308,7 +308,7 @@
           <button type="button" id="new-chat" title="清除当前消息并开始新会话">新对话</button>
         </div>
         <p class="sub">
-          基于本地知识库的问答与澄清。<strong>互市进口、跨境农产品</strong>等话题会先给出说明，并询问是否开始辅助填写；您回复「是」或「开始」后，右侧会出现申报预览。社保、材料等其它政务问题也在此输入。首次对话会创建会话；「新对话」清空并开始新会话。
+          基于本地知识库的问答与澄清。<strong>互市进口、跨境农产品</strong>等会先说明并询问是否开始辅助填写；<strong>办企业、公司设立</strong>等可进入企业设立流程演示（mock 外部接口）。回复「是」或「开始」后，右侧会显示对应进度预览。社保、材料等其它政务问题也在此输入。
         </p>
         <a class="doc" href="/docs" target="_blank" rel="noopener">OpenAPI 文档</a>
       </header>
@@ -327,8 +327,8 @@
           </form>
         </div>
         <aside id="zwt-aside" class="zwt-aside" aria-hidden="true">
-          <h2>政务通 · 申报预览</h2>
-          <p class="zwt-aside-hint" id="zwt-aside-hint">当您询问互市、跨境农产品等相关政务问题时，此处会同步显示当前填报预览（演示）。</p>
+          <h2 id="zwt-aside-title">政务通 · 申报预览</h2>
+          <p class="zwt-aside-hint" id="zwt-aside-hint">当您进入互市填报或企业设立演示时，此处会同步显示当前进度（演示）。</p>
           <div class="zwt-form-scroll">
             <pre id="zwt-form-pre" style="display: none"></pre>
           </div>
@@ -352,8 +352,9 @@
         var zwtAsideHint = document.getElementById("zwt-aside-hint");
         var sessionId = null;
         var sending = false;
+        var zwtAsideTitle = document.getElementById("zwt-aside-title");
         var WELCOME =
-          "你好，这里是政务通。可问社保、办事材料、互市进口等政务问题；涉及分步填报时，助手会先说明并询问是否开始填写，您回复「是」或「开始」后右侧会出现申报预览。";
+          "你好，这里是政务通。可问社保、办事材料、互市进口、办企业等政务问题；涉及分步填报或企业设立演示时，助手会先说明并询问是否开始，您回复「是」或「开始」后右侧会出现进度预览。";
 
         function el(tag, cls, text) {
           var n = document.createElement(tag);
@@ -424,6 +425,9 @@
           if (data.zwt_step) {
             k.appendChild(el("span", null, "填报步骤: " + data.zwt_step));
           }
+          if (data.company_step) {
+            k.appendChild(el("span", null, "企业设立步骤: " + data.company_step));
+          }
           if (data.stages_executed && data.stages_executed.length) {
             var st = el("span", null, "阶段: " + data.stages_executed.join(" → "));
             k.appendChild(st);
@@ -440,10 +444,19 @@
 
         function syncZwtPanel(j) {
           if (!layout || !zwtAside || !zwtFormPre || !zwtAsideHint) return;
-          if (j && j.zwt_sidebar_visible) {
+          var show = j && (j.zwt_sidebar_visible || j.company_sidebar_visible);
+          if (show) {
             layout.classList.add("with-zwt");
             zwtAside.setAttribute("aria-hidden", "false");
-            var fp = (j.zwt_form_preview && String(j.zwt_form_preview).trim()) || "";
+            if (zwtAsideTitle) {
+              zwtAsideTitle.textContent = j.company_sidebar_visible
+                ? "政务通 · 企业设立进度"
+                : "政务通 · 申报预览";
+            }
+            var fp =
+              (j.company_progress_preview && String(j.company_progress_preview).trim()) ||
+              (j.zwt_form_preview && String(j.zwt_form_preview).trim()) ||
+              "";
             if (fp) {
               zwtFormPre.textContent = fp;
               zwtFormPre.style.display = "block";
@@ -456,6 +469,7 @@
           } else {
             layout.classList.remove("with-zwt");
             zwtAside.setAttribute("aria-hidden", "true");
+            if (zwtAsideTitle) zwtAsideTitle.textContent = "政务通 · 申报预览";
             zwtFormPre.textContent = "";
             zwtFormPre.style.display = "none";
             zwtAsideHint.style.display = "block";

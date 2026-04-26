@@ -57,6 +57,10 @@ class IntentService:
         r"社保|医保|养老保险|身份证|居住证|公积金|营业执照|税务|结婚登记|护照",
         re.I,
     )
+    _COMPANY_SETUP = re.compile(
+        r"办企业|开公司|注册公司|公司设立|设立公司|企业注册|注册登记|我要办企业|想办企业",
+        re.I,
+    )
 
     def analyze(self, user_text: str, session_topic: str | None) -> IntentAnalysis:
         text = user_text.strip()
@@ -89,6 +93,28 @@ class IntentService:
         if len(t) < 3:
             return False
         return bool(self._ZWT_SOFT.search(t))
+
+    def hints_company_setup_topic(self, user_text: str) -> bool:
+        """是否与企业设立演示流程相关（互市类表述优先走政务通分步轨）。"""
+        t = user_text.strip()
+        if len(t) < 3:
+            return False
+        if self._ZWT_SOFT.search(t):
+            return False
+        return bool(self._COMPANY_SETUP.search(t))
+
+    def confirms_company_setup_start(self, user_text: str) -> bool:
+        """与互市确认规则一致：短句「是/开始」等视为同意进入企业设立演示。"""
+        return self.confirms_zwt_declaration_start(user_text)
+
+    def wants_leave_company_for_gov(self, user_text: str) -> bool:
+        """已在企业设立轨时，强政务词且本句非企业设立话题则回通用对话。"""
+        t = user_text.strip()
+        if not t:
+            return False
+        if self.hints_company_setup_topic(t):
+            return False
+        return bool(self._GOV_STRONG.search(t))
 
     def confirms_zwt_declaration_start(self, user_text: str) -> bool:
         """用户明确同意开始辅助填写（短句或「好+进出口」）。"""

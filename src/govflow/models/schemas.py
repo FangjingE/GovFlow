@@ -35,3 +35,7 @@ class ChatResponse(BaseModel):
         description="分步填报引擎 kind（collecting、knowledge 等）",
     )
     zwt_rag_sources: list[SourceRef] = Field(default_factory=list)
+    # 企业设立 P&E 侧栏（确认进入演示轨后 true）
+    company_sidebar_visible: bool = False
+    company_progress_preview: str | None = None
+    company_step: str | None = None
