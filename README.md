@@ -50,7 +50,7 @@ uvicorn govflow.main:app --reload --app-dir src --port 8001
 
 启动后可在浏览器打开 **简单 Web 聊天界面**（与 API 同端口）：
 
-- 聊天 UI: http://127.0.0.1:8000/
+- 聊天 UI: http://127.0.0.1:8000/（**边民通**互市申报演示：http://127.0.0.1:8000/bmt ）
 
 交互式 API 文档：
 
@@ -85,6 +85,11 @@ curl -s -X POST http://127.0.0.1:8000/v1/chat \
 
 服务仍按 RAG 检索到的【知识库摘录】约束回答；答案再经审核器。若 `provider=deepseek` 但缺少有效 API Key，首请求会报错，请检查环境变量。  
 单测在 `tests/conftest.py` 中强制 `GOVFLOW_LLM_PROVIDER=mock`，避免本地 `.env` 里写了 DeepSeek 却误打真实外网。
+
+## 边民通（互市申报演示）
+
+- **对话填报**：`POST /v1/bmt/turn`；浏览器可打开 **http://127.0.0.1:8000/bmt** 使用简单对话 + 申报表文字预览。JSON 可含 `session_id`（多轮必带）、`message`（用户话）、`locale`（`zh-CN` 已完整；`vi-VN` 预留，未译句会回退中文并带「越文待发布」前缀）、`start_only: true` 时仅返开场白。
+- **实现方式**：固定分步计划 + 每轮采一个槽（P&E 风格，无 LLM 工具环）；**非**主站 `POST /v1/chat` 的 RAG 流程。ASR/拍照/海关实联、真二维码未接，回执号为演示。
 
 ## 更多说明
 

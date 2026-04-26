@@ -31,6 +31,14 @@ def test_index_ui() -> None:
     assert b"GovFlow" in r.content
 
 
+def test_bianmintong_ui() -> None:
+    r = client.get("/bmt")
+    assert r.status_code == 200
+    assert "text/html" in r.headers.get("content-type", "")
+    assert "边民通" in r.text
+    assert "/v1/bmt/turn" in r.text
+
+
 def test_clarification_then_answer() -> None:
     r1 = client.post("/v1/chat", json={"message": "办社保"})
     assert r1.status_code == 200

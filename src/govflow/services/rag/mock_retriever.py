@@ -15,6 +15,14 @@ from govflow.services.rag.protocols import Retriever
 # 用户问题与文档各命中其一即进入粗筛（再经锚词与计分）
 BROAD_KEYWORDS: tuple[str, ...] = (
     "社保",
+    "毛重",
+    "净重",
+    "边民",
+    "互市",
+    "进口",
+    "出口",
+    "越南",
+    "火龙果",
     "卡",
     "身份证",
     "补办",
@@ -37,6 +45,15 @@ BROAD_KEYWORDS: tuple[str, ...] = (
 
 # 与 query、正文、路径求交叠计分（长词优先多给分由顺序体现）
 _SCORE_TERMS: tuple[str, ...] = (
+    "边民互市",
+    "边民通",
+    "毛重",
+    "净重",
+    "互市",
+    "火龙果",
+    "边民",
+    "进口",
+    "越南",
     "社会保障卡",
     "社保卡",
     "城乡居民",
@@ -95,6 +112,25 @@ def _score(path: Path, text: str, query: str) -> float:
     return score
 
 
+# 边贸/边民等：query 与正文同时含同一词时允许弱召回（不依赖分词）
+_CROSS_TRADE_HINTS: tuple[str, ...] = (
+    "边民通",
+    "边民",
+    "互市",
+    "互贸",
+    "火龙果",
+    "进口",
+    "出口",
+    "越南",
+    "东兴",
+    "口岸",
+)
+
+
+def _cn_cross_match(query: str, text: str) -> bool:
+    return any(w in query and w in text for w in _CROSS_TRADE_HINTS)
+
+
 class MockKeywordRetriever(Retriever):
     """从本地 knowledge_base/ 目录读取 .txt，关键词粗筛 + 简单计分排序。"""
 
@@ -117,11 +153,14 @@ class MockKeywordRetriever(Retriever):
 
             broad = any(k in query for k in BROAD_KEYWORDS) and any(k in text for k in BROAD_KEYWORDS)
             split_fallback = len(q_lower) > 2 and any(part in text for part in q_lower.split())
+            cross_tr = _cn_cross_match(query, text)
 
-            if not broad and not split_fallback:
+            if not broad and not split_fallback and not cross_tr:
                 continue
 
             if broad and not _anchors_ok(query, text):
+                continue
+            if not broad and cross_tr and not _anchors_ok(query, text):
                 continue
 
             source_line = next((ln for ln in text.splitlines() if ln.startswith("【来源】")), "")
@@ -134,6 +173,8 @@ class MockKeywordRetriever(Retriever):
             sc = _score(path, text, query)
             if not broad:
                 sc = max(sc, 0.4)
+                if cross_tr and sc < 0.4:
+                    sc = 0.5
             elif sc < 0.01:
                 sc = 0.9
             chunk.score = sc
