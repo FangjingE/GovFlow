@@ -10,6 +10,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from govflow.company_setup.domain import CompanySetupSession, CompanySetupStep
+from govflow.company_setup.input_classifier import (
+    field_label_and_hint,
+    is_collecting_step,
+    looks_like_meta_or_clarify,
+    looks_like_topic_deferral,
+    review_poll_should_advance,
+)
 from govflow.services.integrations.company_setup.types import (
     CompanyBasicProfile,
     EstablishmentMaterials,
@@ -54,8 +61,41 @@ def _has_company_type_signal(t: str) -> bool:
     return any(k in u for k in keys)
 
 
+def _clarify_tail(step: CompanySetupStep) -> str:
+    _, hint = field_label_and_hint(step)
+    return f"如需继续，请直接提供：{hint}。如需退出本流程，可发「退出企业设立」。"
+
+
+def _filled_ack(filled_cn: str, next_step: CompanySetupStep) -> str:
+    nl, nh = field_label_and_hint(next_step)
+    return (
+        f"**{filled_cn}**已填入模板中，您可浏览侧边模板审阅。"
+        f"请继续提供：**{nl}**（{nh}）。"
+    )
+
+
 class CompanySetupPAndE:
     """无状态引擎：每轮读写传入的 CompanySetupSession。"""
+
+    def _non_answer_collecting_reply(
+        self, sess: CompanySetupSession, step: CompanySetupStep, pv: str
+    ) -> CompanyTurnResult:
+        return CompanyTurnResult(
+            reply=_clarify_tail(step),
+            kind="company_clarify",
+            step=step.value,
+            progress_preview=pv,
+        )
+
+    def _check_collecting_intent(
+        self, sess: CompanySetupSession, t: str, step: CompanySetupStep
+    ) -> CompanyTurnResult | None:
+        if not is_collecting_step(step):
+            return None
+        pv = _preview(sess)
+        if looks_like_meta_or_clarify(t) or looks_like_topic_deferral(t):
+            return self._non_answer_collecting_reply(sess, step, pv)
+        return None
 
     def handle(self, sess: CompanySetupSession, user_text: str) -> CompanyTurnResult:
         t = (user_text or "").strip()
@@ -71,6 +111,9 @@ class CompanySetupPAndE:
             )
 
         if sess.step == CompanySetupStep.ASK_COMPANY_TYPE:
+            hit = self._check_collecting_intent(sess, t, sess.step)
+            if hit is not None:
+                return hit
             if not _has_company_type_signal(t):
                 return CompanyTurnResult(
                     reply="请用一句话说明拟设立主体的**类型**（例如：有限责任公司、个人独资企业、分公司）。",
@@ -82,13 +125,16 @@ class CompanySetupPAndE:
             sess.step = CompanySetupStep.ASK_PROPOSED_NAME
             pv = _preview(sess)
             return CompanyTurnResult(
-                reply="已记录。请提供**拟定企业名称**（行政区划 + 字号 + 行业 + 组织形式，可按当地习惯口述）。",
+                reply=_filled_ack("主体类型", CompanySetupStep.ASK_PROPOSED_NAME),
                 kind="company_collecting",
                 step=sess.step.value,
                 progress_preview=pv,
             )
 
         if sess.step == CompanySetupStep.ASK_PROPOSED_NAME:
+            hit = self._check_collecting_intent(sess, t, sess.step)
+            if hit is not None:
+                return hit
             if len(t) < 4:
                 return CompanyTurnResult(
                     reply="名称过短，请提供完整的**拟定名称**（至少四个字以上较易通过演示核名）。",
@@ -100,13 +146,16 @@ class CompanySetupPAndE:
             sess.step = CompanySetupStep.ASK_ADDRESS
             pv = _preview(sess)
             return CompanyTurnResult(
-                reply="已记录。请填写**住所（注册地址）**或主要经营场所，精确到市、区与道路门牌（演示可简写）。",
+                reply=_filled_ack("拟定企业名称", CompanySetupStep.ASK_ADDRESS),
                 kind="company_collecting",
                 step=sess.step.value,
                 progress_preview=pv,
             )
 
         if sess.step == CompanySetupStep.ASK_ADDRESS:
+            hit = self._check_collecting_intent(sess, t, sess.step)
+            if hit is not None:
+                return hit
             if len(t) < 4:
                 return CompanyTurnResult(
                     reply="请补充更具体的**住所**信息（省市区 + 路街巷门牌或园区楼栋）。",
@@ -118,13 +167,16 @@ class CompanySetupPAndE:
             sess.step = CompanySetupStep.ASK_SHAREHOLDERS
             pv = _preview(sess)
             return CompanyTurnResult(
-                reply="已记录。请简述**股东及出资比例**（自然人姓名 + 百分比即可，演示用）。",
+                reply=_filled_ack("住所（注册地址）", CompanySetupStep.ASK_SHAREHOLDERS),
                 kind="company_collecting",
                 step=sess.step.value,
                 progress_preview=pv,
             )
 
         if sess.step == CompanySetupStep.ASK_SHAREHOLDERS:
+            hit = self._check_collecting_intent(sess, t, sess.step)
+            if hit is not None:
+                return hit
             if len(t) < 2:
                 return CompanyTurnResult(
                     reply="请至少填写一名股东或出资人及大致比例。",
@@ -136,13 +188,16 @@ class CompanySetupPAndE:
             sess.step = CompanySetupStep.ASK_BUSINESS_SCOPE
             pv = _preview(sess)
             return CompanyTurnResult(
-                reply="已记录。请描述**经营范围**（可写大类，如：软件开发、技术咨询；演示无需与国民经济行业分类逐条对齐）。",
+                reply=_filled_ack("股东及出资比例", CompanySetupStep.ASK_BUSINESS_SCOPE),
                 kind="company_collecting",
                 step=sess.step.value,
                 progress_preview=pv,
             )
 
         if sess.step == CompanySetupStep.ASK_BUSINESS_SCOPE:
+            hit = self._check_collecting_intent(sess, t, sess.step)
+            if hit is not None:
+                return hit
             if len(t) < 4:
                 return CompanyTurnResult(
                     reply="经营范围请稍具体一些（至少一句业务描述）。",
@@ -151,9 +206,15 @@ class CompanySetupPAndE:
                     progress_preview=pv,
                 )
             sess.business_scope = t
-            return self._reserve_submit_and_poll(sess)
+            return self._reserve_submit_and_poll(
+                sess,
+                ack_prefix="**经营范围**已填入模板中，您可浏览侧边模板审阅。",
+            )
 
         if sess.step == CompanySetupStep.NAME_RETRY:
+            hit = self._check_collecting_intent(sess, t, sess.step)
+            if hit is not None:
+                return hit
             if len(t) < 4:
                 return CompanyTurnResult(
                     reply="请重新提供完整的**拟定名称**（避免使用演示禁名「mock_reject」子串）。",
@@ -162,9 +223,34 @@ class CompanySetupPAndE:
                     progress_preview=pv,
                 )
             sess.proposed_name = t
-            return self._reserve_submit_and_poll(sess)
+            return self._reserve_submit_and_poll(
+                sess,
+                ack_prefix="**拟定企业名称**已填入模板中，您可浏览侧边模板审阅。",
+            )
 
         if sess.step == CompanySetupStep.REVIEW_POLL:
+            pv = _preview(sess)
+            if looks_like_meta_or_clarify(t) or looks_like_topic_deferral(t):
+                return CompanyTurnResult(
+                    reply=(
+                        "当前处于**设立审核**环节。若您在问政策含义，本演示无法代替窗口答复。\n"
+                        "请发送「**继续**」或「**查询**」以刷新审核状态；"
+                        "若需先问其它政务，请说明具体事项（如「办居住证」）以退出本演示。"
+                    ),
+                    kind="company_clarify",
+                    step=sess.step.value,
+                    progress_preview=pv,
+                )
+            if not review_poll_should_advance(t):
+                return CompanyTurnResult(
+                    reply=(
+                        "本步仅用于**刷新审核状态**。请发送「**继续**」或「**查询**」；"
+                        "其它闲聊或提问请先退出企业设立演示（可说「办社保卡」等）。"
+                    ),
+                    kind="company_clarify",
+                    step=sess.step.value,
+                    progress_preview=pv,
+                )
             sid = sess.submission_id or ""
             pr = ext.review.poll_review(sid)
             pv = _preview(sess)
@@ -197,6 +283,17 @@ class CompanySetupPAndE:
 
         if sess.step == CompanySetupStep.ASK_PERMIT_NEED:
             t2 = t.strip()
+            pv = _preview(sess)
+            if looks_like_meta_or_clarify(t) or looks_like_topic_deferral(t):
+                return CompanyTurnResult(
+                    reply=(
+                        "这里只需确认是否办理**后置许可**（演示）。请直接回复「**是**」或「**否**」；"
+                        "若有问题想展开说明，请先退出本演示再问。"
+                    ),
+                    kind="company_clarify",
+                    step=sess.step.value,
+                    progress_preview=pv,
+                )
             neg = (
                 "不是" in t
                 or "没有" in t
@@ -205,8 +302,11 @@ class CompanySetupPAndE:
                 or "不需要" in t
                 or t2 in ("否", "不", "无", "跳过", "暂不", "n", "no")
             )
-            pos = t2 in ("是", "好", "要", "行", "嗯", "y", "yes") or t2.startswith(
-                ("好的", "需要", "要办", "办理")
+            pos = (
+                t2 in ("是", "好", "要", "行", "嗯", "y", "yes")
+                or (t2.startswith("好的") and len(t2) <= 8)
+                or t2.startswith(("需要", "要办"))
+                or (t2.startswith("办理") and "吗" not in t)
             )
             if neg:
                 sess.step = CompanySetupStep.COMPLETE
@@ -250,7 +350,19 @@ class CompanySetupPAndE:
             progress_preview=pv,
         )
 
-    def _reserve_submit_and_poll(self, sess: CompanySetupSession) -> CompanyTurnResult:
+    def _reserve_submit_and_poll(
+        self, sess: CompanySetupSession, *, ack_prefix: str | None = None
+    ) -> CompanyTurnResult:
+        def _pfx(res: CompanyTurnResult) -> CompanyTurnResult:
+            if not ack_prefix:
+                return res
+            return CompanyTurnResult(
+                reply=ack_prefix + "\n\n" + res.reply,
+                kind=res.kind,
+                step=res.step,
+                progress_preview=res.progress_preview,
+            )
+
         ext = sess.externals
         assert sess.proposed_name and sess.company_type and sess.registered_address
         assert sess.shareholders_summary and sess.business_scope
@@ -287,28 +399,32 @@ class CompanySetupPAndE:
         pr = ext.review.poll_review(sess.submission_id)
         pv = _preview(sess)
         if pr.status == ReviewStatus.APPROVED:
-            return self._post_approval_batch(sess)
+            return _pfx(self._post_approval_batch(sess))
         if pr.status == ReviewStatus.NEED_SUPPLEMENT:
-            return CompanyTurnResult(
+            return _pfx(
+                CompanyTurnResult(
+                    reply=(
+                        "（演示）已通过**名称申报**并在一网通办**提交设立材料**。\n"
+                        f"受理号：`{sess.submission_id}`\n"
+                        f"当前审核：**需补正** — {pr.supplement_opinion or ''}\n\n"
+                        "补正完成后请发送「**继续**」再次查询审核结果。"
+                    ),
+                    kind="company_review",
+                    step=sess.step.value,
+                    progress_preview=pv,
+                )
+            )
+        return _pfx(
+            CompanyTurnResult(
                 reply=(
                     "（演示）已通过**名称申报**并在一网通办**提交设立材料**。\n"
                     f"受理号：`{sess.submission_id}`\n"
-                    f"当前审核：**需补正** — {pr.supplement_opinion or ''}\n\n"
-                    "补正完成后请发送「**继续**」再次查询审核结果。"
+                    "当前状态：**审核中**。请发送「**继续**」查询进度。"
                 ),
                 kind="company_review",
                 step=sess.step.value,
                 progress_preview=pv,
             )
-        return CompanyTurnResult(
-            reply=(
-                "（演示）已通过**名称申报**并在一网通办**提交设立材料**。\n"
-                f"受理号：`{sess.submission_id}`\n"
-                "当前状态：**审核中**。请发送「**继续**」查询进度。"
-            ),
-            kind="company_review",
-            step=sess.step.value,
-            progress_preview=pv,
         )
 
     def _post_approval_batch(self, sess: CompanySetupSession) -> CompanyTurnResult:

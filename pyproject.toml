@@ -14,6 +14,11 @@ dependencies = [
   "pydantic>=2.6",
   "pydantic-settings>=2.2",
   "openai>=1.0",
+  "numpy>=1.24",
+  "rank-bm25>=0.2.2",
+  "jieba>=0.42",
+  "sentence-transformers>=2.2",
+  "torch>=2.0",
 ]
 
 [project.optional-dependencies]

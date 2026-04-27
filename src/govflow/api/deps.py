@@ -8,10 +8,20 @@ from govflow.services.llm.deepseek_client import DeepSeekLLMClient
 from govflow.services.llm.mock_llm import MockLLMClient
 from govflow.services.llm.protocols import LLMClient
 from govflow.services.pipeline.orchestrator import ChatOrchestrator
+from govflow.services.rag.hybrid_retriever import HybridBm25VectorRetriever
 from govflow.services.rag.mock_retriever import MockKeywordRetriever
+from govflow.services.rag.protocols import Retriever
 from govflow.company_setup.engine import CompanySetupPAndE
 from govflow.company_setup.store import InMemoryCompanySetupStore
 from govflow.zhengwutong.engine import BMTDeclarationEngine
+
+
+@lru_cache
+def get_retriever() -> Retriever:
+    s = get_settings()
+    if s.rag_mode == "mock":
+        return MockKeywordRetriever()
+    return HybridBm25VectorRetriever.from_settings(s)
 
 
 @lru_cache
@@ -23,7 +33,7 @@ def get_orchestrator() -> ChatOrchestrator:
         impl: LLMClient = DeepSeekLLMClient(s)
     else:
         impl = MockLLMClient()
-    return ChatOrchestrator(settings=s, llm=impl)
+    return ChatOrchestrator(settings=s, llm=impl, retriever=get_retriever())
 
 
 @lru_cache
@@ -38,7 +48,7 @@ def get_company_setup_engine() -> CompanySetupPAndE:
 
 @lru_cache
 def get_zwt_declaration_engine() -> BMTDeclarationEngine:
-    """政务通分步填报：与主对话共用 provider / API Key；RAG 为本地 knowledge_base 关键词召回。"""
+    """政务通分步填报：与主对话共用 provider / API Key 与 RAG 检索器。"""
     s = get_settings()
     if s.llm_provider == "deepseek":
         if not (s.llm_api_key and str(s.llm_api_key).strip()):
@@ -47,7 +57,7 @@ def get_zwt_declaration_engine() -> BMTDeclarationEngine:
     else:
         llm = MockLLMClient()
     return BMTDeclarationEngine(
-        retriever=MockKeywordRetriever(),
+        retriever=get_retriever(),
         llm=llm,
         auditor=build_answer_auditor(s),
         settings=s,

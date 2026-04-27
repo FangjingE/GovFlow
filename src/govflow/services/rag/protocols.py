@@ -13,5 +13,5 @@ class Retriever(Protocol):
 
 class Embedder(Protocol):
     def embed(self, texts: list[str]) -> list[list[float]]:
-        """TODO: BGE-large-zh 等向量模型。"""
+        """由 ``SentenceTransformersEmbedder`` 等实现（如 BGE-zh 系列）。"""
         ...

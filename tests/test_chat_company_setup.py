@@ -7,6 +7,16 @@ from govflow.main import app
 client = TestClient(app)
 
 
+def test_company_setup_filled_ack_after_type() -> None:
+    sid = client.post("/v1/chat", json={"message": "注册公司"}).json()["session_id"]
+    client.post("/v1/chat", json={"session_id": sid, "message": "开始"})
+    r = client.post("/v1/chat", json={"session_id": sid, "message": "有限责任公司"})
+    assert r.status_code == 200
+    j = r.json()
+    assert "已填入模板中" in j["reply"]
+    assert "拟定企业名称" in j["reply"]
+
+
 def test_company_setup_consent_then_collect_type() -> None:
     r1 = client.post("/v1/chat", json={"message": "我想办企业"})
     assert r1.status_code == 200
@@ -42,6 +52,24 @@ def test_company_setup_happy_path_core() -> None:
     j = last.json()
     assert j.get("company_sidebar_visible") is True or j.get("company_sidebar_visible") is False
     assert "跳过后置许可" in j["reply"] or "流程结束" in j["reply"] or "统一社会信用代码" in j["reply"]
+
+
+def test_company_setup_meta_question_does_not_advance_slot() -> None:
+    sid = client.post("/v1/chat", json={"message": "注册公司"}).json()["session_id"]
+    client.post("/v1/chat", json={"session_id": sid, "message": "开始"})
+    client.post("/v1/chat", json={"session_id": sid, "message": "有限责任公司"})
+    client.post("/v1/chat", json={"session_id": sid, "message": "广西演示科技有限公司"})
+    client.post("/v1/chat", json={"session_id": sid, "message": "南宁市青秀区民族大道1号"})
+    r_q = client.post("/v1/chat", json={"session_id": sid, "message": "这是什么意思？"})
+    assert r_q.status_code == 200
+    jq = r_q.json()
+    assert jq["kind"] in ("answer", "clarification", "fallback", "blocked", "company_clarify")
+    assert "如需继续，请直接提供" in jq["reply"]
+    assert jq["reply"].rstrip().endswith("退出企业设立」。")
+    assert jq.get("company_step") == "ask_shareholders"
+    r_ok = client.post("/v1/chat", json={"session_id": sid, "message": "张三60%李四40%"})
+    assert r_ok.status_code == 200
+    assert "经营范围" in r_ok.json()["reply"]
 
 
 def test_company_setup_leave_via_gov_topic() -> None:

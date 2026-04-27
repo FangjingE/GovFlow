@@ -1,8 +1,5 @@
-"""单测会加载本地 .env；强制使用 Mock LLM，避免烟测与 HTTP 用例打真实大模型外网。"""
-
-from __future__ import annotations
+"""单测环境：默认使用 ``mock`` RAG，不下载/加载句向量模型（可 ``GOVFLOW_RAG_MODE=hybrid`` 覆写）。"""
 
 import os
 
-# 须在任何 `import govflow` 之前
-os.environ["GOVFLOW_LLM_PROVIDER"] = "mock"
+os.environ.setdefault("GOVFLOW_RAG_MODE", "mock")

@@ -8,6 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 AnswerAuditorMode = Literal["pass_through", "grounded"]
 LlmProvider = Literal["mock", "deepseek"]
+RagMode = Literal["hybrid", "mock"]
 
 
 class Settings(BaseSettings):
@@ -39,6 +40,28 @@ class Settings(BaseSettings):
     llm_max_tokens: int = Field(default=2048, ge=256, le=32_000)
     # 未来向量库
     chroma_persist_dir: str | None = None
+    # RAG：hybrid=本地 BM25+向量+RRF；mock=仅关键词（旧 MVP，便于无模型环境测试）
+    rag_mode: RagMode = Field(
+        default="hybrid",
+        description="hybrid=BM25+句向量+RRF；mock=仅关键词",
+    )
+    # 与 sentence-transformers 常见中文检索模型名一致；可换本机已缓存模型
+    embedding_model: str = Field(
+        default="BAAI/bge-small-zh-v1.5",
+        description="sentence-transformers 模型名或本机目录",
+    )
+    # 相对路径时相对于工作目录，否则按绝对路径；None=默认使用仓库下 knowledge_base/
+    knowledge_base_dir: str | None = Field(
+        default=None,
+        description="知识库根目录，None=默认 <repo>/knowledge_base",
+    )
+    # RRF 中排名权重（与混合检索常见取值一致）
+    hybrid_rrf_k: int = Field(default=60, ge=1, le=500)
+    # BGE 中文小模型检索时常用的查询/文档前缀
+    bge_instruct: bool = Field(
+        default=True,
+        description="BGE-zh 检索时使用官方推荐的查询与段落前缀",
+    )
     # 答案审核：pass_through=仅长度+非空证据；grounded=额外校验证据外长数字
     answer_auditor_mode: AnswerAuditorMode = Field(
         default="pass_through",

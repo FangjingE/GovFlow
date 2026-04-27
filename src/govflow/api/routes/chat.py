@@ -153,12 +153,13 @@ def post_chat(
         step: str,
         preview: str,
         stages: list[str],
+        sources: list[dict] | None = None,
     ) -> ChatResponse:
         return ChatResponse(
             session_id=session.id,
             reply=reply,
             kind=kind,
-            sources=[],
+            sources=_rag_dicts_to_sources(sources),
             official_hotline=hotline,
             stages_executed=stages,
             company_sidebar_visible=True,
@@ -216,18 +217,51 @@ def post_chat(
                 pending_vague_text=None,
                 clarification=None,
             )
+            store.append_turn(session.id, ChatTurn(role="user", content=body.message))
+            if leave and cs:
+                gov = orchestrator.handle_message(session, user_text)
+                store.append_turn(session.id, ChatTurn(role="assistant", content=gov.reply))
+                return _gov_response(
+                    gov.reply,
+                    gov.kind,
+                    gov.sources,
+                    ["filter", "company_left"] + gov.stages_executed,
+                )
+            ack = "企业设立演示会话已失效，已回到主对话。请重新说明需求。"
+            store.append_turn(session.id, ChatTurn(role="assistant", content=ack))
+            return _gov_response(ack, "answer", [], ["filter", "company_left"])
         else:
             store.append_turn(session.id, ChatTurn(role="user", content=body.message))
             r = company_engine.handle(cs, user_text)
-            store.append_turn(session.id, ChatTurn(role="assistant", content=r.reply))
+            reply_out = r.reply
+            out_kind = r.kind
+            gov_sources: list[dict] | None = None
+            gov_stages: list[str] = []
+            if r.kind == "company_clarify":
+                snap_clar = session.clarification
+                snap_aw = session.awaiting_clarification
+                snap_pv = session.pending_vague_text
+                gov = orchestrator.handle_message(session, user_text)
+                store.update_session(
+                    session.id,
+                    clarification=snap_clar,
+                    awaiting_clarification=snap_aw,
+                    pending_vague_text=snap_pv,
+                )
+                reply_out = gov.reply + "\n\n" + r.reply
+                out_kind = gov.kind
+                gov_sources = gov.sources
+                gov_stages = list(gov.stages_executed)
+            store.append_turn(session.id, ChatTurn(role="assistant", content=reply_out))
             if _company_track_finished(r.kind):
                 store.update_session(session.id, active_track="gov", company_session_id=None)
             return _company_response(
-                r.reply,
-                kind=r.kind,
+                reply_out,
+                kind=out_kind,
                 step=r.step,
                 preview=r.progress_preview,
-                stages=["filter", "company"],
+                stages=["filter", "company"] + gov_stages,
+                sources=gov_sources,
             )
 
     if session.awaiting_zwt_consent:

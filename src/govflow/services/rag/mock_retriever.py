@@ -1,10 +1,10 @@
 """
-MVP 模拟检索器：按关键词返回 knowledge_base 中的示例条目。
+MVP 模拟检索器：按关键词返回 knowledge_base 中的示例条目。生产环境默认用
+`HybridBm25VectorRetriever`（见 `hybrid_retriever.py`）；本类用于 ``GOVFLOW_RAG_MODE=mock`` 或单测。
 
 TODO:
 - 接入 Chroma + 持久化目录（见 Settings.chroma_persist_dir）
 - 文档切分、metadata（部门、发布日期、文号）
-- 混合检索（BM25 + 向量）
 """
 
 from pathlib import Path

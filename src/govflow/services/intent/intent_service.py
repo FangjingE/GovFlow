@@ -107,11 +107,20 @@ class IntentService:
         """与互市确认规则一致：短句「是/开始」等视为同意进入企业设立演示。"""
         return self.confirms_zwt_declaration_start(user_text)
 
+    _COMPANY_FLOW_LEAVE = re.compile(
+        r"退出(?:本)?(?:流程|演示|企业设立)|不办(?:了)?(?:企业|公司)|不注册了|"
+        r"先办别的|改问别的|换(?:个)?问题|问(?:一下)?别的|其它政务|别的业务|先问其它|"
+        r"办(?:一下)?(?:社保|医保|身份证|社保卡|护照|公积金|居住证|户口簿)",
+        re.I,
+    )
+
     def wants_leave_company_for_gov(self, user_text: str) -> bool:
-        """已在企业设立轨时，强政务词且本句非企业设立话题则回通用对话。"""
+        """已在企业设立轨时：显式退出/转办其它政务，或强政务词且非企业设立话题 → 回通用对话。"""
         t = user_text.strip()
         if not t:
             return False
+        if self._COMPANY_FLOW_LEAVE.search(t):
+            return True
         if self.hints_company_setup_topic(t):
             return False
         return bool(self._GOV_STRONG.search(t))
