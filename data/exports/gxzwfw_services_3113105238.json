@@ -1,0 +1,342 @@
+{
+  "source_platform": "gxzwfw",
+  "source_region_code": "3113105238",
+  "list_page_id": "d0144e0713974fa886c580945ed17165",
+  "detail_page_id": "d0349fe94d1c4d139b006db643fb9e52",
+  "total_items": 4,
+  "failed_items": 0,
+  "items": [
+    {
+      "service": {
+        "service_name": "电话咨询",
+        "department": "国家税务总局防城港市税务局",
+        "service_object": null,
+        "promise_days": null,
+        "legal_days": null,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": null,
+        "general_scope": "-",
+        "handle_form": null,
+        "item_type": null,
+        "handle_address": "更多地点",
+        "handle_time": null,
+        "consult_way": "咨询电话：0770-8312366...展开",
+        "complaint_way": "投诉电话：0771-12366...展开",
+        "query_way": "电话查询,窗口查询,网上查询",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105238",
+        "source_item_id": "31f380de-a9a0-46ed-9464-1a846314c0d2",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=31f380de-a9a0-46ed-9464-1a846314c0d2",
+        "raw_payload": {
+          "list_item": {
+            "id": "be7f45a7-5436-4eba-b610-7d4218949c76",
+            "parentId": "-1",
+            "name": "电话咨询",
+            "obj": {
+              "id": "31f380de-a9a0-46ed-9464-1a846314c0d2",
+              "itemName": "电话咨询",
+              "implementSubjectName": "国家税务总局防城港市税务局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://etax.guangxi.chinatax.gov.cn:8443/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "20",
+              "applyExpress": "c002dc46-71b5-47ff-a233-cd8e70fb5fe8"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [],
+          "detail_extract": {
+            "source_title": "电话咨询",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=31f380de-a9a0-46ed-9464-1a846314c0d2",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [],
+      "processes": [],
+      "vector_text": "事项名称：电话咨询\n办理部门：国家税务总局防城港市税务局\n服务对象：\n受理条件：\n办理形式：\n办理地点：更多地点\n办理时间：\n申请材料：\n办理流程：",
+      "raw_payload": {
+        "list_item": {
+          "id": "be7f45a7-5436-4eba-b610-7d4218949c76",
+          "parentId": "-1",
+          "name": "电话咨询",
+          "obj": {
+            "id": "31f380de-a9a0-46ed-9464-1a846314c0d2",
+            "itemName": "电话咨询",
+            "implementSubjectName": "国家税务总局防城港市税务局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://etax.guangxi.chinatax.gov.cn:8443/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "20",
+            "applyExpress": "c002dc46-71b5-47ff-a233-cd8e70fb5fe8"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [],
+        "detail_extract": {
+          "source_title": "电话咨询",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=31f380de-a9a0-46ed-9464-1a846314c0d2",
+          "parent_name": null
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "纳税服务投诉处理",
+        "department": "国家税务总局防城港市税务局",
+        "service_object": null,
+        "promise_days": null,
+        "legal_days": null,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": null,
+        "general_scope": "-",
+        "handle_form": null,
+        "item_type": null,
+        "handle_address": "更多地点",
+        "handle_time": null,
+        "consult_way": "咨询电话：0770-8312366...展开",
+        "complaint_way": "投诉电话：0771-12366...展开",
+        "query_way": "电话查询,窗口查询,网上查询",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105238",
+        "source_item_id": "a3928c21-1447-4b8c-9b68-3b092e012a34",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=a3928c21-1447-4b8c-9b68-3b092e012a34",
+        "raw_payload": {
+          "list_item": {
+            "id": "0f6546c0-b27e-4006-979a-9a26446fbcb0",
+            "parentId": "-1",
+            "name": "纳税服务投诉处理",
+            "obj": {
+              "id": "a3928c21-1447-4b8c-9b68-3b092e012a34",
+              "itemName": "纳税服务投诉处理",
+              "implementSubjectName": "国家税务总局防城港市税务局",
+              "applyWay": "1,2,4",
+              "onlineUrl": "https://tpass.guangxi.chinatax.gov.cn:8443/api/v1.0/auth/oauth2/goveCodeUrl?client_id=u96fafdfbhda4s699a89es4fsc2hua2e&funcId=GN00000240000186",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "20",
+              "applyExpress": "be73a82a-be76-458c-a33a-6e4db2dcaf4a"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [],
+          "detail_extract": {
+            "source_title": "纳税服务投诉处理",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=a3928c21-1447-4b8c-9b68-3b092e012a34",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [],
+      "processes": [],
+      "vector_text": "事项名称：纳税服务投诉处理\n办理部门：国家税务总局防城港市税务局\n服务对象：\n受理条件：\n办理形式：\n办理地点：更多地点\n办理时间：\n申请材料：\n办理流程：",
+      "raw_payload": {
+        "list_item": {
+          "id": "0f6546c0-b27e-4006-979a-9a26446fbcb0",
+          "parentId": "-1",
+          "name": "纳税服务投诉处理",
+          "obj": {
+            "id": "a3928c21-1447-4b8c-9b68-3b092e012a34",
+            "itemName": "纳税服务投诉处理",
+            "implementSubjectName": "国家税务总局防城港市税务局",
+            "applyWay": "1,2,4",
+            "onlineUrl": "https://tpass.guangxi.chinatax.gov.cn:8443/api/v1.0/auth/oauth2/goveCodeUrl?client_id=u96fafdfbhda4s699a89es4fsc2hua2e&funcId=GN00000240000186",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "20",
+            "applyExpress": "be73a82a-be76-458c-a33a-6e4db2dcaf4a"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [],
+        "detail_extract": {
+          "source_title": "纳税服务投诉处理",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=a3928c21-1447-4b8c-9b68-3b092e012a34",
+          "parent_name": null
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "面对面咨询",
+        "department": "国家税务总局防城港市税务局",
+        "service_object": null,
+        "promise_days": null,
+        "legal_days": null,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": null,
+        "general_scope": "-",
+        "handle_form": null,
+        "item_type": null,
+        "handle_address": "更多地点",
+        "handle_time": null,
+        "consult_way": "咨询电话：0770-8312366...展开",
+        "complaint_way": "投诉电话：0771-12366...展开",
+        "query_way": "窗口查询,网上查询",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105238",
+        "source_item_id": "4e655482-a2de-4b18-994c-460ad006a4bc",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=4e655482-a2de-4b18-994c-460ad006a4bc",
+        "raw_payload": {
+          "list_item": {
+            "id": "8ecb004c-12c7-43ab-9974-71062ff1b813",
+            "parentId": "-1",
+            "name": "面对面咨询",
+            "obj": {
+              "id": "4e655482-a2de-4b18-994c-460ad006a4bc",
+              "itemName": "面对面咨询",
+              "implementSubjectName": "国家税务总局防城港市税务局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://etax.guangxi.chinatax.gov.cn:8443/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "20",
+              "applyExpress": "dc997baa-6a9e-486f-8792-65a086d2fcff"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [],
+          "detail_extract": {
+            "source_title": "面对面咨询",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=4e655482-a2de-4b18-994c-460ad006a4bc",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [],
+      "processes": [],
+      "vector_text": "事项名称：面对面咨询\n办理部门：国家税务总局防城港市税务局\n服务对象：\n受理条件：\n办理形式：\n办理地点：更多地点\n办理时间：\n申请材料：\n办理流程：",
+      "raw_payload": {
+        "list_item": {
+          "id": "8ecb004c-12c7-43ab-9974-71062ff1b813",
+          "parentId": "-1",
+          "name": "面对面咨询",
+          "obj": {
+            "id": "4e655482-a2de-4b18-994c-460ad006a4bc",
+            "itemName": "面对面咨询",
+            "implementSubjectName": "国家税务总局防城港市税务局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://etax.guangxi.chinatax.gov.cn:8443/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "20",
+            "applyExpress": "dc997baa-6a9e-486f-8792-65a086d2fcff"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [],
+        "detail_extract": {
+          "source_title": "面对面咨询",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=4e655482-a2de-4b18-994c-460ad006a4bc",
+          "parent_name": null
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "社会公众涉税公开信息查询",
+        "department": "国家税务总局防城港市税务局",
+        "service_object": null,
+        "promise_days": null,
+        "legal_days": null,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": null,
+        "general_scope": "-",
+        "handle_form": null,
+        "item_type": null,
+        "handle_address": "更多地点",
+        "handle_time": null,
+        "consult_way": "咨询电话：0770-8312366...展开",
+        "complaint_way": "投诉电话：0771-12366...展开",
+        "query_way": "窗口查询,网上查询",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105238",
+        "source_item_id": "b231c77e-8f51-4d6e-8a1d-6653a3f7ddc7",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=b231c77e-8f51-4d6e-8a1d-6653a3f7ddc7",
+        "raw_payload": {
+          "list_item": {
+            "id": "2c9a0d46-e5ba-4d85-8e23-b4b144192b66",
+            "parentId": "-1",
+            "name": "社会公众涉税公开信息查询",
+            "obj": {
+              "id": "b231c77e-8f51-4d6e-8a1d-6653a3f7ddc7",
+              "itemName": "社会公众涉税公开信息查询",
+              "implementSubjectName": "国家税务总局防城港市税务局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://etax.guangxi.chinatax.gov.cn:8443/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "20",
+              "applyExpress": "1d57bbd8-3009-4b37-acdf-519cc7e3df57"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [],
+          "detail_extract": {
+            "source_title": "社会公众涉税公开信息查询",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=b231c77e-8f51-4d6e-8a1d-6653a3f7ddc7",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [],
+      "processes": [],
+      "vector_text": "事项名称：社会公众涉税公开信息查询\n办理部门：国家税务总局防城港市税务局\n服务对象：\n受理条件：\n办理形式：\n办理地点：更多地点\n办理时间：\n申请材料：\n办理流程：",
+      "raw_payload": {
+        "list_item": {
+          "id": "2c9a0d46-e5ba-4d85-8e23-b4b144192b66",
+          "parentId": "-1",
+          "name": "社会公众涉税公开信息查询",
+          "obj": {
+            "id": "b231c77e-8f51-4d6e-8a1d-6653a3f7ddc7",
+            "itemName": "社会公众涉税公开信息查询",
+            "implementSubjectName": "国家税务总局防城港市税务局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://etax.guangxi.chinatax.gov.cn:8443/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "20",
+            "applyExpress": "1d57bbd8-3009-4b37-acdf-519cc7e3df57"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [],
+        "detail_extract": {
+          "source_title": "社会公众涉税公开信息查询",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=b231c77e-8f51-4d6e-8a1d-6653a3f7ddc7",
+          "parent_name": null
+        }
+      }
+    }
+  ]
+}

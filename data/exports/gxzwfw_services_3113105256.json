@@ -1,0 +1,198 @@
+{
+  "source_platform": "gxzwfw",
+  "source_region_code": "3113105256",
+  "list_page_id": "d0144e0713974fa886c580945ed17165",
+  "detail_page_id": "d0349fe94d1c4d139b006db643fb9e52",
+  "total_items": 2,
+  "failed_items": 0,
+  "items": [
+    {
+      "service": {
+        "service_name": "对经济普查违法行为举报有功的个人给予奖励",
+        "department": "防城港市统计局",
+        "service_object": null,
+        "promise_days": 20,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "对经济普查违法行为举报有功的单位和个人（非依申请事项，不对外）。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,快递申请",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区江山大道88号，市政务服务中心三楼综合窗口。\n...展开\n更多地点",
+        "handle_time": "工作日：上午9∶00—12∶00，下午13∶30—16∶30（法定节假日除外）...展开",
+        "consult_way": "电子邮件：fcgtjjfgk@sina.com\n电话咨询：0770-2809256\n现场咨询：防城港市港口区江山大道88号，市政务服务中心三楼综合窗口...展开",
+        "complaint_way": "投诉电话：0770-2823213...展开",
+        "query_way": "电话查询,现场查询,网上查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105256",
+        "source_item_id": "b9cf7306-7c3c-4919-80a6-2b7319101028",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=b9cf7306-7c3c-4919-80a6-2b7319101028",
+        "raw_payload": {
+          "list_item": {
+            "id": "36d5a751-33df-11e9-89bc-fa163ea9bf82",
+            "parentId": "-1",
+            "name": "对经济普查违法行为举报有功的个人给予奖励",
+            "obj": {
+              "id": "b9cf7306-7c3c-4919-80a6-2b7319101028",
+              "itemName": "对经济普查违法行为举报有功的个人给予奖励",
+              "implementSubjectName": "防城港市统计局",
+              "applyWay": "1,3",
+              "onlineUrl": "",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "08",
+              "applyExpress": "44c67972-9ec4-4237-8d84-0e3fc9f5c288"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [],
+          "detail_extract": {
+            "source_title": "对经济普查违法行为举报有功的个人给予奖励",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=b9cf7306-7c3c-4919-80a6-2b7319101028",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：申请材料不符合条件则退回申请材料，符合条件则给予奖励。...展开\n审查标准：申请材料是否符合条件。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：对经济普查违法行为举报有功的个人奖励...展开\n审查标准：...展开",
+          "sort": 2
+        }
+      ],
+      "vector_text": "事项名称：对经济普查违法行为举报有功的个人给予奖励\n办理部门：防城港市统计局\n服务对象：\n受理条件：对经济普查违法行为举报有功的单位和个人（非依申请事项，不对外）。...展开\n办理形式：窗口办理,快递申请\n办理地点：防城港市港口区江山大道88号，市政务服务中心三楼综合窗口。\n...展开\n更多地点\n办理时间：工作日：上午9∶00—12∶00，下午13∶30—16∶30（法定节假日除外）...展开\n申请材料：\n办理流程：收件与受理；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "36d5a751-33df-11e9-89bc-fa163ea9bf82",
+          "parentId": "-1",
+          "name": "对经济普查违法行为举报有功的个人给予奖励",
+          "obj": {
+            "id": "b9cf7306-7c3c-4919-80a6-2b7319101028",
+            "itemName": "对经济普查违法行为举报有功的个人给予奖励",
+            "implementSubjectName": "防城港市统计局",
+            "applyWay": "1,3",
+            "onlineUrl": "",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "08",
+            "applyExpress": "44c67972-9ec4-4237-8d84-0e3fc9f5c288"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [],
+        "detail_extract": {
+          "source_title": "对经济普查违法行为举报有功的个人给予奖励",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=b9cf7306-7c3c-4919-80a6-2b7319101028",
+          "parent_name": null
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+        "department": "防城港市统计局",
+        "service_object": null,
+        "promise_days": 20,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "经济普查工作表现突出的单位和个人（非依申请事项，不对外）。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,快递申请",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区江山大道88号，市政务服务中心三楼综合窗口。\n...展开\n更多地点",
+        "handle_time": "工作日：上午9∶00—12∶00，下午13∶30—16∶30（法定节假日除外）...展开",
+        "consult_way": "电子邮件：fcgtjjfgk@sina.com\n电话咨询：0770-2809256\n现场咨询：防城港市港口区江山大道88号，市政务服务中心三楼综合窗口...展开",
+        "complaint_way": "投诉电话：0770-2883116...展开",
+        "query_way": "电话查询,现场查询,网上查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105256",
+        "source_item_id": "6356840c-8c60-4c89-8a98-2c1eed33e18b",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=6356840c-8c60-4c89-8a98-2c1eed33e18b",
+        "raw_payload": {
+          "list_item": {
+            "id": "36d5a691-33df-11e9-89bc-fa163ea9bf82",
+            "parentId": "-1",
+            "name": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+            "obj": {
+              "id": "6356840c-8c60-4c89-8a98-2c1eed33e18b",
+              "itemName": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+              "implementSubjectName": "防城港市统计局",
+              "applyWay": "1,3",
+              "onlineUrl": "",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "08",
+              "applyExpress": "3e359a04-b6c0-4436-8e01-c216d22553cc"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [],
+          "detail_extract": {
+            "source_title": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=6356840c-8c60-4c89-8a98-2c1eed33e18b",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：申请材料不符合条件则退回申请材料，符合条件则给予奖励。...展开\n审查标准：申请材料是否符合条件。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：对经济普查中表现突出的单位和个人给予奖励...展开\n审查标准：...展开",
+          "sort": 2
+        }
+      ],
+      "vector_text": "事项名称：对经济普查中表现突出的集体和个人给予表彰和奖励\n办理部门：防城港市统计局\n服务对象：\n受理条件：经济普查工作表现突出的单位和个人（非依申请事项，不对外）。...展开\n办理形式：窗口办理,快递申请\n办理地点：防城港市港口区江山大道88号，市政务服务中心三楼综合窗口。\n...展开\n更多地点\n办理时间：工作日：上午9∶00—12∶00，下午13∶30—16∶30（法定节假日除外）...展开\n申请材料：\n办理流程：收件与受理；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "36d5a691-33df-11e9-89bc-fa163ea9bf82",
+          "parentId": "-1",
+          "name": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+          "obj": {
+            "id": "6356840c-8c60-4c89-8a98-2c1eed33e18b",
+            "itemName": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+            "implementSubjectName": "防城港市统计局",
+            "applyWay": "1,3",
+            "onlineUrl": "",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "08",
+            "applyExpress": "3e359a04-b6c0-4436-8e01-c216d22553cc"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [],
+        "detail_extract": {
+          "source_title": "对经济普查中表现突出的集体和个人给予表彰和奖励",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=6356840c-8c60-4c89-8a98-2c1eed33e18b",
+          "parent_name": null
+        }
+      }
+    }
+  ]
+}

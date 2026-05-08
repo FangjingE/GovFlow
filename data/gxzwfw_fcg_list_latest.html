@@ -1,0 +1,1551 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>部门服务 </title>
+    <meta name="createDate" content="2026-05-05 21:04:09" />
+    <meta name=renderer content=webkit>
+    <link rel="shortcut icon" type="image/x-icon" href="/eportal/imageDir/zdcs/2025/01/2025011011551363203.ico" />
+    <script type="text/javascript">var _speedMark = new Date();</script>
+    <meta name="ColumnName" content="部门服务">
+    <meta name="ColumnType" content="工作动态">
+    <meta name="SiteName" content="正式-广西数字政务一体化平台-勿删"><!--网站名称-->
+    <meta name="SiteDomain" content=""><!--网站域名-->
+    <meta name="SiteIDCode" content=""><!--网站标识-->
+    <meta name="ColumnDescription" content="初始化栏目：部门服务"><!--栏目描述-->
+    <meta name="ColumnKeywords" content=""><!--栏目关键词-->
+    <link rel="stylesheet" type="text/css" href="/eportal/uiFramework/huilan-jquery-ui/css/huilan-jquery-ui.css" />
+    <script type="text/javascript">
+        var portalI18n = { "portal.web.check.module.ref2": "个模块引用，删除该模块同时会删除引用模块，你确定要删除这个模块吗？", "portal.web.check.module.ref1": "检测到该模块已经被", "page.module.batchCopy.msg.success": "操作成功！", "portal.web.switch.mode": "正在切换至", "portal.web.resource.file.exists": "已存在，请重命名！", "site.attachment.move.down": "已经移动到最底了！", "portal.web.save.layout.success": "已成功保存布局！", "portal.default.panel1": "区域01", "portal.default.panel2": "区域02", "portal.default.panel3": "区域03", "portal.lhgdialog.prompt": "提问", "portal.default.panel4": "区域04", "column.name.cannot.be.empty": "栏目名称不能为空！", "portal.web.operate.success.tip": "操作成功！", "portal.web.save.layout.failure": "保存页面布局出错啦！", "portal.web.dialog.ok.btn": "确定", "site.delete.article.msg": "删除数据文章key不能为空！", "portal.lhgdialog.confirm": "确认", "portal.web.modify": "修改", "portal.web.wuzhangai": "无障碍", "portal.web.switch.device": "设备", "site.attachment.img.format": "图片格式不正确!", "portal.web.template.select.zip.tip": "文件格式只能为zip！", "portal.web.template.delete.confirm": "你确定要删除这个模板吗？", "site.attachment.img.errormsg": "图片格式不正确!", "portal.web.view": "查看", "page.module.recycle.msg2": "已删除模块列表：", "page.module.recycle.msg1": "当前栏目:", "portal.web.template.restore": "模板还原", "portal.web.template.publish.resource.confirm": "资源文件跟站点无关，所有站点公用只需要发布一次，你确定要发布资源文件吗？", "portal.web.resource.please.confirm": "请确认", "page.module.recycle.confirm.delete": "你确定要删除这个模块吗？", "portal.web.template.publish.resource.task.success": "发布资源文件任务提交成功，请耐心等待资源发布完毕！", "portal.web.resource.file": "资源文件", "portal.web.template.vm.format.error": "模板文件夹里.vm文件与原vm文件不匹配，请修改后重新上传！", "portal.lhgdialog.max": "最大化", "portal.ref.msg5": "出错啦！", "portal.ref.msg4": "引用成功！", "portal.web.template.check.css.js.confirm": "检测到站点公用css和js都为空，你确定要保存吗？", "portal.web.select.insert.module": "请选择需要插入的模块！", "portal.web.template.backup.comfirm1": "你确定要备份本站", "portal.web.template.backup.comfirm2": "的", "portal.web.template.upload.loading": "上传中......请稍后！", "portal.web.template.backup.comfirm3": "模板文件吗？", "portal.web.error.correct.manager": "文章纠错管理", "portal.web.template.htm.format.error": "模板文件夹里.htm文件与原htm文件不匹配，请修改后重新上传！", "portal.web.template.publish.loading": "发布模板文件中......请稍后！", "portal.web.template.edit.template": "编辑模板", "portal.ref.msg1": "该模块是引用模块，不能再被引用了！", "portal.ref.msg3": "你确定要引用这个模块吗？", "portal.web.operate.error": "抱歉，操作出错，错误信息：", "portal.ref.msg2": "请选择要引用到的容器！", "portal.web.resource.input.image.name": "请输入图片名称！", "there.was.an.error.with.saving": "保存出错：", "portal.web.personNality.delete.confirm.common": "你确定要删除吗?", "portal.web.get.refmodule.error": "抱歉，获取模块是否被引用出错了！", "please.select.the.module.to.restore": "请选择要恢复的模块！", "please.select.the.module.to.delete": "请选择要删除的模块！", "portal.web.switch.mode.error": "改变设计模式出错啦！", "portal.web.select.column.panel": "请选择栏目容器！", "page.title.cannot.be.empty": "页面标题不能为空！", "portal.web.resource.resource.name.not.empty": "请输入资源名称！", "portal.web.personNality.select.interest.module": "请选择感兴趣的模块", "page.module.recycle.msg.deleteSuccess": "删除成功！", "page.module.recycle.error.treeLoad": "获取栏目树出现错误！", "portal.web.tab.panel.setting": "tab标签设置", "site.attachment.move.up": "已经移动到最顶了！", "portal.lhgdialog.min": "最小化", "portal.web.save": "保存", "portal.web.template.import.btn": "导入", "portal.web.template.check.css.confirm": "检测到站点公用css为空，你确定要保存吗？", "site.page.root.name": "信息目录", "portal.web.resource.query.contition": "查询条件只能由数字、字母和下划线组成！", "portal.web.resource.select.file": "请选择文件！", "portal.web.add.module": "添加模块", "portal.web.template.view.vm.file": "查看vm模板文件", "site.home.page.name": "首页", "portal.web.template.backup.all": "所有", "portal.web.operate.error.tip": "抱歉，操作出错啦！", "portal.web.template.folder.format": "文件夹名称只能是数字、字母、下划线的组合，长度在2到20之间！", "page.module.batchCopy.msg14": "1、选中的栏目与当前栏目栏目模板相同才能引用或复制 2、选中的栏目必须保证页面上为空页面才能复制", "page.module.batchCopy.confirm.copyBatch": "你确定要复制这个页面的所有模块到选中栏目吗？", "page.module.batchCopy.msg12": "请选择需操作的栏目：", "page.module.batchCopy.msg13": "说明：", "portal.web.personNality.session.invalidate": "会话已失效，3秒后刷新页面！", "portal.web.resource.file.format": "文件格式只能为", "portal.web.resource.not.contain.illegal.char": "文件名不能包含非法字符！", "portal.web.save.success.tip": "保存成功！", "page.module.batchCopy.alert.selectPage": "请选择要操作的栏目！", "page.module.batchCopy.msg2": "批量引用", "portal.web.personNality.delete.success": "已成功删除该模块！", "page.module.batchCopy.msg1": "操作选项：", "page.module.recycle.button.restore": "恢复", "portal.web.template.select.file": "请选择文件！", "page.module.batchCopy.msg6": "选中栏目", "page.module.batchCopy.msg5": "栏目选项：", "page.module.batchCopy.msg4": "批量删除引用", "site.default.page.name": "默认栏目", "page.module.batchCopy.msg3": "批量复制", "page.module.batchCopy.msg9": "导航根栏目:", "page.module.batchCopy.msg8": "选中栏目及其所有子栏目", "page.module.batchCopy.msg7": "所有子栏目(不包含当前栏目)", "portal.lhgdialog.warning": "警告", "portal.web.resource.edit": "编辑资源", "portal.web.loading.data": "加载数据中......请稍后！", "portal.web.resource.not.contain.chinese": "文件名不能包含中文！", "portal.web.dialog.cancel.btn": "取消", "portal.web.template.check.js.confirm": "检测到站点公用js为空，你确定要保存吗？", "portal.lhgdialog.close": "关闭", "page.module.batchCopy.confirm.refBatch": "你确定要引用这个页面的所有模块到选中栏目吗？", "portal.web.template.save.loading": "保存中......请稍后！", "portal.web.template.edit.xml.file": "编辑XML", "portal.web.template.select.navtype": "请选择导航类型！", "portal.web.template.publish.resource.loading": "发布资源文件中......请稍后！", "site.root.name": "站点目录", "page.module.recycle.button.delete": "彻底删除", "portal.web.template.fold.already.exists.confirm": "模板文件夹已经存在，你确定要覆盖吗？", "portal.web.personNality.delete.confirm": "你确定要删除这个模块吗？", "page.module.batchCopy.msg10": "与原模块一致", "page.module.batchCopy.msg11": "所在栏目父栏目", "portal.web.session.invalidate": "会话已经失效，请重新登录！", "portal.web.resource.resource.themename.not.empty": "请输入主题名称！", "portal.web.resource.view": "查看资源", "portal.web.template.select.module": "请选择模块！", "portal.web.move.module.success": "移动成功！", "portal.web.template.backup.select.record": "选定记录", "portal.web.template.already.used": "该模板已经被引用了，不能重命名！", "page.module.batchCopy.confirm.deleteRef": "你确定要删除选中栏目所有引用的模块吗？", "portal.web.template.upload.success": "已上传成功！", "portal.web.resource.zip.already.exists": "资源压缩包已经存在，你确定要覆盖吗？", "portal.web.no.access.permission": "你没有访问该功能的权限！" };
+        // 转换为 Map
+        var portalI18nMap = new Map(Object.entries(portalI18n));
+    </script>
+    <script type="text/javascript" src="/eportal/uiFramework/huilan-jquery-ui/js/huilan-jquery-min.js"></script>
+    <script type="text/javascript"
+        src="/eportal/uiFramework/huilan-jquery-ui/js/huilan-jquery-ui.js?self=true&skin=default&random=2425"></script>
+    <script src="/eportal/uiFramework/commonResource/aisitetheme/js/zdcs-theme.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="/eportal/fileDir/zdcs/template/zdcs.css?timestamp=1772674891558">
+    <script type="text/javascript" src="/eportal/fileDir/zdcs/template/zdcs.js?timestamp=1772674891558"></script>
+</head>
+
+<body style="
+										
+					">
+    <link rel="stylesheet" type="text/css"
+        href="/eportal/fileDir/zdcs/template/page/bmfw/skin.css?timestamp=1772674891558">
+    <style>
+        .article-module-list .module-name {
+            color: #c4bdbd;
+        }
+    </style>
+    <input type="hidden" id="personalizedMode" />
+    <div>
+        <link rel="stylesheet" type="text/css" href=" /eportal/uiFramework/commonResource/css/swiper.min.css">
+        <script type="text/javascript" src="/eportal/uiFramework/commonResource/js/swiper.min.js "></script>
+        <link rel="stylesheet" type="text/css" href="/eportal/uiFramework/commonResource/zip/layui/css/layui.css">
+        <script type="text/javascript" src="/eportal/uiFramework/commonResource/zip/layui/layui.js"></script>
+        <!--<script type="text/javascript" src="/eportal/uiFramework/commonResource/js/flexible.js"></script>-->
+        <link rel="stylesheet" href="/eportal/uiFramework/js/zTree_v3.5.16/css/zTreeStyle/zTreeStyle.css"
+            type="text/css">
+        <link rel="stylesheet" href="/eportal/uiFramework/commonResource/css/banshiHead.css">
+        <script type="text/javascript" src="/eportal/uiFramework/js/zTree_v3.5.16/js/jquery.ztree.core-3.5.js"></script>
+        <script type="text/javascript"
+            src="/eportal/uiFramework/js/zTree_v3.5.16/js/jquery.ztree.excheck-3.5.js"></script>
+    </div>
+
+
+    <div id="loadingOverlay">
+        <div id="loadingSpinner"></div>
+    </div>
+
+    <div class="header" style="background:#fff;">
+
+        <div class="head_top pubcon clearfix">
+            <div class="head_fixed clearfix">
+
+                <div class="head_top_left fl">
+
+                    <div class="logo"><a href="/eportal/ui?regionCode=3&pageId=3cd3d403fb4443d5becb61375b2b093a"><img
+                                src="/eportal/uiFramework/commonResource/image/2024112914484923642.png"></a></div>
+                    <p class="gx_syx">试运行</p>
+                    <div class="gx_zhanqu clearfix">
+
+
+                        <div class="banshibtn clearfix i_zzqj" id="banshibtn">
+                            <h2>
+                                <img class="gx_zhanqu_img2"
+                                    src="/eportal/uiFramework/commonResource/image/2024112914533396079.png">
+                                <span class="aisite-header-dangq"><span
+                                        class="aisite-header-xuanz">防城港市公安局</span></span>
+                                <img class="gx_zhanqu_img gx_xuanzhaun"
+                                    src="/eportal/uiFramework/commonResource/image/2024112914532838822.png">
+                            </h2>
+                        </div>
+
+                        <div class="aisite-overlay"></div>
+
+                        <div class="aisite-dialog">
+                            <div class="aisite-dialog-header">
+                                <ul class="aisite-dialog-header-nav">
+                                </ul>
+                            </div>
+
+                            <div class="aisite-dialog-content">
+                                <ul id="aisite-selector" class="clearfix"></ul>
+                                <div class="aisite-dialog-footer">
+                                    <div>
+                                        <div class="aisite-area-mbxs">
+                                            <p class="nxzds fl">您的选择是：</p>
+                                            <ul id="myChecks">
+                                                <li> <a title="广西壮族自治区" regid="3" regcode="45">广西壮族自治区</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="aisite-dialog-footer-dept-btn">
+                                            <!--<span class="bmTitle">您选择的部门是：</span><span class="bmText"></span>--><a>选择部门
+                                                > </a>
+                                        </div>
+                                    </div>
+                                    <div class="aisite-dialog-footer-btn">
+                                        <div class="aisite-g-btn aisite-g-btn-default">取消</div>
+                                        <div class="aisite-g-btn aisite-g-btn-primary">确认</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="aisite-dialog-content-empty">
+                                <div class="aisite-dialog-city-search-empty">暂无搜索结果</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="head_top_right fr">
+                    <a class="w1200" href="http://https--gjzwfw--www--gov--cn-7169982ec9.zipv6.gxzf.gov.cn"
+                        target="_blank">国家政务服务平台</a>
+                    <i class="w1200"></i>
+                    <a class="w1200" href="http://www.gxzf.gov.cn/" target="_blank">广西壮族自治区人民政府</a>
+                    <a href="/AiWza/senior.html" class="senior">长辈版</a>
+                    <a class="wza_a" href="/AiWza/">无障碍</a>
+                    <i class="line"></i>
+                    <a class="StranLink" name="StranLink" id="StranLink" href="javascript:StranBody()" title="">繁體</a>
+                    <i class="line"></i>
+                    <div class="gx_denglu clearfix">
+                        <div class="gx_denglu_qian ">
+                            <!--<a href="/eportal/ui?pageId=867c8625651d4859ac9b23c2cb88ea97&regionCode=3113105254">登录</a>-->
+                            <a id="login_dl">登录</a>
+                        </div>
+                        <div class="gx_denglu_hou clearfix none">
+                            <p id="userNames"></p>
+                            <div class="gx_denglu_tcdl">
+                                <a id="grzx" target="_blank">
+                                    <img src="/eportal/uiFramework/commonResource/image/2025010721041738978.png"
+                                        class="s_grzx">
+                                    <img src="/eportal/uiFramework/commonResource/image/2025010721042279923.png"
+                                        class="h_grzx none">
+                                    <span id="grzx_frzx">个人中心</span>
+                                </a>
+                                <a id="loginOut">
+                                    <img src="/eportal/uiFramework/commonResource/image/2025010721042834168.png"
+                                        class="s_tc">
+                                    <img src="/eportal/uiFramework/commonResource/image/2025010721043417894.png"
+                                        class="h_tc none">
+                                    退出
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gx_sosuo clearfix">
+                    <form class="gx_sosuo_form" action="https://wxxcx.zwfw.gxzf.gov.cn/eportal/ui" method="get"
+                        target="_blank">
+                        <input name="pageId" type="hidden" value="66c8ac6a082b4f10a62b409cef7f68a0">
+                        <input class="gx_sosuo_input" type="text" name="keyWords" placeholder="请输入想要办理事项"
+                            autocomplete="off">
+                        <input type="hidden" name="ext_like_extStr25" id="ext_like_extStr25" value="45">
+                        <button class="gx_sosuo_buttom" type="submit">搜索</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="head_bot pubcon">
+            <ul class="nav_list Ul clearfix">
+                <li>
+                    <a href="/eportal/ui?regionCode=3&pageId=3cd3d403fb4443d5becb61375b2b093a" target="_blank">首页</a>
+                </li>
+                <li style="display:">
+                    <a href="/eportal/ui?pageId=a4db77f6df6c4b53863de887919e0326&regionCode=3113105254" target="_blank"
+                        data-str1="">个人服务</a>
+                </li>
+                <li style="display:">
+                    <a href="/eportal/ui?pageId=d46198fa0ceb4a2cab8f6e3f58e28cc4&regionCode=3113105254" target="_blank"
+                        data-str1="">法人服务</a>
+                </li>
+                <li class="on" style="display:">
+                    <a href="javascript:void(0)&regionCode=3113105254" target="_blank" data-str1="">部门服务</a>
+                    <div class="gx_bumen" id="gx_bumen">
+
+                        <!--
+                        <div class="gx_bmsl">
+                            <h2>广西壮族自治区级部门（共<span id="gx_bmsl_span">01</span>个部门）</h2>
+                            <div id="bm_form">
+                                <input type="text" id="bm_search" placeholder="输入查询内容">
+                                <button id="bm_btn"></button>
+                            </div>
+                        </div>
+                        
+                        <ul id="dept-list"></ul>
+                        <h3><img src="/eportal/uiFramework/commonResource/image/2024102601234861808.png"><br>暂无部门信息</h3>
+                        
+                        -->
+
+                        <div class="aisite-dept-dialog">
+                            <div class="aisite-dept-dialog-hd">
+                                <div class="aisite-back">
+                                    <!--<span class="aisite-back-to-region">
+                                        <i> ＜ </i>
+                                        <span>切换区划</span>
+                                    </span>-->
+                                    <div class="title"> 选择部门</div>
+                                </div>
+                                <div class="aisite-back-to-close">
+                                    <div class="close">×</div>
+                                </div>
+                            </div>
+
+                            <div class="aisite-depart-content">
+                                <div class="aisite-depart-content-left">
+                                    <div id="tree" class="ztree"></div>
+                                </div>
+                                <div class="aisite-depart-content-right clearfix">
+                                    <div class="gx_bmsl">
+
+                                        <h2><span id="gx_bmsl_text"></span>（共<span id="gx_bmsl_span">01</span>个部门）</h2>
+
+                                        <div class="aisite-dialog-city-search">
+                                            <input type="text" class="aisite-dialog-city-search-input"
+                                                id="aisite-dialog-dept-search-input" placeholder="输入查询内容"
+                                                autocomplete="off">
+                                            <button id="aisite-dialog-dept-search-btn"
+                                                class="aisite-dialog-city-search-btn"><!----></button>
+                                        </div>
+                                    </div>
+
+                                    <ul id="aisite-dept-list" class="aisite-dept-list clearfix"></ul>
+                                    <div class="aisite-dept-list-empty">
+                                        <div class="aisite-border-solid"></div>
+                                        <div class="aisite-dialog-city-search-empty">暂无结果</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li style="display:">
+                    <a href="/eportal/ui?pageId=7ada0c7f410e4ee5872ef69f6d15beee&regionCode=3113105254" target="_blank"
+                        data-str1="">服务清单</a>
+                </li>
+                <li style="display:">
+                    <a href="/eportal/ui?pageId=3bbff92d2d904552a5baf6240827a2e6&regionCode=3113105254" target="_blank"
+                        data-str1="">特色创新</a>
+                </li>
+                <li>
+                    <a href="http://zwfw.gxzf.gov.cn/gxpjfxgl/evaluationStat/show.do?aisiteOutPageId=584358942b924f7eae4fdfae77587abb"
+                        target="_blank">好差评</a>
+                </li>
+                <li style="display:">
+                    <a href="/eportal/ui?pageId=43f964ccf01546ae851417d7d1190494&regionCode=3113105254" target="_blank"
+                        data-str1="">政务资讯</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript" src="/eportal/uiFramework/commonResource/js/big52gb.js"></script>
+    <script type="text/javascript" src="/eportal/uiFramework/commonResource/js/banshiHead.js"></script>
+    <script>
+        //无障碍拼接 跳转
+        document.querySelector('.wza_a').addEventListener('click', function (event) {
+            // 阻止默认的链接跳转行为
+            event.preventDefault();
+
+            // 获取当前浏览器地址路径（不包括协议、主机和端口）
+            var currentPath = window.location.pathname + window.location.search;
+            // 拼接新的URL
+            var newUrl = '/AiWza/#' + currentPath;
+
+            // 跳转到新的拼接路径
+            window.location.href = newUrl;
+        })
+
+
+        document.querySelector('.senior').addEventListener('click', function (event) {
+            // 阻止默认的链接跳转行为
+            event.preventDefault();
+
+            // 获取当前浏览器地址路径（不包括协议、主机和端口）
+            var currentPath = window.location.pathname + window.location.search;
+
+            // 拼接新的URL
+            var newUrl = '/AiWza/senior.html#' + currentPath;
+
+            // 跳转到新的拼接路径
+            window.location.href = newUrl;
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.Ul > li').each(function (index, item) {
+                $(item).attr('id', 'naw_' + index);
+            });
+            $('#naw_3 a').on('click', function (event) {
+                event.preventDefault();
+            });
+            $(".aisite-dialog-footer-dept-btn .bmText").text($(".banshibtn .aisite-header-xuanz").text());
+
+            $('.i_zzqj').on('click', function (event) {
+                event.stopPropagation();
+                $('.i_box').toggle();
+                // 切换图片旋转效果
+                $('.gx_xuanzhaun').toggleClass('rotate'); // 切换 .rotate 类
+            })
+        });
+
+        //登录判断  ---s
+        function processUsername(username) {
+            var length = username.length;
+            var result = "";
+
+            if (length === 2) {
+                // 两个字：第一个字正常显示，第二个字星号显示
+                result = username.charAt(0) + "*";
+            } else if (length === 3) {
+                // 三个字：第一个字正常显示，后面两个字星号显示
+                result = username.charAt(0) + "**"
+            } else if (length > 3) {
+                // 三个字以上：前两个字正常显示，其余字星号显示，最多展示5个字
+                result = username.substring(0, 2);
+                var remainingLength = Math.min(length - 2, 3); // 最多展示3个星号
+                for (var i = 0; i < remainingLength; i++) {
+                    result += "*";
+                }
+            }
+
+            return result;
+        }
+        var Login_name = "$currentLoginMember.name";
+        var Login_userType = "$currentLoginMember.userType";
+        var Login_phone = "$currentLoginMember.mphone";
+
+        $('.gx_denglu_qian').show();
+        $('.gx_denglu_hou').hide();
+        if (search_login != "971777aa4063449592d4209adbb59653") {
+            thirdLogin_new();
+        }
+
+        //登录判断  --e
+
+
+
+        //20251226 特色创新判断  地址栏regionCode或者eportalGovItemRegionCode.value与导航里面特色创新a标签的data-str1值一致，则显示，别的特色创新隐藏
+        //三级跟随二级区划，比如南宁市-兴宁区，特色创新出现的页面是南宁市的特色创新
+        (function () {
+            function getRegionCodeFromUrl() {
+                var s = window.location.search;
+                if (!s) return '';
+                var p = new URLSearchParams(s);
+                return p.get('regionCode') || '';
+            }
+            var rc = (document.getElementById('eportalGovItemRegionCode')
+                ? document.getElementById('eportalGovItemRegionCode').value
+                : '') || getRegionCodeFromUrl() || '';
+            var rcNorm = (rc || '').trim();
+            if (rcNorm.length > 4) rcNorm = rcNorm.substring(0, 4);
+            var nav = document.querySelector('.head_bot');
+            if (!nav) return;
+            var links = nav.querySelectorAll('a');
+            var map = {};
+            var defs = [];
+            Array.prototype.forEach.call(links, function (a) {
+                var t = a.textContent || '';
+                if (t.indexOf('特色创新') > -1) {
+                    var code = (a.getAttribute('data-str1') || '').trim();
+                    var li = a.closest('li');
+                    if (!li) return;
+                    if (code) {
+                        (map[code] || (map[code] = [])).push(li);
+                    } else {
+                        defs.push(li);
+                    }
+                }
+            });
+            var all = [];
+            Object.keys(map).forEach(function (k) {
+                all = all.concat(map[k]);
+            });
+            all = all.concat(defs);
+            all.forEach(function (li) {
+                li.style.display = 'none';
+            });
+            if (rcNorm && map[rcNorm]) {
+                map[rcNorm].forEach(function (li) {
+                    li.style.display = '';
+                });
+            } else if (defs.length) {
+                defs.forEach(function (li, i) {
+                    li.style.display = i === 0 ? '' : 'none';
+                });
+            }
+        })();
+    </script>
+    <script type="text/javascript">
+        //当在特色创新页面点击了别的区划，当前页面跳转，判断显示正确区划的特色创新页面
+        (function () {
+            setTimeout(function () {
+                var nav = document.querySelector('.nav_list.Ul');
+                if (!nav) return;
+                var anchors = nav.querySelectorAll('li a');
+                var curParams = new URLSearchParams(window.location.search);
+                var curPid = curParams.get('pageId') || '';
+                var innovationPids = [];
+                Array.prototype.forEach.call(anchors, function (a) {
+                    var t = a.textContent || '';
+                    if (t.indexOf('特色创新') === -1) return;
+                    try {
+                        var u = new URL(a.getAttribute('href') || '', window.location.origin);
+                        var pid = u.searchParams.get('pageId') || '';
+                        if (pid) innovationPids.push(pid);
+                    } catch (e) { }
+                });
+                var isInnovationPage = curPid && innovationPids.indexOf(curPid) > -1;
+                if (!isInnovationPage) return;
+                var targetA = null;
+                Array.prototype.forEach.call(anchors, function (a) {
+                    var t = a.textContent || '';
+                    if (t.indexOf('特色创新') === -1) return;
+                    var li = a.closest('li');
+                    var isHidden = false;
+                    if (li) {
+                        var ds = (li.style && li.style.display) || '';
+                        if (ds === 'none') isHidden = true;
+                        if (li.hidden) isHidden = true;
+                    }
+                    if (!isHidden && !targetA) targetA = a;
+                });
+                if (!targetA) return;
+                var href = targetA.getAttribute('href') || '';
+                try {
+                    var u = new URL(href, window.location.origin);
+                    var targetPid = u.searchParams.get('pageId') || '';
+                    var targetRc = u.searchParams.get('regionCode') || '';
+                    var curRc = curParams.get('regionCode') || '';
+                    if (curPid !== targetPid || curRc !== targetRc) {
+                        window.location.replace(u.toString());
+                    }
+                } catch (e) { }
+            }, 500);
+        })(); 
+    </script>
+    <div class="banenr clearfix column" id="banenr" name="头部" runat="server">
+        <div class="portlet" id="72b78cfdeabd4e85b27d50687e89869e" pagemoduleid="39a0f3e2b68a469fb333f9b625326c3f">
+            <div align="left" class="eps-portlet-header">
+                <div id="submenu72b78cfdeabd4e85b27d50687e89869e" class="eps-shadow eps-dn">
+                    <ul class="float_list_ul">
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="bannerHeader">
+                    <div class="banner_text">
+                        <h1></h1>
+                        <p>网上办事窗口</p>
+                    </div>
+                </div>
+                <style type="text/css">
+                    .header .head_bot {
+                        display: none;
+                    }
+                </style>
+                <script>
+                    // 获取 .aisite-header-xuanz 的内容
+                    var headerContent = document.querySelector('.aisite-header-xuanz').textContent;
+
+                    // 将 .banner_text h1 的内容设置为 .aisite-header-xuanz 的内容
+                    document.querySelector('.banner_text h1').textContent = headerContent;
+                    document.title = headerContent;
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="content_win clearfix">
+        <div class="gx_content clearfix column" id="gx_content" name="内容" runat="server">
+            <div class="portlet" id="ebdb702018aa466d8d12562fe9c89103" pagemoduleid="bedf2026e2fe4b3f8dfb63c2b611d82e">
+                <div align="left" class="eps-portlet-header">
+                    <div id="submenuebdb702018aa466d8d12562fe9c89103" class="eps-shadow eps-dn">
+                        <ul class="float_list_ul">
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <link rel="stylesheet" href="/eportal/portlet/officeService/css/Index.css">
+
+                    <div class="bm_content">
+                        <!--
+        <div id="govItemCategoryContionDiv">
+            <ul class="list" id="govItemCategoryContion">
+                <li class="item active" style="display: list-item;" data-value="">全部主题</li>
+            </ul>
+           <div class="title-box">
+                <div class=" section_line"></div>
+                <div class="list-title">全部主题</div>
+            </div>
+        </div>
+        -->
+
+
+
+                        <div class="section_type" style="display:none!important;">
+                            <div class="section_type_box">
+                                <!--<div class="custom-select">
+                <input type="hidden" id="itemType"/>
+                <div class="select-styled"><span class="select-styled-content">全部类型</span></div>
+                <div class="select-options clearfix">
+                    <div data-value="">全部类型</div>
+                                              <div data-value="01">行政许可</div>
+                                              <div data-value="05">行政给付</div>
+                                              <div data-value="07">行政确认</div>
+                                              <div data-value="08">行政奖励</div>
+                                              <div data-value="09">行政裁决</div>
+                                              <div data-value="10">其他行政权力</div>
+                                              <div data-value="20">公共服务</div>
+                                              <div data-value="16">联办目录</div>
+                                     </div>
+            </div>-->
+                                <div class="section_type_num">
+                                    共<span id="totalMainItemNumSpan">0</span>个主项，<span
+                                        id="totalSubItemNumSpan">0</span>个子项，
+                                    可在线办理<span id="onlineHanleNumSpan">0</span>项，可在线预约<span
+                                        id="onlineBookingNumSpan">0</span>项
+                                </div>
+                                <!--<div class="fl tjsx1" style="width:110px;margin-left:10px">
+                <div style="display: flex">
+                    <input  id="onlineHandleCheckbox" type="checkbox">
+                    <label for="checkbox2" style="padding-left: 5px;"> 可在线办理事项</label>
+                </div>
+                <div style="display: flex">
+                    <input  id="onlineSubscribeCheckbox" type="checkbox">
+                    <label for="checkbox4" style="padding-left: 5px;">可在线预约事项</label>
+                </div>
+            </div>-->
+                            </div>
+                            <!--<div class="custom-select">
+                <input type="hidden" id="itemType" value="" />
+                <div class="select-styled"><span class="select-styled-content">全部类型</span></div>
+                <div class="select-options clearfix">
+                    <div data-value="">全部类型</div>
+                                              <div data-value="01">行政许可</div>
+                                              <div data-value="05">行政给付</div>
+                                              <div data-value="07">行政确认</div>
+                                              <div data-value="08">行政奖励</div>
+                                              <div data-value="09">行政裁决</div>
+                                              <div data-value="10">其他行政权力</div>
+                                              <div data-value="20">公共服务</div>
+                                              <div data-value="16">联办目录</div>
+                                     </div>
+        </div>-->
+                            <div>
+                                <div class="search-container clearfix">
+                                    <input type="text" class="search-input" placeholder="输入搜索关键词" id="searchTitle">
+                                    <div class="search-icon" id="itemListSearchBtn">
+                                        <img src="/eportal/uiFramework/commonResource/image/2025012311194276328.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="gx_bsfw_banner clearfix">
+                            <div class="sxlx clearfix">
+                                <h1><img src="/eportal/uiFramework/commonResource/image/2024121917592661063.png">事项类型
+                                </h1>
+                            </div>
+
+
+
+                            <div class="gx_bsfw_win clearfix">
+                                <input type="hidden" id="itemType" value="" />
+                                <div class="select-styled"><span class="select-styled-content">全部类型</span></div>
+                                <div class="select-options clearfix">
+                                    <div data-value="" class="Li_00">全部类型</div>
+                                    <div data-value="01" class="Li_01">行政许可</div>
+                                    <div data-value="05" class="Li_05">行政给付</div>
+                                    <div data-value="07" class="Li_07">行政确认</div>
+                                    <div data-value="08" class="Li_08">行政奖励</div>
+                                    <div data-value="09" class="Li_09">行政裁决</div>
+                                    <div data-value="10" class="Li_10">其他行政权力</div>
+                                    <div data-value="20" class="Li_20">公共服务</div>
+                                    <div data-value="16" class="Li_16">联办目录</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="bm_qysx clearfix ">
+                            <div class="bm_qysx_left clearfix">
+                                <div class="fl tjsx1 bsfwFwdx clearfix">
+                                    <p class="title"><i></i><span class="text">服务对象：</span></p>
+                                    <p class="itemBox clearfix">
+                                        <span class="li col" data-id="">全部</span>
+                                        <span class="li" data-id="natural">个人</span>
+                                        <span class="li" data-id="juridical">法人</span>
+                                    </p>
+                                </div>
+
+                                <!--<div class="fl tjsx1 gx_zxsx">
+                <div>
+                    <input  id="onlineHandleCheckbox" type="checkbox">
+                    <label for="checkbox2" style="padding-left: 5px;">可在线办理事项</label>
+                </div>
+                <div>
+                    <input  id="onlineSubscribeCheckbox" type="checkbox">
+                    <label for="checkbox4" style="padding-left: 5px;">可在线预约事项</label>
+                </div>
+            </div>-->
+                            </div>
+
+
+                            <div class="search-container clearfix">
+                                <input type="text" class="search-input" placeholder="输入搜索关键词" id="searchTitle">
+                                <div class="search-icon" id="itemListSearchBtn">
+                                    <img src="/eportal/uiFramework/commonResource/image/2025012311194276328.png">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="aisite-list-table">
+                            <div class="aisite-list-table-header">
+                                <div class="aisite-list-table-header-name">事项名称</div>
+                                <div>实施主体</div>
+                                <div>操作</div>
+                            </div>
+                            <div class="table-list" id="govItemListTable"></div>
+                        </div>
+
+                        <div id="paginationContainer"></div>
+
+                    </div>
+
+                    <span id="govCategoryListJsonSpan"
+                        style="display: none">[{"aliasName":"防城港市大数据和行政审批局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051059","iconPath":"","id":"3113105275","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市大数据和行政审批局","nodeIndex":"-1,3,3113,3113105,3113105275","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":177,"updateDate":"2026-03-30
+                        12:00:33","updateUserId":"1"},{"aliasName":"防城港市委统战部","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051094","iconPath":"","id":"3113105274","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市委统战部","nodeIndex":"-1,3,3113,3113105,3113105274","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":176,"updateDate":"2026-03-30
+                        12:00:33","updateUserId":"1"},{"aliasName":"防城港市市场监督管理局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051069","iconPath":"","id":"3113105272","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市市场监督管理局","nodeIndex":"-1,3,3113,3113105,3113105272","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":174,"updateDate":"2026-03-30
+                        12:00:32","updateUserId":"1"},{"aliasName":"防城港市邮政管理局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051088","iconPath":"","id":"3113105271","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市邮政管理局","nodeIndex":"-1,3,3113,3113105,3113105271","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":173,"updateDate":"2026-03-30
+                        12:00:32","updateUserId":"1"},{"aliasName":"防城港市人力资源和社会保障局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051012","iconPath":"","id":"3113105265","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市人力资源和社会保障局","nodeIndex":"-1,3,3113,3113105,3113105265","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":167,"updateDate":"2026-03-30
+                        12:00:31","updateUserId":"1"},{"aliasName":"防城港市国防动员办公室","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051013","iconPath":"","id":"3113105264","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市国防动员办公室","nodeIndex":"-1,3,3113,3113105,3113105264","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":166,"updateDate":"2026-03-30
+                        12:00:31","updateUserId":"1"},{"aliasName":"防城港市教育局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051022","iconPath":"","id":"3113105263","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市教育局","nodeIndex":"-1,3,3113,3113105,3113105263","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":165,"updateDate":"2026-03-30
+                        12:00:31","updateUserId":"1"},{"aliasName":"防城港市住房公积金管理中心","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051042","iconPath":"","id":"3113105262","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市住房公积金管理中心","nodeIndex":"-1,3,3113,3113105,3113105262","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":164,"updateDate":"2026-03-30
+                        12:00:31","updateUserId":"1"},{"aliasName":"防城港市工业和信息化局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051044","iconPath":"","id":"3113105261","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市工业和信息化局","nodeIndex":"-1,3,3113,3113105,3113105261","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":163,"updateDate":"2026-03-30
+                        12:00:30","updateUserId":"1"},{"aliasName":"防城港市国家安全局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051071","iconPath":"","id":"3113105260","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市国家安全局","nodeIndex":"-1,3,3113,3113105,3113105260","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":162,"updateDate":"2026-03-30
+                        12:00:30","updateUserId":"1"},{"aliasName":"广西防城港北投水务有限公司","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051089","iconPath":"","id":"3113105259","isBusiness":"1","isEnable":"1","leaf":"1","name":"广西防城港北投水务有限公司","nodeIndex":"-1,3,3113,3113105,3113105259","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":161,"updateDate":"2026-03-30
+                        12:00:30","updateUserId":"1"},{"aliasName":"防城港中燃城市燃气发展有限公司","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051090","iconPath":"","id":"3113105258","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港中燃城市燃气发展有限公司","nodeIndex":"-1,3,3113,3113105,3113105258","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":160,"updateDate":"2026-03-30
+                        12:00:30","updateUserId":"1"},{"aliasName":"广西电网有限责任公司防城港供电局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051097","iconPath":"","id":"3113105257","isBusiness":"1","isEnable":"1","leaf":"1","name":"广西电网有限责任公司防城港供电局","nodeIndex":"-1,3,3113,3113105,3113105257","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":159,"updateDate":"2026-03-30
+                        12:00:30","updateUserId":"1"},{"aliasName":"防城港市统计局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051006","iconPath":"","id":"3113105256","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市统计局","nodeIndex":"-1,3,3113,3113105,3113105256","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":158,"updateDate":"2026-03-30
+                        12:00:29","updateUserId":"1"},{"aliasName":"防城港市民政局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051015","iconPath":"","id":"3113105255","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市民政局","nodeIndex":"-1,3,3113,3113105,3113105255","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":157,"updateDate":"2026-03-30
+                        12:00:29","updateUserId":"1"},{"aliasName":"防城港市公安局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051017","iconPath":"","id":"3113105254","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市公安局","nodeIndex":"-1,3,3113,3113105,3113105254","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":156,"updateDate":"2026-03-30
+                        12:00:29","updateUserId":"1"},{"aliasName":"防城港市生态环境局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051038","iconPath":"","id":"3113105253","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市生态环境局","nodeIndex":"-1,3,3113,3113105,3113105253","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":155,"updateDate":"2026-03-30
+                        12:00:29","updateUserId":"1"},{"aliasName":"防城港市住房和城乡建设局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051056","iconPath":"","id":"3113105252","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市住房和城乡建设局","nodeIndex":"-1,3,3113,3113105,3113105252","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":154,"updateDate":"2026-03-30
+                        12:00:29","updateUserId":"1"},{"aliasName":"防城港市医疗保障局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051079","iconPath":"","id":"3113105250","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市医疗保障局","nodeIndex":"-1,3,3113,3113105,3113105250","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":152,"updateDate":"2026-03-30
+                        12:00:28","updateUserId":"1"},{"aliasName":"防城港市发展和改革委员会","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051029","iconPath":"","id":"3113105249","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市发展和改革委员会","nodeIndex":"-1,3,3113,3113105,3113105249","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":151,"updateDate":"2026-03-30
+                        12:00:28","updateUserId":"1"},{"aliasName":"防城港市公安局交通警察支队","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051040","iconPath":"","id":"3113105247","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市公安局交通警察支队","nodeIndex":"-1,3,3113,3113105,3113105247","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":149,"updateDate":"2026-03-30
+                        12:00:28","updateUserId":"1"},{"aliasName":"防城港市卫生健康委员会","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051063","iconPath":"","id":"3113105246","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市卫生健康委员会","nodeIndex":"-1,3,3113,3113105,3113105246","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":148,"updateDate":"2026-03-30
+                        12:00:28","updateUserId":"1"},{"aliasName":"国家税务总局防城港市税务局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051057","iconPath":"","id":"3113105238","isBusiness":"1","isEnable":"1","leaf":"1","name":"国家税务总局防城港市税务局","nodeIndex":"-1,3,3113,3113105,3113105238","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":140,"updateDate":"2026-03-30
+                        12:00:26","updateUserId":"1"},{"aliasName":"防城港市水利局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051001","iconPath":"","id":"3113105237","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市水利局","nodeIndex":"-1,3,3113,3113105,3113105237","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":139,"updateDate":"2026-03-30
+                        12:00:26","updateUserId":"1"},{"aliasName":"防城港市商务局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051003","iconPath":"","id":"3113105236","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市商务局","nodeIndex":"-1,3,3113,3113105,3113105236","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":138,"updateDate":"2026-03-30
+                        12:00:26","updateUserId":"1"},{"aliasName":"防城港市交通运输局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051004","iconPath":"","id":"3113105235","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市交通运输局","nodeIndex":"-1,3,3113,3113105,3113105235","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":137,"updateDate":"2026-03-30
+                        12:00:26","updateUserId":"1"},{"aliasName":"防城港市财政局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051009","iconPath":"","id":"3113105233","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市财政局","nodeIndex":"-1,3,3113,3113105,3113105233","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":135,"updateDate":"2026-03-30
+                        12:00:25","updateUserId":"1"},{"aliasName":"防城港市档案局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051016","iconPath":"","id":"3113105231","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市档案局","nodeIndex":"-1,3,3113,3113105,3113105231","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":133,"updateDate":"2026-03-30
+                        12:00:25","updateUserId":"1"},{"aliasName":"防城港市司法局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051019","iconPath":"","id":"3113105230","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市司法局","nodeIndex":"-1,3,3113,3113105,3113105230","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":132,"updateDate":"2026-03-30
+                        12:00:25","updateUserId":"1"},{"aliasName":"防城港市残疾人联合会","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051020","iconPath":"","id":"3113105229","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市残疾人联合会","nodeIndex":"-1,3,3113,3113105,3113105229","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":131,"updateDate":"2026-03-30
+                        12:00:24","updateUserId":"1"},{"aliasName":"防城港市海洋局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051024","iconPath":"","id":"3113105228","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市海洋局","nodeIndex":"-1,3,3113,3113105,3113105228","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":130,"updateDate":"2026-03-30
+                        12:00:24","updateUserId":"1"},{"aliasName":"防城港市自然资源局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051031","iconPath":"","id":"3113105226","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市自然资源局","nodeIndex":"-1,3,3113,3113105,3113105226","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":128,"updateDate":"2026-03-30
+                        12:00:24","updateUserId":"1"},{"aliasName":"防城港市文化广电体育和旅游局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051045","iconPath":"","id":"3113105222","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市文化广电体育和旅游局","nodeIndex":"-1,3,3113,3113105,3113105222","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":124,"updateDate":"2026-03-30
+                        12:00:23","updateUserId":"1"},{"aliasName":"防城港市气象局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051046","iconPath":"","id":"3113105221","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市气象局","nodeIndex":"-1,3,3113,3113105,3113105221","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":123,"updateDate":"2026-03-30
+                        12:00:23","updateUserId":"1"},{"aliasName":"防城港市民族宗教事务委员会","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051048","iconPath":"","id":"3113105220","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市民族宗教事务委员会","nodeIndex":"-1,3,3113,3113105,3113105220","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":122,"updateDate":"2026-03-30
+                        12:00:23","updateUserId":"1"},{"aliasName":"防城港市退役军人事务局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051067","iconPath":"","id":"3113105216","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市退役军人事务局","nodeIndex":"-1,3,3113,3113105,3113105216","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":118,"updateDate":"2026-03-30
+                        12:00:22","updateUserId":"1"},{"aliasName":"防城港市不动产登记中心","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051068","iconPath":"","id":"3113105215","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市不动产登记中心","nodeIndex":"-1,3,3113,3113105,3113105215","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":117,"updateDate":"2026-03-30
+                        12:00:22","updateUserId":"1"},{"aliasName":"防城港市农业农村局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051070","iconPath":"","id":"3113105214","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市农业农村局","nodeIndex":"-1,3,3113,3113105,3113105214","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":116,"updateDate":"2026-03-30
+                        12:00:22","updateUserId":"1"},{"aliasName":"防城港市烟草局","createDate":"2025-05-29
+                        10:02:31","createUserId":"1","description":"","enName":"10011003100210051077","iconPath":"","id":"3113105210","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市烟草局","nodeIndex":"-1,3,3113,3113105,3113105210","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":112,"updateDate":"2026-03-30
+                        12:00:21","updateUserId":"1"},{"aliasName":"中国共产党防城港市委员会机要保密办公室","createDate":"2025-05-29
+                        10:02:30","createUserId":"1","description":"","enName":"10011003100210051126","iconPath":"","id":"3113105172","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港市市委机要保密办","nodeIndex":"-1,3,3113,3113105,3113105172","nodeLevel":2,"parentId":"3113105","regionCode":"450601000000","siteId":"-1","sonNum":0,"sortId":74,"updateDate":"2026-03-30
+                        12:00:14","updateUserId":"1"},{"aliasName":"防城港海事局","createDate":"2025-05-29
+                        10:02:30","createUserId":"1","description":"","enName":"10011003100210051130","iconPath":"","id":"3113105168","isBusiness":"1","isEnable":"1","leaf":"1","name":"防城港海事局","nodeIndex":"-1,3,3113,3113105,3113105168","nodeLevel":2,"parentId":"3113105","regionCode":"450600000000","siteId":"-1","sonNum":0,"sortId":70,"updateDate":"2026-03-30
+                        12:00:13","updateUserId":"1"}]</span>
+                    <span id="showKeywordCondtionJsonSpan" style="display: none">$showKeywordCondtionJson</span>
+                    <input type="hidden" id="infoItemType" value="3" />
+                    <input type="hidden" id="govItemListModuleId" value="ebdb702018aa466d8d12562fe9c89103" />
+                    <input type="hidden" id="infoPageSize" value="10" />
+                    <script src="/eportal/uiFramework/commonResource/js/pagination_type2.js"
+                        type="text/javascript"></script>
+                    <script type="text/javascript"
+                        src="/eportal/uiFramework/commonResource/js/govItemList2.js"></script>
+                    <script type="text/javascript">
+                        var itemTypeVal = $("#itemType").val();
+                        $(".gx_bsfw_banner .gx_bsfw_win .select-options > div").each(function () {
+                            var id = $(this).data("value");
+                            if (id == itemTypeVal) {
+                                $(this).addClass("on").siblings().removeClass("on");
+                                return false;
+                            }
+                        });
+                    </script>
+
+                    <script>
+                        $(document).ready(function () {
+                            // 监听 .aisite-dialog-header-nav 和其子元素的点击事件
+                            $('.aisite-dialog-header-nav').on('click', 'li', function () {
+                                // 获取 .aisite-dialog-header-nav 中 li 的数量
+                                var liCount = $('.aisite-dialog-header-nav li').length;
+
+                                // 判断 li 数量是否大于等于 4
+                                if (liCount >= 4) {
+                                    // 隐藏 .gx_zxsx 元素
+                                    $('.gx_zxsx').hide();
+                                } else {
+                                    // 显示 .gx_zxsx 元素
+                                    $('.gx_zxsx').show();
+                                }
+                            });
+
+                            // 如果你希望处理 DOM 变化后重新组织冒泡：
+                            $(document).on('DOMSubtreeModified', '.aisite-dialog-header-nav', function () {
+                                var updatedLiCount = $('.aisite-dialog-header-nav li').length;
+
+                                if (updatedLiCount >= 4) {
+                                    $('.gx_zxsx').hide();
+                                } else {
+                                    $('.gx_zxsx').show();
+                                }
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer footerTwo clearfix">
+        <div class="g_links_box clearfix">
+            <div class="m_links_box f_clear PubN">
+
+                <div class="m_links_module m_links_module2">
+                    <span><img src="/eportal/uiFramework/commonResource/image/2024121914561289034.png">国务院部门网站</span>
+                    <ul>
+                        <div>
+                            <li><a href="http://www--mfa--gov--cn-145773e694.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="外交部">外交部</a></li>
+                            <li><a href="http://www--mod--gov--cn-22be076fe7.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国防部">国防部</a></li>
+                            <li><a href="http://https--www--ndrc--gov--cn-9ed11622f3.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="国家发展和改革委员会">国家发展和改革委员会</a></li>
+                            <li><a href="http://www--moe--gov--cn-7e0f080188.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="教育部">教育部</a></li>
+                            <li><a href="http://https--www--most--gov--cn-fd102d5ddb.zipv6.gxzf.gov.cn/index.html"
+                                    target="_BLANK" title="科学技术部">科学技术部</a></li>
+                            <li><a href="http://https--www--miit--gov--cn-f3f5be92e9.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="工业和信息化部">工业和信息化部</a></li>
+                            <li><a href="https://www.neac.gov.cn" target="_BLANK" title="国家民族事务委员会">国家民族事务委员会</a></li>
+                            <li><a href="http://https--www--mps--gov--cn-76d01fa473.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="公安部">公安部</a></li>
+                            <li><a href="http://https--www--mca--gov--cn-382aae6700.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="民政部">民政部</a></li>
+                            <li><a href="http://www--moj--gov--cn-9259fc52a7.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="司法部">司法部</a></li>
+                            <li><a href="http://www--mof--gov--cn-48fb5138bb.zipv6.gxzf.gov.cn" target="_BLANK"
+                                    title="财政部">财政部</a></li>
+                            <li><a href="http://www--mohrss--gov--cn-f103e2ddab.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="人力资源和社会保障部">人力资源和社会保障部</a></li>
+                            <li><a href="http://www.mnr.gov.cn/" target="_BLANK" title="自然资源部">自然资源部</a></li>
+                            <li><a href="http://www--mee--gov--cn-8ff3dee56e.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="生态环境部">生态环境部</a></li>
+                            <li><a href="http://www--mohurd--gov--cn-cc922ed393.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="住房和城乡建设部">住房和城乡建设部</a></li>
+                            <li><a href="http://www--mot--gov--cn-1f2665bdfd.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="交通运输部">交通运输部</a></li>
+                            <li><a href="http://www--mwr--gov--cn-83a90fed16.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="水利部">水利部</a></li>
+                            <li><a href="http://www--moa--gov--cn-99311cc0bd.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="农业农村部">农业农村部</a></li>
+                            <li><a href="http://www--mofcom--gov--cn-07ec40dcef.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="商务部">商务部</a></li>
+                            <li><a href="http://www--mct--gov--cn-94c73ba6bf.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="文化和旅游部">文化和旅游部</a></li>
+                            <li><a href="http://www--nhc--gov--cn-72cc48c86c.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家卫生健康委员会">国家卫生健康委员会</a></li>
+                            <li><a href="http://www--mva--gov--cn-478369f89d.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="退役军人事务部">退役军人事务部</a></li>
+                            <li><a href="http://https--www--mem--gov--cn-5fe567031d.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="应急管理部">应急管理部</a></li>
+                            <li><a href="http://www--pbc--gov--cn-fff27df546.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国人民银行">中国人民银行</a></li>
+                            <li><a href="http://www--audit--gov--cn-4ecf711dd4.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="审计署">审计署</a></li>
+                            <li><a href="http://www--moe--gov--cn-7e0f080188.zipv6.gxzf.gov.cn/jyb_sy/China_Language/"
+                                    target="_BLANK" title="国家语言文字工作委员会">国家语言文字工作委员会</a></li>
+                            <li><a href="http://www--cnsa--gov--cn-3b146b449a.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家航天局">国家航天局</a></li>
+                            <li><a href="http://https--www--caea--gov--cn-2754c7016c.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家原子能机构">国家原子能机构</a></li>
+                            <li><a href="http://https--nnsa--mee--gov--cn-f2485fc91a.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家核安全局">国家核安全局</a></li>
+                            <li><a target="_BLANK" title="国家乡村振兴局">国家乡村振兴局</a></li>
+                            <li><a href="http://www--sasac--gov--cn-c0d54676fb.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院国有资产监督管理委员会">国务院国有资产监督管理委员会</a></li>
+                            <li><a href="http://www--customs--gov--cn-63f0f220a2.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="海关总署">海关总署</a></li>
+                            <li><a href="http://www--chinatax--gov--cn-1a9db5fe5b.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家税务总局">国家税务总局</a></li>
+                            <li><a href="http://www--samr--gov--cn-1a31214100.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家市场监督管理总局">国家市场监督管理总局</a></li>
+                            <li><a href="http://https--www--nfra--gov--cn-cefe05784d.zipv6.gxzf.gov.cn/cn/view/pages/index/index.html"
+                                    target="_BLANK" title="国家金融监督管理总局">国家金融监督管理总局</a></li>
+                            <li><a href="http://www--csrc--gov--cn-50c2ba03a8.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国证券监督管理委员会">中国证券监督管理委员会</a></li>
+                            <li><a href="http://www--nrta--gov--cn-206dea3dbb.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家广播电视总局">国家广播电视总局</a></li>
+                            <li><a href="http://www--sport--gov--cn-e77dddaaaf.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家体育总局">国家体育总局</a></li>
+                            <li><a href="http://www--gjxfj--gov--cn-4ef9f5506e.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家信访局">国家信访局</a></li>
+                            <li><a href="http://www--stats--gov--cn-cdd0b408bb.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家统计局">国家统计局</a></li>
+                            <li><a href="http://https--www--cnipa--gov--cn-4b4ff67a41.zipv6.gxzf.gov.cn/"
+                                    target="_BLANK" title="国家知识产权局">国家知识产权局</a></li>
+                            <li><a href="http://www--cidca--gov--cn-f1a8581bac.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家国际发展合作署">国家国际发展合作署</a></li>
+                            <li><a href="http://www--nhsa--gov--cn-3f13192eed.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家医疗保障局">国家医疗保障局</a></li>
+                            <li><a href="http://www--counsellor--gov--cn-e6da0c8931.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院参事室">国务院参事室</a></li>
+                            <li><a href="http://www--ggj--gov--cn-5f2919f12d.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家机关事务管理局">国家机关事务管理局</a></li>
+                            <li><a href="http://https--www--cnca--gov--cn-78411d0c29.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家认证认可监督管理委员会">国家认证认可监督管理委员会</a></li>
+                            <li><a href="http://https--www--sac--gov--cn-72e0728bef.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家标准化管理委员会">国家标准化管理委员会</a></li>
+                            <li><a href="http://https--www--nppa--gov--cn-0ff854af6f.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家新闻出版署">国家新闻出版署</a></li>
+                            <li><a href="http://https--www--ncac--gov--cn-e7dca3e355.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家版权局">国家版权局</a></li>
+                            <li><a href="http://https--www--sara--gov--cn-544d87da4b.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家宗教事务局">国家宗教事务局</a></li>
+                            <li><a href="https://www.gov.cn/guoqing/2018-06/22/content_5300522.htm" target="_BLANK"
+                                    title="国务院研究室">国务院研究室</a></li>
+                            <li><a href="http://www--gqb--gov--cn-85372e2f56.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院侨务办公室">国务院侨务办公室</a></li>
+                            <li><a href="http://www--hmo--gov--cn-ae1297944f.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院港澳事务办公室">国务院港澳事务办公室</a></li>
+                            <li><a href="http://www--gwytb--gov--cn-7c78f9adde.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院台湾事务办公室">国务院台湾事务办公室</a></li>
+                            <li><a href="http://www--cac--gov--cn-518bd372ae.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家互联网信息办公室">国家互联网信息办公室</a></li>
+                            <li><a href="http://www--scio--gov--cn-62c301aa6a.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院新闻办公室">国务院新闻办公室</a></li>
+                            <li><a href="http://www--xinhuanet--com-0c3375aa88.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="新华通讯社">新华通讯社</a></li>
+                            <li><a href="http://https--www--cas--cn-253b7e5441.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国科学院">中国科学院</a></li>
+                            <li><a href="http://www--cass--cn-5a20906b59.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国社会科学院">中国社会科学院</a></li>
+                            <li><a href="http://https--www--cae--cn-09ea9a5ca5.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国工程院">中国工程院</a></li>
+                            <li><a href="http://www--drc--gov--cn-9ea64fdd77.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国务院发展研究中心">国务院发展研究中心</a></li>
+                            <li><a href="http://www--cma--gov--cn-d0134aff83.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国气象局">中国气象局</a></li>
+                            <li><a href="http://https--www--ccps--gov--cn-0db78ce2a1.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家行政学院">国家行政学院</a></li>
+                            <li><a href="http://https--www--lswz--gov--cn-5245c46454.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家粮食和物资储备局">国家粮食和物资储备局</a></li>
+                            <li><a href="http://www--nea--gov--cn-8c63d07c6b.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家能源局">国家能源局</a></li>
+                            <li><a href="http://https--www--sastind--gov--cn-eb758a133e.zipv6.gxzf.gov.cn/"
+                                    target="_BLANK" title="国家国防科技工业局">国家国防科技工业局</a></li>
+                            <li><a href="http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家烟草专卖局">国家烟草专卖局</a></li>
+                            <li><a href="http://https--www--nia--gov--cn-8cb03388ea.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家移民管理局">国家移民管理局</a></li>
+                            <li><a href="http://www--forestry--gov--cn-df4d09df73.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家林业和草原局">国家林业和草原局</a></li>
+                            <li><a href="http://https--www--nra--gov--cn-11dd708136.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家铁路局">国家铁路局</a></li>
+                            <li><a href="http://www--caac--gov--cn-f7396946ba.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="中国民用航空局">中国民用航空局</a></li>
+                            <li><a href="http://https--www--spb--gov--cn-83b5b7579f.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家邮政局">国家邮政局</a></li>
+                            <li><a href="http://www--ncha--gov--cn-a0406607a0.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家文物局">国家文物局</a></li>
+                            <li><a href="http://www--natcm--gov--cn-abe0100b33.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家中医药管理局">国家中医药管理局</a></li>
+                            <li><a href="http://https--www--chinamine-safety--gov--cn-ad96f34275.zipv6.gxzf.gov.cn/"
+                                    target="_BLANK" title="国家矿山安全监察局">国家矿山安全监察局</a></li>
+                            <li><a href="http://https--www--119--gov--cn-442e30d367.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家消防救援局">国家消防救援局</a></li>
+                            <li><a href="http://www--safe--gov--cn-318662ed65.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家外汇管理局">国家外汇管理局</a></li>
+                            <li><a href="http://https--www--nmpa--gov--cn-5e604c56ce.zipv6.gxzf.gov.cn/" target="_BLANK"
+                                    title="国家药品监督管理局">国家药品监督管理局</a></li>
+                        </div>
+                    </ul>
+                </div>
+                <div class="m_links_module m_links_module3">
+                    <span><img src="/eportal/uiFramework/commonResource/image/2024121914561289034.png">省（区、市）政府网站</span>
+                    <ul>
+                        <div>
+                            <li><a href="http://www.beijing.gov.cn/" target="_blank" title="北京">北京</a></li>
+                            <li><a href="http://www.tj.gov.cn/" target="_blank" title="天津">天津</a></li>
+                            <li><a href="http://www.hebei.gov.cn/" target="_blank" title="河北">河北</a></li>
+                            <li><a href="http://www.shanxi.gov.cn/" target="_blank" title="山西">山西</a></li>
+                            <li><a href="http://www.nmg.gov.cn/" target="_blank" title="内蒙古">内蒙古</a></li>
+                            <li><a href="http://www.ln.gov.cn" target="_blank" title="辽宁">辽宁</a></li>
+                            <li><a href="http://www.jl.gov.cn" target="_blank" title="吉林">吉林</a></li>
+                            <li><a href="http://www.hlj.gov.cn" target="_blank" title="黑龙江">黑龙江</a></li>
+                            <li><a href="http://www.shanghai.gov.cn/" target="_blank" title="上海">上海</a></li>
+                            <li><a href="http://www--jiangsu--gov--cn-8d54d7d87b.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="江苏">江苏</a></li>
+                            <li><a href="http://www.zj.gov.cn/" target="_blank" title="浙江">浙江</a></li>
+                            <li><a href="http://www.ah.gov.cn/" target="_blank" title="安徽">安徽</a></li>
+                            <li><a href="http://www--fujian--gov--cn-14acbf2058.zipv6.gxzf.gov.cn" target="_blank"
+                                    title="福建">福建</a></li>
+                            <li><a href="http://www.jiangxi.gov.cn/" target="_blank" title="江西">江西</a></li>
+                            <li><a href="http://www.shandong.gov.cn/" target="_blank" title="山东">山东</a></li>
+                            <li><a href="http://www.henan.gov.cn/" target="_blank" title="河南">河南</a></li>
+                            <li><a href="http://www.hubei.gov.cn/" target="_blank" title="湖北">湖北</a></li>
+                            <li><a href="http://www.hunan.gov.cn/" target="_blank" title="湖南">湖南</a></li>
+                            <li><a href="http://www.gd.gov.cn/" target="_blank" title="广东">广东</a></li>
+                            <li><a href="http://www.gxzf.gov.cn/" target="_blank" title="广西">广西</a></li>
+                            <li><a href="http://www.hainan.gov.cn/" target="_blank" title="海南">海南</a></li>
+                            <li><a href="http://www.cq.gov.cn/" target="_blank" title="重庆">重庆</a></li>
+                            <li><a href="http://www.sc.gov.cn" target="_blank" title="四川">四川</a></li>
+                            <li><a href="http://www.guizhou.gov.cn/" target="_blank" title="贵州">贵州</a></li>
+                            <li><a href="http://www.yn.gov.cn/" target="_blank" title="云南">云南</a></li>
+                            <li><a href="http://www.xizang.gov.cn/" target="_blank" title="西藏">西藏</a></li>
+                            <li><a href="http://www.shaanxi.gov.cn/" target="_blank" title="陕西">陕西</a></li>
+                            <li><a href="http://www.gansu.gov.cn/" target="_blank" title="甘肃">甘肃</a></li>
+                            <li><a href="http://www.nx.gov.cn/" target="_blank" title="宁夏">宁夏</a></li>
+                            <li><a href="http://www.qinghai.gov.cn/" target="_blank" title="青海">青海</a></li>
+                            <li><a href="http://www.xinjiang.gov.cn/" target="_blank" title="新疆">新疆</a></li>
+                            <li><a href="http://www--gov--hk-3643d7006e.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="香港">香港</a></li>
+                            <li><a href="http://https--www--gov--mo-03e63a3c61.zipv6.gxzf.gov.cn/zh-hant/"
+                                    target="_blank" title="澳门">澳门</a></li>
+                            <li><a href="" onclick="return false;" target="_blank" title="台湾">台湾</a></li>
+                            <li><a href="http://www--xjbt--gov--cn-e40654f731.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="新疆生产建设兵团">新疆生产建设兵团</a></li>
+                        </div>
+                    </ul>
+                </div>
+
+                <div class="m_links_module m_links_module4">
+                    <span><img src="/eportal/uiFramework/commonResource/image/2024121914561289034.png">自治区政府部门网站</span>
+                    <ul>
+                        <div>
+                            <p setedaria="true" tabindex="0">自治区人民政府组成部门</p>
+                            <li><a href="http://fgw.gxzf.gov.cn/" target="_blank" title="自治区发展改革委">自治区发展改革委</a></li>
+                            <li><a href="http://jyt.gxzf.gov.cn/" target="_blank" title="自治区教育厅">自治区教育厅</a></li>
+                            <li><a href="http://kjt.gxzf.gov.cn" target="_blank" title="自治区科技厅">自治区科技厅</a></li>
+                            <li><a href="http://gxt.gxzf.gov.cn/" target="_blank" title="自治区工业和信息化厅">自治区工业和信息化厅</a></li>
+                            <li><a href="http://mzw.gxzf.gov.cn/" target="_blank" title="自治区民宗委">自治区民宗委</a></li>
+                            <li><a href="http://gat.gxzf.gov.cn/" target="_blank" title="自治区公安厅">自治区公安厅</a></li>
+                            <li><a href="http://mzt.gxzf.gov.cn/" target="_blank" title="自治区民政厅">自治区民政厅</a></li>
+                            <li><a href="http://sft.gxzf.gov.cn" target="_blank" title="自治区司法厅">自治区司法厅</a></li>
+                            <li><a href="http://czt.gxzf.gov.cn/" target="_blank" title="自治区财政厅">自治区财政厅</a></li>
+                            <li><a href="http://rst.gxzf.gov.cn/" target="_blank" title="自治区人力资源社会保障厅">自治区人力资源社会保障厅</a>
+                            </li>
+                            <li><a href="http://dnr.gxzf.gov.cn" target="_blank" title="自治区自然资源厅">自治区自然资源厅</a></li>
+                            <li><a href="http://sthjt.gxzf.gov.cn/" target="_blank" title="自治区生态环境厅">自治区生态环境厅</a></li>
+                            <li><a href="http://zjt.gxzf.gov.cn" target="_blank" title="自治区住房城乡建设厅">自治区住房城乡建设厅</a></li>
+                            <li><a href="http://jtt.gxzf.gov.cn/" target="_blank" title="自治区交通运输厅">自治区交通运输厅</a></li>
+                            <li><a href="http://slt.gxzf.gov.cn/" target="_blank" title="自治区水利厅">自治区水利厅</a></li>
+                            <li><a href="http://nynct.gxzf.gov.cn/" target="_blank" title="自治区农业农村厅">自治区农业农村厅</a></li>
+                            <li><a href="http://swt.gxzf.gov.cn/" target="_blank" title="自治区商务厅">自治区商务厅</a></li>
+                            <li><a href="http://wlt.gxzf.gov.cn/" target="_blank" title="自治区文化和旅游厅">自治区文化和旅游厅</a></li>
+                            <li><a href="http://wsjkw.gxzf.gov.cn/" target="_blank" title="自治区卫生健康委">自治区卫生健康委</a></li>
+                            <li><a href="http://gjw.gxzf.gov.cn/" target="_blank" title="自治区退役军人事务厅">自治区退役军人事务厅</a></li>
+                            <li><a href="http://yjglt.gxzf.gov.cn/" target="_blank" title="自治区应急管理厅">自治区应急管理厅</a></li>
+                            <li><a href="http://sjt.gxzf.gov.cn/" target="_blank" title="自治区审计厅">自治区审计厅</a></li>
+                            <li><a href="http://wsb.gxzf.gov.cn" target="_blank" title="自治区外事办">自治区外事办</a></li>
+                            <p setedaria="true" tabindex="0">自治区人民政府直属特设机构</p>
+                            <li><a href="http://gzw.gxzf.gov.cn/" target="_blank" title="自治区国资委">自治区国资委</a></li>
+                            <p setedaria="true" tabindex="0">自治区人民政府直属机构</p>
+                            <li><a href="http://scjdglj.gxzf.gov.cn/" target="_blank" title="自治区市场监管局">自治区市场监管局</a></li>
+                            <li><a href="http://gbdsj.gxzf.gov.cn/" target="_blank" title="自治区广电局">自治区广电局</a></li>
+                            <li><a href="http://tyj.gxzf.gov.cn" target="_blank" title="自治区体育局">自治区体育局</a></li>
+                            <li><a href="http://tjj.gxzf.gov.cn/" target="_blank" title="自治区统计局">自治区统计局</a></li>
+                            <li><a href="http://lyj.gxzf.gov.cn/" target="_blank" title="自治区林业局">自治区林业局</a></li>
+                            <li><a href="http://https--gxjr--gov--cn-96941f2572.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="自治区地方金融监管局">自治区地方金融监管局</a></li>
+                            <li><a href="http://rfbhf.gxzf.gov.cn" target="_blank" title="自治区国动办">自治区国动办</a></li>
+                            <li><a href="http://dsjfzj.gxzf.gov.cn/" target="_blank" title="自治区大数据发展局">自治区大数据发展局</a>
+                            </li>
+                            <li><a href="http://jgswj.gxzf.gov.cn" target="_blank" title="自治区机关事务管理局">自治区机关事务管理局</a>
+                            </li>
+                            <li><a href="http://ybj.gxzf.gov.cn" target="_blank" title="自治区医保局">自治区医保局</a></li>
+                            <p setedaria="true" tabindex="0">自治区人民政府部门管理机构</p>
+                            <li><a href="http://lshwzcbj.gxzf.gov.cn/" target="_BLANK" title="自治区粮食和储备局">自治区粮食和储备局</a>
+                            </li>
+                            <li><a href="http://jyj.gxzf.gov.cn/" target="_BLANK" title="自治区监狱管理局">自治区监狱管理局</a></li>
+                            <li><a href="http://hyj.gxzf.gov.cn/" target="_BLANK" title="自治区海洋局">自治区海洋局</a></li>
+                            <li><a href="http://zyyj.gxzf.gov.cn/" target="_BLANK" title="自治区中医药局">自治区中医药局</a></li>
+                            <li><a href="http://jkj.gxzf.gov.cn/" target="_BLANK" title="自治区疾控局">自治区疾控局</a></li>
+                            <li><a href="http://yjj.gxzf.gov.cn/" target="_BLANK" title="自治区药监局">自治区药监局</a></li>
+                        </div>
+                    </ul>
+                </div>
+
+
+                <div class="m_links_module m_links_module5">
+                    <span><img src="/eportal/uiFramework/commonResource/image/2024121914561289034.png">广西各设区市网站</span>
+                    <ul>
+                        <div>
+                            <li><a href="http://www--nanning--gov--cn-11ab9da552.zipv6.gxzf.gov.cn" target="_blank"
+                                    title="南宁">南宁</a></li>
+                            <li><a href="http://www.liuzhou.gov.cn" target="_blank" title="柳州">柳州</a></li>
+                            <li><a href="http://www--guilin--gov--cn-8015c6380b.zipv6.gxzf.gov.cn" target="_blank"
+                                    title="桂林">桂林</a></li>
+                            <li><a href="http://www.wuzhou.gov.cn" target="_blank" title="梧州">梧州</a></li>
+                            <li><a href="http://www.beihai.gov.cn/" target="_blank" title="北海">北海</a></li>
+                            <li><a href="http://www.fcgs.gov.cn/" target="_blank" title="防城港">防城港</a></li>
+                            <li><a href="http://www.qinzhou.gov.cn/" target="_blank" title="钦州">钦州</a></li>
+                            <li><a href="http://www.gxgg.gov.cn/" target="_blank" title="贵港">贵港</a></li>
+                            <li><a href="http://www.yulin.gov.cn/" target="_blank" title="玉林">玉林</a></li>
+                            <li><a href="http://www.baise.gov.cn/" target="_blank" title="百色">百色</a></li>
+                            <li><a href="http://www.gxhz.gov.cn/" target="_blank" title="贺州">贺州</a></li>
+                            <li><a href="http://www.hechi.gov.cn/" target="_blank" title="河池">河池</a></li>
+                            <li><a href="http://www.laibin.gov.cn/" target="_blank" title="来宾">来宾</a></li>
+                            <li><a href="http://www.chongzuo.gov.cn/" target="_blank" title="崇左">崇左</a></li>
+                        </div>
+                    </ul>
+                </div>
+
+
+                <div class="m_links_module m_links_module6">
+                    <span><img
+                            src="/eportal/uiFramework/commonResource/image/2024121914561289034.png">广西各县（市、区）网站</span>
+                    <ul>
+                        <div>
+                            <p setedaria="true" tabindex="0">南宁市人民政府</p>
+                            <li><a href="http://www--gxhx--gov--cn-d8e1b35861.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="横州市人民政府">横州市人民政府</a></li>
+                            <li><a href="http://binyang--gov--cn-d37fe178fa.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="宾阳县人民政府">宾阳县人民政府</a></li>
+                            <li><a href="http://www--shanglin--gov--cn-37ddc240a2.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="上林县人民政府">上林县人民政府</a></li>
+                            <li><a href="http://www--nnms--gov--cn-9d7841d9b2.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="马山县人民政府">马山县人民政府</a></li>
+                            <li><a href="http://www--lax--gov--cn-8cf1148702.zipv6.gxzf.gov.cn" target="_blank"
+                                    title="隆安县人民政府">隆安县人民政府</a></li>
+                            <li><a href="http://www--nnxn--gov--cn-ccb7ba2e44.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="兴宁区人民政府">兴宁区人民政府</a></li>
+                            <li><a href="http://www--nnjn--gov--cn-de9f88479e.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="江南区人民政府">江南区人民政府</a></li>
+                            <li><a href="http://www.qingxiu.gov.cn/" target="_blank" title="青秀区人民政府">青秀区人民政府</a></li>
+                            <li><a href="http://www--xxtq--gov--cn-825bd2dbd7.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="西乡塘区人民政府">西乡塘区人民政府</a></li>
+                            <li><a href="http://www--yongning--gov--cn-43aa8b8913.zipv6.gxzf.gov.cn/index.html"
+                                    target="_blank" title="邕宁区人民政府">邕宁区人民政府</a></li>
+                            <li><a href="http://www--liangqing--gov--cn-b900e823d0.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="良庆区人民政府">良庆区人民政府</a></li>
+                            <li><a href="http://www--wuming--gov--cn-81e738d0e5.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="武鸣区人民政府">武鸣区人民政府</a></li>
+                            <p setedaria="true" tabindex="0">柳州市人民政府</p>
+                            <li><a href="http://www--czq--gov--cn-7e579b2407.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="城中区人民政府">城中区人民政府</a></li>
+                            <li><a href="http://www--yfq--gov--cn-283ec75d76.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="鱼峰区人民政府">鱼峰区人民政府</a></li>
+                            <li><a href="http://lbq--gov--cn-db7cbf68fd.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="柳北区人民政府">柳北区人民政府</a></li>
+                            <li><a href="http://www--liunan--gov--cn-2acc9e8e57.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="柳南区人民政府">柳南区人民政府</a></li>
+                            <li><a href="http://www--luzhai--gov--cn-48ec9aaabc.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="鹿寨县人民政府">鹿寨县人民政府</a></li>
+                            <li><a href="http://www--rongshui--gov--cn-c9facfa591.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="融水苗族自治县人民政府">融水苗族自治县人民政府</a></li>
+                            <li><a href="http://www--liucheng--gov--cn-dfdf4ff379.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="柳城县人民政府">柳城县人民政府</a></li>
+                            <li><a href="http://www--liujiang--gov--cn-855ac954d7.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="柳江区人民政府">柳江区人民政府</a></li>
+                            <li><a href="http://www--rongan--gov--cn-c7962c8b22.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="融安县人民政府">融安县人民政府</a></li>
+                            <li><a href="http://www--sjx--gov--cn-f5d895902d.zipv6.gxzf.gov.cn" target="_blank"
+                                    title="三江侗族自治县人民政府">三江侗族自治县人民政府</a></li>
+                            <p setedaria="true" tabindex="0">桂林市人民政府</p>
+                            <li><a href="http://www--glxfq--gov--cn-4e13ca1643.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="秀峰区人民政府">秀峰区人民政府</a></li>
+                            <li><a href="http://www--glsdcqzf--gov--cn-420b951a86.zipv6.gxzf.gov.cn" target="_blank"
+                                    title="叠彩区人民政府">叠彩区人民政府</a></li>
+                            <li><a href="http://www--glxsqzf--gov--cn-c71fd66c78.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="象山区人民政府">象山区人民政府</a></li>
+                            <li><a href="http://www--glgxq--gov--cn-d2c703503d.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="桂林国家高新区 七星区">桂林国家高新区 七星区</a></li>
+                            <li><a href="http://www--glyszf--gov--cn-3a4e552058.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="雁山区人民政府">雁山区人民政府</a></li>
+                            <li><a href="http://www--lingui--gov--cn-00b84b3296.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="临桂区人民政府">临桂区人民政府</a></li>
+                            <li><a href="http://www--yangshuo--gov--cn-d37f5eb61b.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="阳朔县人民政府">阳朔县人民政府</a></li>
+                            <li><a href="http://www--lcxzf--gov--cn-a7f5f1c6fd.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="灵川县人民政府">灵川县人民政府</a></li>
+                            <li><a href="http://www--glqz--gov--cn-e02661aedc.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="全州县人民政府">全州县人民政府</a></li>
+                            <li><a href="http://www--xazf--gov--cn-c7161b4a4d.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="兴安县人民政府">兴安县人民政府</a></li>
+                            <li><a href="http://www--yfzf--gov--cn-ccd5cd88c9.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="永福县人民政府">永福县人民政府</a></li>
+                            <li><a href="http://www--guanyang--gov--cn-bb3623f89a.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="灌阳县人民政府">灌阳县人民政府</a></li>
+                            <li><a href="http://www--glls--gov--cn-9d4e13ac24.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="龙胜各族自治县人民政府">龙胜各族自治县人民政府</a></li>
+                            <li><a href="http://www--ziyuan--gov--cn-604b4a3159.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="资源县人民政府">资源县人民政府</a></li>
+                            <li><a href="http://www--pingle--gov--cn-578f8971e5.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="平乐县人民政府">平乐县人民政府</a></li>
+                            <li><a href="http://www--lipu--gov--cn-be5f79617c.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="荔浦市人民政府">荔浦市人民政府</a></li>
+                            <li><a href="http://www--gongcheng--gov--cn-5c3fb94b4b.zipv6.gxzf.gov.cn/" target="_blank"
+                                    title="恭城瑶族自治县人民政府">恭城瑶族自治县人民政府</a></li>
+                            <p setedaria="true" tabindex="0">梧州市人民政府</p>
+                            <li><a href="http://www.wzwxq.gov.cn/" target="_blank" title="万秀区人民政府">万秀区人民政府</a></li>
+                            <li><a href="http://www.wzczq.gov.cn/" target="_blank" title="长洲区人民政府">长洲区人民政府</a></li>
+                            <li><a href="http://www.wzlxq.gov.cn/" target="_blank" title="龙圩区人民政府">龙圩区人民政府</a></li>
+                            <li><a href="http://www.cangwu.gov.cn/" target="_blank" title="苍梧县人民政府">苍梧县人民政府</a></li>
+                            <li><a href="http://www.tengxian.gov.cn/" target="_blank" title="藤县人民政府">藤县人民政府</a></li>
+                            <li><a href="http://www.gxms.gov.cn/" target="_blank" title="蒙山县人民政府">蒙山县人民政府</a></li>
+                            <li><a href="http://www.cenxi.gov.cn/" target="_blank" title="岑溪市人民政府">岑溪市人民政府</a></li>
+                            <p setedaria="true" tabindex="0">北海市人民政府</p>
+                            <li><a href="http://www.bhhc.gov.cn/" target="_blank" title="海城区人民政府">海城区人民政府</a></li>
+                            <li><a href="http://www.yinhai.gov.cn/" target="_blank" title="银海区人民政府">银海区人民政府</a></li>
+                            <li><a href="http://www.bhtsg.gov.cn/" target="_blank" title="铁山港区人民政府">铁山港区人民政府</a></li>
+                            <li><a href="http://www.hepu.gov.cn/" target="_blank" title="合浦县人民政府">合浦县人民政府</a></li>
+                            <p setedaria="true" tabindex="0">防城港市人民政府</p>
+                            <li><a href="http://www.shangsi.gov.cn/" target="_blank" title="上思县人民政府">上思县人民政府</a></li>
+                            <li><a href="http://www.dxzf.gov.cn/" target="_blank" title="东兴市人民政府">东兴市人民政府</a></li>
+                            <li><a href="http://www.gkq.gov.cn/" target="_blank" title="港口区人民政府">港口区人民政府</a></li>
+                            <li><a href="http://www.fcq.gov.cn/" target="_blank" title="防城区人民政府">防城区人民政府</a></li>
+                            <p setedaria="true" tabindex="0">钦州市人民政府</p>
+                            <li><a href="http://www.gxls.gov.cn/" target="_blank" title="灵山县人民政府">灵山县人民政府</a></li>
+                            <li><a href="http://www.gxpb.gov.cn/" target="_blank" title="浦北县人民政府">浦北县人民政府</a></li>
+                            <li><a href="http://www.gxqn.gov.cn/" target="_blank" title="钦南区人民政府">钦南区人民政府</a></li>
+                            <li><a href="http://www.qinbei.gov.cn/" target="_blank" title="钦北区人民政府">钦北区人民政府</a></li>
+                            <p setedaria="true" tabindex="0">贵港市人民政府</p>
+                            <li><a href="http://www.guiping.gov.cn/" target="_blank" title="桂平市人民政府">桂平市人民政府</a></li>
+                            <li><a href="http://www.pnxzf.gov.cn/" target="_blank" title="平南县人民政府">平南县人民政府</a></li>
+                            <li><a href="http://www.gbq.gov.cn/" target="_blank" title="港北区人民政府">港北区人民政府</a></li>
+                            <li><a href="http://www.gggn.gov.cn/" target="_blank" title="港南区人民政府">港南区人民政府</a></li>
+                            <li><a href="http://www.ggqt.gov.cn/" target="_blank" title="覃塘区人民政府">覃塘区人民政府</a></li>
+                            <p setedaria="true" tabindex="0">玉林市人民政府</p>
+                            <li><a href="http://www.beiliu.gov.cn/" target="_blank" title="北流市人民政府">北流市人民政府</a></li>
+                            <li><a href="http://www.rxzf.gov.cn/" target="_blank" title="容县人民政府">容县人民政府</a></li>
+                            <li><a href="http://www.luchuan.gov.cn/" target="_blank" title="陆川县人民政府">陆川县人民政府</a></li>
+                            <li><a href="http://www.bobai.gov.cn/" target="_blank" title="博白县人民政府">博白县人民政府</a></li>
+                            <li><a href="http://www.xingye.gov.cn/" target="_blank" title="兴业县人民政府">兴业县人民政府</a></li>
+                            <li><a href="http://www.ylyz.gov.cn/" target="_blank" title="玉州区人民政府">玉州区人民政府</a></li>
+                            <li><a href="http://www.ylfm.gov.cn/" target="_blank" title="福绵区人民政府">福绵区人民政府</a></li>
+                            <p setedaria="true" tabindex="0">百色市人民政府</p>
+                            <li><a href="http://www.bsyj.gov.cn/" target="_blank" title="右江区人民政府">右江区人民政府</a></li>
+                            <li><a href="http://www.gxty.gov.cn/" target="_blank" title="田阳区人民政府">田阳区人民政府</a></li>
+                            <li><a href="http://www.gxtd.gov.cn/" target="_blank" title="田东县人民政府">田东县人民政府</a></li>
+                            <li><a href="http://www.pingguo.gov.cn/" target="_blank" title="平果市人民政府">平果市人民政府</a></li>
+                            <li><a href="http://www.debao.gov.cn/" target="_blank" title="德保县人民政府">德保县人民政府</a></li>
+                            <li><a href="http://www.jingxi.gov.cn/" target="_blank" title="靖西市人民政府">靖西市人民政府</a></li>
+                            <li><a href="http://www.napo.gov.cn/" target="_blank" title="那坡县人民政府">那坡县人民政府</a></li>
+                            <li><a href="http://www.lingyun.gov.cn/" target="_blank" title="凌云县人民政府">凌云县人民政府</a></li>
+                            <li><a href="http://www.leye.gov.cn/" target="_blank" title="乐业县人民政府">乐业县人民政府</a></li>
+                            <li><a href="http://www.tianlin.gov.cn/" target="_blank" title="田林县人民政府">田林县人民政府</a></li>
+                            <li><a href="http://www.gxll.gov.cn/" target="_blank" title="隆林各族自治县人民政府">隆林各族自治县人民政府</a>
+                            </li>
+                            <li><a href="http://www.gxxl.gov.cn/" target="_blank" title="西林县人民政府">西林县人民政府</a></li>
+                            <p setedaria="true" tabindex="0">贺州市人民政府</p>
+                            <li><a href="http://www.gxbabu.gov.cn/" target="_blank" title="八步区人民政府">八步区人民政府</a></li>
+                            <li><a href="http://www.pinggui.gov.cn/" target="_blank" title="平桂区人民政府">平桂区人民政府</a></li>
+                            <li><a href="http://www.gxzp.gov.cn/" target="_blank" title="昭平县人民政府">昭平县人民政府</a></li>
+                            <li><a href="http://www.gxzs.gov.cn/" target="_blank" title="钟山县人民政府">钟山县人民政府</a></li>
+                            <li><a href="http://www.gxfc.gov.cn/" target="_blank" title="富川瑶族自治县人民政府">富川瑶族自治县人民政府</a>
+                            </li>
+                            <p setedaria="true" tabindex="0">河池市人民政府</p>
+                            <li><a href="http://www.jcj.gov.cn/" target="_blank" title="金城江区人民政府">金城江区人民政府</a></li>
+                            <li><a href="http://www.hcyzq.gov.cn/" target="_blank" title="宜州区人民政府">宜州区人民政府</a></li>
+                            <li><a href="http://www.luocheng.gov.cn/" target="_blank"
+                                    title="罗城仫佬族自治县人民政府">罗城仫佬族自治县人民政府</a></li>
+                            <li><a href="http://www.hjzf.gov.cn/" target="_blank" title="环江毛南族自治县人民政府">环江毛南族自治县人民政府</a>
+                            </li>
+                            <li><a href="http://www.gxnd.gov.cn/" target="_blank" title="南丹县人民政府">南丹县人民政府</a></li>
+                            <li><a href="http://www.tiane.gov.cn/" target="_blank" title="天峨县人民政府">天峨县人民政府</a></li>
+                            <li><a href="http://www.donglan.gov.cn/" target="_blank" title="东兰县人民政府">东兰县人民政府</a></li>
+                            <li><a href="http://www.bama.gov.cn/" target="_blank" title="巴马瑶族自治县人民政府">巴马瑶族自治县人民政府</a>
+                            </li>
+                            <li><a href="http://www.gxfsx.gov.cn/" target="_blank" title="凤山县人民政府">凤山县人民政府</a></li>
+                            <li><a href="http://www.duan.gov.cn/" target="_blank" title="都安瑶族自治县人民政府">都安瑶族自治县人民政府</a>
+                            </li>
+                            <li><a href="http://www.gxdh.gov.cn/" target="_blank" title="大化瑶族自治县人民政府">大化瑶族自治县人民政府</a>
+                            </li>
+                            <p setedaria="true" tabindex="0">来宾市人民政府</p>
+                            <li><a href="http://www.xingbin.gov.cn/" target="_blank" title="兴宾区人民政府">兴宾区人民政府</a></li>
+                            <li><a href="http://www.xiangzhou.gov.cn/" target="_blank" title="象州县人民政府">象州县人民政府</a></li>
+                            <li><a href="http://www.wuxuan.gov.cn/" target="_blank" title="武宣县人民政府">武宣县人民政府</a></li>
+                            <li><a href="http://www.gxxc.gov.cn/" target="_blank" title="忻城县人民政府">忻城县人民政府</a></li>
+                            <li><a href="http://www.jinxiu.gov.cn/" target="_blank" title="金秀瑶族自治县人民政府">金秀瑶族自治县人民政府</a>
+                            </li>
+                            <li><a href="http://www.heshanshi.gov.cn/" target="_blank" title="合山市人民政府">合山市人民政府</a></li>
+                            <p setedaria="true" tabindex="0">崇左市人民政府</p>
+                            <li><a href="http://www.fusui.gov.cn/" target="_blank" title="扶绥县人民政府">扶绥县人民政府</a></li>
+                            <li><a href="http://www.daxin.gov.cn/" target="_blank" title="大新县人民政府">大新县人民政府</a></li>
+                            <li><a href="http://www.tiandeng.gov.cn/" target="_blank" title="天等县人民政府">天等县人民政府</a></li>
+                            <li><a href="http://www.ningming.gov.cn/" target="_blank" title="宁明县人民政府">宁明县人民政府</a></li>
+                            <li><a href="http://www.longzhou.gov.cn/" target="_blank" title="龙州县人民政府">龙州县人民政府</a></li>
+                            <li><a href="http://www.pxszf.gov.cn/" target="_blank" title="凭祥市人民政府">凭祥市人民政府</a></li>
+                            <li><a href="http://www.czsjzq.gov.cn/" target="_blank" title="江州区人民政府">江州区人民政府</a></li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="g_foot_box clearfix">
+            <div class="m_foot_box clearfix">
+                <div class="m_foot f_clear Pub clearfix">
+                    <ul class="m_foot_info">
+                        <li class="m_info1">
+                            <p><a target="_blank" href="http://www.gxzf.gov.cn/wzsm/t10204498.shtml">网站声明</a><a
+                                    style=" margin-right: 0;cursor: default;" href="javascript:void(0)">网站维护建设</a></p>
+                            <p><a target="_blank" href="http://www.gxzf.gov.cn/dhdt/map.shtml">网站地图</a><a
+                                    href="javascript:void(0)" style="margin-right: 0;cursor: default;">0771-5895199</a>
+                            </p>
+                        </li>
+                        <li class="m_info3">
+                            <p class="qr_wechat">
+                                <img src="/eportal/uiFramework/commonResource/image/2024120422365568822.png"
+                                    alt="智桂通APP">
+                                <br>智桂通APP
+                            </p>
+                            <p class="qr_weibo">
+                                <img src="/eportal/uiFramework/commonResource/image/2024120422364671589.png"
+                                    alt="中国广西政府网微信公众号">
+                                <br>中国广西政府网微信公众号
+                            </p>
+                            <p class="qr_wechat">
+                                <img src="/eportal/uiFramework/commonResource/image/2024120422363699794.png"
+                                    alt="中国广西政府网微博">
+                                <br>中国广西政府网微博
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="m_organization">
+                        <span class="jiguan"><a
+                                href="http://bszs.conac.cn/sitename?method=show&id=09631AADE762753DE053022819AC4B3F"
+                                target="_blank"><img
+                                    src="/eportal/uiFramework/commonResource/image/2024120422372144924.png"></a></span>
+                        <span class="zhaocuo"><a
+                                href="https://zfwzgl.www.gov.cn/exposure/jiucuo.html?site_code=4500000123&url=http%3A%2F%2Fwww.gxzf.gov.cn%2Fhdjl%2Fjyjc%2Fmessage.shtm"
+                                target="_blank"><img
+                                    src="/eportal/uiFramework/commonResource/image/2024120422371236697.png"
+                                    alt=""></a></span>
+                        <!-- <div class="zhaocuo">
+          <div class="m_jiucuo" id="_span_jiucuo"><div id="_jiucuo_" sitecode="4500000123"></div></div>
+          <script src='https://zfwzgl.www.gov.cn/exposure/jiucuo.js'></script>
+        </div> -->
+                        <span class="jiucuo"><a href="http://www.gxzf.gov.cn/hdjl/jyjc/message.shtml"
+                                target="_blank"><img
+                                    src="/eportal/uiFramework/commonResource/image/2025091617544890204.png"
+                                    alt=""></a></span>
+                    </div>
+                </div>
+                <div class="m_foot_txt">
+                    <div class="foot_txt Pub  clearfix">
+                        <p>主办：广西壮族自治区人民政府办公厅</p>
+                        <p>承办：广西壮族自治区大数据发展局</p>
+                        <p><a href="http://beian.miit.gov.cn" target="_blank">桂ICP备 19004301号-2</a></p>
+                        <p class="gawb"><a
+                                href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=45010302001240"
+                                target="_blank"><img
+                                    src="/eportal/uiFramework/commonResource/image/2025092210221218125.png">桂公网安备
+                                45010302001240</a></p>
+                        <p>网站标识码：4500000123</p>
+                        <p style="margin-right: 0;">网站支持IPv6</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="gx_cbl">
+        <ul class="gx_toolbar">
+
+            <li><a href="https://wxxcx.zwfw.gxzf.gov.cn/jmopen1/webapp/html5/znwd/index.html#/" id="znwd"
+                    target="_blank" title="智能问答"><i class="gx_too1"><!--tubiao--></i> <span>智能问答</span> </a></li>
+            <li style="display:none;"><a href="https://zwfw.gxzf.gov.cn/gxzwfw/bjgslist/gotoBjgs.do?webId=1" id="bscx"
+                    target="_blank" title="办件公示"><i class="gx_too2"><!--tubiao--></i> <span>办件公示</span> </a></li>
+            <li id="cbl_zz">
+                <a href="javascript:;">
+                    <i class="gx_too3"><!--tubiao--></i>
+                    <span>查询</span>
+                </a>
+                <div class="zx_list_div zx_list_div1" id="zx_list_div" style="display: none;">
+                    <ul class="zx_list zx_list1">
+                        <li><a href="https://zwfw.gxzf.gov.cn/gxzwfw/bscx/show.do?webId=1&type=2" id="kdcx"
+                                target="_blank">快递查询</a></li>
+                        <li><a href="https://zwfw.gxzf.gov.cn/gxzwfw/bscx/show.do?webId=1&type=1" id="bjcx"
+                                style="    border-bottom: 0;" target="_blank">办件查询</a></li>
+                    </ul>
+                    <span class="sanjiao"><img
+                            src="/eportal/uiFramework/commonResource/image/2024121920494699529.png" /></span>
+                </div>
+
+            </li>
+            <li style="display:none;"><a
+                    href="https://wxxcx.zwfw.gxzf.gov.cn/aicc-im-base-web/aicc/im/index?appid=cs&tenantId=000000&comeType=pc&webId=1"
+                    id="ej_wlkd" target="_blank" title="我的预约"><i class="gx_too4"><!--tubiao--></i> <span>预约专区</span>
+                </a></li>
+            <li><a href="https://zwfw.gxzf.gov.cn/col/col27335/index.html?lat=22.817148&lng=108.375002" id="zwMap"
+                    target="_blank" title="政务地图"><i class="gx_too5"><!--tubiao--></i> <span>政务地图</span> </a></li>
+            <li style="display:none;"><a href="https://wxxcx.zwfw.gxzf.gov.cn/zwfw/gxzzzzqzwzx/xgzx/" target="_blank"
+                    title="政务资讯"><i class="gx_too6"><!--tubiao--></i> <span>政务资讯</span> </a></li>
+            <li id="cbl_zx">
+                <a href="javascript:;">
+                    <i class="gx_too7"><!--tubiao--></i>
+                    <span>咨询建议</span>
+                </a>
+                <div class="zx_list_div zx_list_div2" style="display: none;">
+                    <ul class="zx_list zx_list2">
+                        <li class="zhida">
+                            <span>直达12345</span>
+                            <img src="/eportal/uiFramework/commonResource/image/2026030517021842904.png">
+                        </li>
+                        <li><a data-old="https://zwfw.gxzf.gov.cn/gxzwfw/interact/totransact.do?actType=6&webId=1&v=1728615136531"
+                                href="https://zwfw.gxzf.gov.cn/gxzwfw/interact/totransact.do?actType=6&webId=1&v=1741832171948"
+                                id="zixun" target="_blank">我要咨询</a></li>
+                        <li><a data-old="https://zwfw.gxzf.gov.cn/gxzwfw/interact/totransact.do?actType=8&webId=1&v=1728470192872"
+                                href="https://zwfw.gxzf.gov.cn/gxzwfw/interact/totransact.do?actType=8&webId=1&v=1741832171948"
+                                id="jianyi" target="_blank">我要建议</a></li>
+                        <li><a data-old="https://zwfw.gxzf.gov.cn/gxzwfw/interact/totransact.do?actType=7&webId=1&v=1728470192872"
+                                href="https://zwfw.gxzf.gov.cn/gxzwfw/interact/totransact.do?actType=7&webId=1&v=1741832171948"
+                                id="tousu" style="    border-bottom: 0;" target="_blank">我要投诉</a></li>
+                    </ul>
+                    <span class="sanjiao2"><img
+                            src="/eportal/uiFramework/commonResource/image/2024121920494699529.png" /></span>
+                </div>
+            </li>
+
+            <li class="gx_cbl3"><a href="http://jszc.zwfw.gxzf.gov.cn:18080/YSGXDoucSupportWeb/?platform=ysyth"
+                    id="zxkf" target="_blank" title="在线技术支持时间：8:00-22:00
+技术支持电话：0771-5895199"><i class="gx_too8"><!--tubiao--></i> <span>技术支持</span> </a></li>
+            <li class="jiuban" target="_blank"><a href="https://zwfw.gxzf.gov.cn/?flag=old" id="qhjb" target="_blank"><i
+                        class="gx_too9"><!--tubiao--></i><span>切换旧版</span></a></li>
+            <li class="fold" id="shouqi">收起</li>
+        </ul>
+        <div class="gx_huad">
+            <p class="upTop"><!--滑动向上--></p>
+            <p class="fold" id="zhankai" style="display: none;">展开</p>
+        </div>
+    </div>
+    <script type="text/javascript" src="/eportal/uiFramework/commonResource/js/ycbl.js"></script>
+
+
+
+    <script type="text/javascript">
+        // 遍历每个 .m_links_module 元素
+        $(".m_links_module").each(function () {
+            // 为每个 .m_links_module 元素绑定点击事件
+            $(this).on("click", function (event) {
+                // 阻止事件冒泡
+                event.stopPropagation();
+
+                // 检查当前点击的元素是否已经有 'f_mask' 类
+                if ($(this).hasClass("f_mask")) {
+                    // 如果已经有，移除 'f_mask' 类并隐藏 <ul>
+                    $(this).removeClass("f_mask").find("ul").hide();
+                } else {
+                    // 如果没有，显示当前点击元素下的 <ul>，并隐藏其兄弟元素下的 <ul>
+                    $(this).find("ul").show().parent().siblings().find("ul").hide();
+                    // 为当前点击的元素添加 'f_mask' 类，并移除其兄弟元素的 'f_mask' 类
+                    $(this).addClass("f_mask").siblings().removeClass("f_mask");
+                }
+            });
+        });
+
+        // 在文档上绑定点击事件
+        $(document).on("click", function () {
+            // 移除所有兄弟元素的 'f_mask' 类
+            $(".m_links_module").removeClass("f_mask");
+            // 隐藏所有 <ul>
+            $(".m_links_module ul").hide();
+        });
+
+
+
+        $(function () {
+            //侧边栏第三方是否登录---s
+
+            $.ajax({
+                url: '/eportalapply/portlet/authUserLogin/getLoginUser',
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        //地址重新赋值
+                        var cbl_url = "https://tyrz.zwfw.gxzf.gov.cn/am/oauth2/authorize?service=initService&response_type=code&client_id=gxzwfw&client_secret=111111&scope=all&redirect_uri=http%3A//zwfw.gxzf.gov.cn/gxzwfw/member/login/tologin.do%3Fgotourl%3D";
+                        var url_cx = 'https://zwfw.gxzf.gov.cn/gxzwfw/phaseii/login/tologin.do?gotourl=';
+
+                        //$('#znwd').attr('href',cbl_url+'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Faicc-im-base-web%2Faicc%2Fim%2Findex%3Fappid%3Dcs%26tenantId%3D000000');
+                        $('#bscx').attr('href', cbl_url + 'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fgxzwfw%2Fbjgslist%2FgotoBjgs.do%3FwebId%3D1');
+                        $('#kdcx').attr('href', url_cx + 'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fgxzwfw%2Fbscx%2Fshow.do%3FwebId%3D1%26type%3D2');
+                        $('#bjcx').attr('href', url_cx + 'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fgxzwfw%2Fbscx%2Fshow.do%3FwebId%3D1%26type%3D1');
+                        $('#zwMap').attr('href', cbl_url + 'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fcol%2Fcol27335%2Findex.html%3Flat%3D22.817148%26lng%3D108.375002');
+                        // $('#zixun').attr('href',cbl_url+'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fgxzwfw%2Finteract%2Ftotransact.do%3FactType%3D6%26webId%3D1%26v%3D1741832171948');
+                        // $('#jianyi').attr('href',cbl_url+'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fgxzwfw%2Finteract%2Ftotransact.do%3FactType%3D8%26webId%3D1%26v%3D1741832171948');
+                        // $('#tousu').attr('href',cbl_url+'https%3A%2F%2Fzwfw.gxzf.gov.cn%2Fgxzwfw%2Finteract%2Ftotransact.do%3FactType%3D7%26webId%3D1%26v%3D1741832171948');
+                        $('#qhjb').attr('href', cbl_url + 'https%3A%2F%2Fzwfw.gxzf.gov.cn%2F%3Fflag%3Dold');
+
+
+                        //好差评
+                        $('#hcp_index').attr('href', cbl_url + 'http%3A//zwfw.gxzf.gov.cn%2Fgxpjfxgl%2FevaluationStat%2Fshow.do%3FaisiteOutPageId%3D584358942b924f7eae4fdfae77587abb');
+
+                        //办事指南-“办不成事”反馈
+                        $('#bbcsfk').attr('href', cbl_url + 'https%3A%2F%2Fwxxcx.zwfw.gxzf.gov.cn%2Fjmopen1%2Fwebapp%2Fhtml5%2Fbbcs%2Findex.html');
+
+                        //首页-特色创新
+                        $('.tscx_href').each(function (index, element) {
+                            let currentHref = $(element).attr('href');
+                            let current_url = encodeURIComponent(currentHref);
+                            $(element).attr('href', cbl_url + current_url);
+                        });
+
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error: " + error);
+                }
+            });
+            //侧边栏第三方是否登录---e
+
+        })
+    </script>
+    <script>
+        //热门服务 加id
+        $('.select-options div').each(function (index, item) {
+            $(item).attr({ 'id': 'select-options_' + index });
+        });
+
+        //部门点击查看
+        $(document).ready(function () {
+            $('.Ul>li').each(function (index, item) {
+                $(item).attr('id', 'naw_' + index);
+            });
+            $('#naw_3').append($('#gx_bumen'));
+            $('#naw_3 a').on('click', function (event) {
+                event.preventDefault();
+            });
+        });
+    </script>
+    <div style="display:none" easysite="easysiteHiddenDiv">
+        <input id="contextPath" value="/eportal" type="hidden" />
+        <input id="isOnlyUseCkeditorSourceMode" type="hidden" />
+        <input id="eportalCurrentHomePageId" value="3cd3d403fb4443d5becb61375b2b093a" type="hidden" />
+        <input id="eprotalCurrentPageId" value="d0144e0713974fa886c580945ed17165" type="hidden" />
+        <input id="eprotalCurrentPageName" value="部门服务" type="hidden" />
+        <input id="eprotalCurrentSiteId" value="7e9e0cde6cd944dfadc278f9885edc03" type="hidden" />
+        <input id="eprotalCurrentSiteName" value="正式-广西数字政务一体化平台-勿删" type="hidden" />
+        <input id="eprotalCurrentSiteEnname" value="zdcs" type="hidden" />
+        <input id="eprotalCurrentSiteType" value="WEB" type="hidden" />
+        <input id="eprotalCurrentSiteHideMaskLayer" value="no" type="hidden" />
+        <input id="eprotalCurrentArticleKey" value="" type="hidden" />
+        <input id="eprotalCurrentArticleTitle" value="" type="hidden" />
+        <input id="eprotalCurrentColumnId" value="" type="hidden" />
+        <input id="eprotalCurrentArticleUrl" value="" type="hidden" />
+        <input id="isStaticRequest" value="" type="hidden" />
+        <input id="aisiteDevice" value="pc" type="hidden" />
+        <input id="isOpenStaticPageList" value="false" type="hidden" />
+        <input id="defaultPublishPage" value="3" type="hidden" />
+        <input id="eprotalMsgDataId" value="" type="hidden" />
+        <input id="eprotalMsgboardId" value="" type="hidden" />
+        <input type='hidden' id='eportalappPortletId' value="3">
+        <input type="hidden" id="currentLoginMemberId" value="" />
+        <input type="hidden" id="currentLoginMemberName" value="" />
+        <input type="hidden" id="aisiteIsWebApp" value="off" />
+        <input type="hidden" id="portalLastRequestUrl" value="" />
+        <input type="hidden" id="easysiteParamKey" value="1770200043817" />
+        <input type="hidden" id="isOpenEasysiteToken" value="true" />
+        <input type="hidden" id="isOpenSiteVisitHotClick" value="yes" />
+        <div id="portletPersonalityMenuListJsonDiv"></div>
+        <input type="hidden" id="currentLoginUserLoginName" />
+        <input type="hidden" id="currentLoginUserLoginId" />
+        <input type="hidden" id="currentLoginUserIsSuperAdmin" />
+        <input type="hidden" id="eprotalDataResId" />
+        <input type="hidden" id="eprotalDataApiResId" />
+        <input type="hidden" id="eportalItemDetailId" />
+        <input id="eportalGovItemPcDetailPageId" value="d0349fe94d1c4d139b006db643fb9e52" type="hidden" />
+        <input id="eportalGovItemMobileDetailPageId" value="29dd58fe4a244725b5ead6a866aa79ba" type="hidden" />
+        <input id="eportalGovItemDeptPageId" value="d0144e0713974fa886c580945ed17165" type="hidden" />
+        <input id="eportalGovItemRightsDetailPageId" value="5bcf736478ae4bceb2bb0250f7e0a15d" type="hidden" />
+        <input id="eportalGovItemRegionCode" value="3113105254" type="hidden" />
+        <input id="eportalGovDefaultRegionRootName" value="广西壮族自治区" type="hidden" />
+        <input id="eportalGovItemDeptRdgcode" value="450600000000" type="hidden" />
+        <input id="eportalAisiteLocale" value="zh_CN" type="hidden" />
+
+        <script type="text/javascript" src="/eportal/uiFramework/js/counting/chanelCounting.js?a=2425"></script>
+        <script type="text/javascript" src="/eportal/uiFramework/js/counting/ea.js?random=2425"></script>
+    </div>
+</body>
+
+</html>

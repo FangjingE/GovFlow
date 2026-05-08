@@ -1,8 +1,12 @@
-"""单测会加载本地 .env；强制使用 Mock LLM，避免烟测与 HTTP 用例打真实大模型外网。"""
+"""单测：清除配置缓存，避免 .env 与 monkeypatch 串味。"""
 
-from __future__ import annotations
+import pytest
 
-import os
+from govflow.config import get_settings
 
-# 须在任何 `import govflow` 之前
-os.environ["GOVFLOW_LLM_PROVIDER"] = "mock"
+
+@pytest.fixture(autouse=True)
+def _clear_settings_cache() -> None:
+    get_settings.cache_clear()
+    yield
+    get_settings.cache_clear()

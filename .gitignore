@@ -8,4 +8,6 @@ __pycache__/
 dist/
 build/
 .env
+# Chroma 本地持久化（可含嵌入索引，勿提交）
+data/chroma/
 *.egg

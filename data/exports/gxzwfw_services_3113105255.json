@@ -1,0 +1,183 @@
+{
+  "source_platform": "gxzwfw",
+  "source_region_code": "3113105255",
+  "list_page_id": "d0144e0713974fa886c580945ed17165",
+  "detail_page_id": "d0349fe94d1c4d139b006db643fb9e52",
+  "total_items": 1,
+  "failed_items": 0,
+  "items": [
+    {
+      "service": {
+        "service_name": "慈善组织变更捐赠财产用途备案",
+        "department": "防城港市民政局",
+        "service_object": null,
+        "promise_days": 2,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "提交材料：慈善组织变更捐赠财产用途方案。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理,快递申请",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区江山大道市民中心三楼综合窗口\n...展开\n更多地点",
+        "handle_time": "工作日：上午9:00-12:00,下午13:30-16:30,(法定节假日除外）...展开",
+        "consult_way": "0770-2821712/2823312...展开",
+        "complaint_way": "0770-2883116...展开",
+        "query_way": "现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105255",
+        "source_item_id": "e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+        "raw_payload": {
+          "list_item": {
+            "id": "4f792b5c-2d28-474b-b1dc-5205c33a9f61",
+            "parentId": "-1",
+            "name": "慈善组织变更捐赠财产用途备案",
+            "obj": {
+              "id": "e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+              "itemName": "慈善组织变更捐赠财产用途备案",
+              "implementSubjectName": "防城港市民政局",
+              "applyWay": "1,2,3",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1117228140374&userType=legal",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "10",
+              "applyExpress": "a75f7a1e-49d3-4397-91a1-a76897c45cf4"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "47ff608a-3fc1-43cd-a0cd-1569c52a50b5",
+              "itemDetailId": "e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+              "materialName": "慈善组织变更捐赠财产用途方案",
+              "materialType": "3",
+              "sourceChannel": "10",
+              "materialNum": 2,
+              "necessity": 1,
+              "materialFormal": "1",
+              "blankFilePath": "",
+              "sampleFilePath": "",
+              "acceptStandard": "填写完整，内容一致不自相矛盾",
+              "fillNotice": "无",
+              "remark": "",
+              "createDate": "2025-11-10 23:37:08",
+              "createUserId": "c4fc9ef4-82df-4546-b1ed-5aa6de949eb1",
+              "updateDate": "2025-11-10 23:37:08",
+              "updateUserId": "1",
+              "isNeedSign": 1,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 1,
+              "paperFormat": "A4",
+              "paperNum": "4",
+              "isRelationCerttype": 0,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 2,
+              "signRequirement": "盖章",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 1
+            }
+          ],
+          "detail_extract": {
+            "source_title": "慈善组织变更捐赠财产用途备案",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "慈善组织变更捐赠财产用途方案",
+          "is_required": true,
+          "material_form": "纸质",
+          "original_num": 2,
+          "copy_num": 2,
+          "note": "类型：原件和复印件\n来源渠道：申请人自备\n填报须知：无\n受理标准：填写完整，内容一致不自相矛盾\n纸质规格：A4\n是否需要签章：是\n签名签章要求：盖章"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：受理或补正...展开\n审查标准：对申请当场审查作出处理，申请材料齐全，符合法定形式,当场决定受理；申请材料齐全，当场一次性告知申请人补正的全部内容。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：按照法定程序审查并作出决定...展开\n审查标准：申请材料齐全且符合法定形式，达到许可条件的，出具准予许可批文。达不到许可条件的，出具不予许可文书。...展开",
+          "sort": 2
+        }
+      ],
+      "vector_text": "事项名称：慈善组织变更捐赠财产用途备案\n办理部门：防城港市民政局\n服务对象：\n受理条件：提交材料：慈善组织变更捐赠财产用途方案。...展开\n办理形式：窗口办理,网上办理,快递申请\n办理地点：防城港市港口区江山大道市民中心三楼综合窗口\n...展开\n更多地点\n办理时间：工作日：上午9:00-12:00,下午13:30-16:30,(法定节假日除外）...展开\n申请材料：慈善组织变更捐赠财产用途方案\n办理流程：收件与受理；审查与决定",
+      "raw_payload": {
+        "list_item": {
+          "id": "4f792b5c-2d28-474b-b1dc-5205c33a9f61",
+          "parentId": "-1",
+          "name": "慈善组织变更捐赠财产用途备案",
+          "obj": {
+            "id": "e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+            "itemName": "慈善组织变更捐赠财产用途备案",
+            "implementSubjectName": "防城港市民政局",
+            "applyWay": "1,2,3",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1117228140374&userType=legal",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "10",
+            "applyExpress": "a75f7a1e-49d3-4397-91a1-a76897c45cf4"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "47ff608a-3fc1-43cd-a0cd-1569c52a50b5",
+            "itemDetailId": "e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+            "materialName": "慈善组织变更捐赠财产用途方案",
+            "materialType": "3",
+            "sourceChannel": "10",
+            "materialNum": 2,
+            "necessity": 1,
+            "materialFormal": "1",
+            "blankFilePath": "",
+            "sampleFilePath": "",
+            "acceptStandard": "填写完整，内容一致不自相矛盾",
+            "fillNotice": "无",
+            "remark": "",
+            "createDate": "2025-11-10 23:37:08",
+            "createUserId": "c4fc9ef4-82df-4546-b1ed-5aa6de949eb1",
+            "updateDate": "2025-11-10 23:37:08",
+            "updateUserId": "1",
+            "isNeedSign": 1,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 1,
+            "paperFormat": "A4",
+            "paperNum": "4",
+            "isRelationCerttype": 0,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 2,
+            "signRequirement": "盖章",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 1
+          }
+        ],
+        "detail_extract": {
+          "source_title": "慈善组织变更捐赠财产用途备案",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=e19e8b11-a5c7-4430-86f9-9b4480dbe7e6",
+          "parent_name": null
+        }
+      }
+    }
+  ]
+}

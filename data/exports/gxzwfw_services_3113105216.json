@@ -1,0 +1,366 @@
+{
+  "source_platform": "gxzwfw",
+  "source_region_code": "3113105216",
+  "list_page_id": "d0144e0713974fa886c580945ed17165",
+  "detail_page_id": "d0349fe94d1c4d139b006db643fb9e52",
+  "total_items": 2,
+  "failed_items": 0,
+  "items": [
+    {
+      "service": {
+        "service_name": "退役军人服务“一件事”",
+        "department": "防城港市退役军人事务局",
+        "service_object": null,
+        "promise_days": 25,
+        "legal_days": 30,
+        "on_site_times": 1,
+        "is_charge": false,
+        "accept_condition": "安置地在广西区内的以自主就业方式退出现役的军士、义务兵。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区江山大道88号，市政务服务中心一楼高效办成一件事综合窗口\n...展开\n更多地点",
+        "handle_time": "工作日：上午9∶00—12∶00，下午13∶30—16∶30，（法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-3261609...展开",
+        "complaint_way": "监督投诉号码：0770-2883116，投诉地址：防城港市港口区江山大道88号市政务服务中心一楼投诉室。...展开",
+        "query_way": "电话查询,现场查询,网上查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105216",
+        "source_item_id": "c145e8fa-b02e-41bf-be2c-a1f00986948d",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=c145e8fa-b02e-41bf-be2c-a1f00986948d",
+        "raw_payload": {
+          "list_item": {
+            "id": "c7f3fd69-ca0a-4d2f-9c37-c1734a6aa1f9",
+            "parentId": "-1",
+            "name": "退役军人服务“一件事”",
+            "obj": {
+              "id": "c145e8fa-b02e-41bf-be2c-a1f00986948d",
+              "itemName": "退役军人服务“一件事”",
+              "implementSubjectName": "防城港市退役军人事务局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=union&matterId=11170541008000",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "16",
+              "applyExpress": "c01590bb-977f-4bf2-8323-e48e1bb74bad"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "2e2f9cbb-55af-4185-950a-0d8aa0c33ad6",
+              "itemDetailId": "c145e8fa-b02e-41bf-be2c-a1f00986948d",
+              "materialName": "退伍证",
+              "materialType": "2",
+              "sourceChannel": "10",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "2",
+              "blankFilePath": "",
+              "sampleFilePath": "",
+              "acceptStandard": "真实有效准确",
+              "fillNotice": "真实有效准确",
+              "remark": "",
+              "createDate": "2026-03-24 11:12:13",
+              "createUserId": "317256d3-b8d9-45a5-bd61-5daf8dbb256b",
+              "updateDate": "2026-03-24 11:12:13",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "无",
+              "paperNum": "2",
+              "isRelationCerttype": 0,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 1,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "退役军人服务“一件事”",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=c145e8fa-b02e-41bf-be2c-a1f00986948d",
+            "parent_name": null
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "退伍证",
+          "is_required": true,
+          "material_form": "电子",
+          "original_num": 1,
+          "copy_num": 1,
+          "note": "类型：复印件\n来源渠道：申请人自备\n填报须知：真实有效准确\n受理标准：真实有效准确\n纸质规格：无\n是否需要签章：否"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：符合条件，予以受理。\n不符合条件，出具不予受理通知书并告知原因。...展开\n审查标准：退役军人服务“一件事”申请表、退伍证、退出现役行政介绍信、军人退役养老（医疗）保险转移凭证、转业安置落户等申请材料齐全且要素填写完整。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：符合条件的，受理退役报到并登记相关信息，办理相关手续。不符合条件的，应一次性告知其相关事项。...展开\n审查标准：退役报到的审查标准：申请材料内容无误。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：1.退役报到、自主就业退役士兵一次性经济补助金的给付办结通知。\n2.户口簿\n3.居民身份证\n4.城乡居民参保登记、灵活就业人员基本医疗保险申报、跨省及其他流动人员医疗保险关系转移接续办结通知。\n5.社会保障卡\n6.军地养老保险关系转移接续申请办结通知。...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：退役军人服务“一件事”\n办理部门：防城港市退役军人事务局\n服务对象：\n受理条件：安置地在广西区内的以自主就业方式退出现役的军士、义务兵。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市港口区江山大道88号，市政务服务中心一楼高效办成一件事综合窗口\n...展开\n更多地点\n办理时间：工作日：上午9∶00—12∶00，下午13∶30—16∶30，（法定节假日除外）...展开\n申请材料：退伍证\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "c7f3fd69-ca0a-4d2f-9c37-c1734a6aa1f9",
+          "parentId": "-1",
+          "name": "退役军人服务“一件事”",
+          "obj": {
+            "id": "c145e8fa-b02e-41bf-be2c-a1f00986948d",
+            "itemName": "退役军人服务“一件事”",
+            "implementSubjectName": "防城港市退役军人事务局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=union&matterId=11170541008000",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "16",
+            "applyExpress": "c01590bb-977f-4bf2-8323-e48e1bb74bad"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "2e2f9cbb-55af-4185-950a-0d8aa0c33ad6",
+            "itemDetailId": "c145e8fa-b02e-41bf-be2c-a1f00986948d",
+            "materialName": "退伍证",
+            "materialType": "2",
+            "sourceChannel": "10",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "2",
+            "blankFilePath": "",
+            "sampleFilePath": "",
+            "acceptStandard": "真实有效准确",
+            "fillNotice": "真实有效准确",
+            "remark": "",
+            "createDate": "2026-03-24 11:12:13",
+            "createUserId": "317256d3-b8d9-45a5-bd61-5daf8dbb256b",
+            "updateDate": "2026-03-24 11:12:13",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "无",
+            "paperNum": "2",
+            "isRelationCerttype": 0,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 1,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "退役军人服务“一件事”",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=c145e8fa-b02e-41bf-be2c-a1f00986948d",
+          "parent_name": null
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+        "department": "防城港市退役军人事务局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "各级退役军人事务部门对移交政府安置的退役士兵档案复审时发现材料作假的；收到举报电话或举报材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市防城区金花茶大道560号人社大楼2楼\n...展开\n更多地点",
+        "handle_time": "工作日，上午8：00-12：00，下午15：00-17：50，法定节假日除外。...展开",
+        "consult_way": "咨询电话:0770-3232182...展开",
+        "complaint_way": "监督投诉电话:0770-2883116...展开",
+        "query_way": "电话查询,现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105216",
+        "source_item_id": "6394dda3-0b21-457e-8733-18be6e901877",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=6394dda3-0b21-457e-8733-18be6e901877",
+        "raw_payload": {
+          "list_item": {
+            "id": "cdfaca9e5077f8b90ddb2574f84a3d85",
+            "parentId": "f224e61a-e87e-47c4-a17f-b58576034758",
+            "name": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+            "obj": {
+              "id": "6394dda3-0b21-457e-8733-18be6e901877",
+              "itemName": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+              "implementSubjectName": "防城港市退役军人事务局",
+              "applyWay": "1,2",
+              "onlineUrl": "http://zwfw.gxzf.gov.cn/gxzwfw/member/login/tologin.do?gotourl=http%3A//zwfw.gxzf.gov.cn/gxzxsb/Apply/tostep1.do?sxbm=11450600MB17275861345102400100001",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "10",
+              "applyExpress": "358cdd44-3fdf-4837-a8cd-031b0a231a60"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "b4554d0c-184f-468c-b31c-f7480c885c3b",
+              "itemDetailId": "6394dda3-0b21-457e-8733-18be6e901877",
+              "materialName": "举证材料",
+              "materialType": "1",
+              "sourceChannel": "10",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "1",
+              "blankFilePath": "null",
+              "sampleFilePath": "null",
+              "acceptStandard": "1．申请人应如实填写各项内容，对提交材料的真实性、完整性负责，不得虚构、伪造或编造事实；2．文书应使用钢笔和能够长期保持字迹的墨水填写或打印，做到字迹清楚、文字规范、文面整洁，不得涂改。文书设定的栏目，应逐项填写完整、准确；3．申请材料中的表格应使用国际标准A4或A3型纸对开正面印制；4．相关申请表格应由申请相对人、申请单位填写并本人签名、加盖单位公章，没有单位印章的，应由其单位负责人签名。",
+              "fillNotice": "申请人应当如实提交有关材料和反映真实情况，并对其申请材料实质内容的真实性负责。",
+              "remark": "无",
+              "createDate": "2025-08-09 00:43:19",
+              "createUserId": "52200c8a-c131-422d-abeb-30bb1bfe553d",
+              "updateDate": "2025-08-09 00:43:19",
+              "updateUserId": "1",
+              "isNeedSign": 1,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "A4",
+              "paperNum": "1",
+              "isRelationCerttype": 0,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "本人签名",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=6394dda3-0b21-457e-8733-18be6e901877",
+            "parent_name": "取消弄虚作假骗取安置的退役士兵安置待遇"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "举证材料",
+          "is_required": true,
+          "material_form": "纸质",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：申请人自备\n填报须知：申请人应当如实提交有关材料和反映真实情况，并对其申请材料实质内容的真实性负责。\n受理标准：1．申请人应如实填写各项内容，对提交材料的真实性、完整性负责，不得虚构、伪造或编造事实；2．文书应使用钢笔和能够长期保持字迹的墨水填写或打印，做到字迹清楚、文字规范、文面整洁，不得涂改。文书设定的栏目，应逐项填写完整、准确；3．申请材料中的表格应使用国际标准A4或A3型纸对开正面印制；4．相关申请表格应由申请相对人、申请单位填写并本人签名、加盖单位公章，没有单位印章的，应由其单位负责人签名。\n备注：无\n纸质规格：A4\n是否需要签章：是\n签名签章要求：本人签名"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：受理或不受理...展开\n审查标准：各级退役军人事务部门结合部队核查意见提出受理意见...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：提出意见建议...展开\n审查标准：审查方式：书面审查。 审查标准：依据部队核查意见，结合相关材料，提出意见建议...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：取消安置待遇的，各级退役军人事务部门通知退役士兵所在部队档案主管部门并退回档案材料；不予取消安置待遇的，继续办理安置手续。对收到举报材料的，应告知举报人办理结果...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）\n办理部门：防城港市退役军人事务局\n服务对象：\n受理条件：各级退役军人事务部门对移交政府安置的退役士兵档案复审时发现材料作假的；收到举报电话或举报材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市防城区金花茶大道560号人社大楼2楼\n...展开\n更多地点\n办理时间：工作日，上午8：00-12：00，下午15：00-17：50，法定节假日除外。...展开\n申请材料：举证材料\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "cdfaca9e5077f8b90ddb2574f84a3d85",
+          "parentId": "f224e61a-e87e-47c4-a17f-b58576034758",
+          "name": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+          "obj": {
+            "id": "6394dda3-0b21-457e-8733-18be6e901877",
+            "itemName": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+            "implementSubjectName": "防城港市退役军人事务局",
+            "applyWay": "1,2",
+            "onlineUrl": "http://zwfw.gxzf.gov.cn/gxzwfw/member/login/tologin.do?gotourl=http%3A//zwfw.gxzf.gov.cn/gxzxsb/Apply/tostep1.do?sxbm=11450600MB17275861345102400100001",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "10",
+            "applyExpress": "358cdd44-3fdf-4837-a8cd-031b0a231a60"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "b4554d0c-184f-468c-b31c-f7480c885c3b",
+            "itemDetailId": "6394dda3-0b21-457e-8733-18be6e901877",
+            "materialName": "举证材料",
+            "materialType": "1",
+            "sourceChannel": "10",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "1",
+            "blankFilePath": "null",
+            "sampleFilePath": "null",
+            "acceptStandard": "1．申请人应如实填写各项内容，对提交材料的真实性、完整性负责，不得虚构、伪造或编造事实；2．文书应使用钢笔和能够长期保持字迹的墨水填写或打印，做到字迹清楚、文字规范、文面整洁，不得涂改。文书设定的栏目，应逐项填写完整、准确；3．申请材料中的表格应使用国际标准A4或A3型纸对开正面印制；4．相关申请表格应由申请相对人、申请单位填写并本人签名、加盖单位公章，没有单位印章的，应由其单位负责人签名。",
+            "fillNotice": "申请人应当如实提交有关材料和反映真实情况，并对其申请材料实质内容的真实性负责。",
+            "remark": "无",
+            "createDate": "2025-08-09 00:43:19",
+            "createUserId": "52200c8a-c131-422d-abeb-30bb1bfe553d",
+            "updateDate": "2025-08-09 00:43:19",
+            "updateUserId": "1",
+            "isNeedSign": 1,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "A4",
+            "paperNum": "1",
+            "isRelationCerttype": 0,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "本人签名",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "取消弄虚作假骗取安置的退役士兵安置待遇（设区的市级）",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=6394dda3-0b21-457e-8733-18be6e901877",
+          "parent_name": "取消弄虚作假骗取安置的退役士兵安置待遇"
+        }
+      }
+    }
+  ]
+}

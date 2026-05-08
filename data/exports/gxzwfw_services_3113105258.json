@@ -1,0 +1,361 @@
+{
+  "source_platform": "gxzwfw",
+  "source_region_code": "3113105258",
+  "list_page_id": "d0144e0713974fa886c580945ed17165",
+  "detail_page_id": "d0349fe94d1c4d139b006db643fb9e52",
+  "total_items": 2,
+  "failed_items": 0,
+  "items": [
+    {
+      "service": {
+        "service_name": "用气过户",
+        "department": "防城港中燃城市燃气发展有限公司",
+        "service_object": null,
+        "promise_days": 3,
+        "legal_days": 3,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "户内燃气设施符合安全使用条件，无安全隐患。...展开",
+        "general_scope": "全市",
+        "handle_form": "窗口办理,网上办理,快递申请",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区江山大道88号市政务服务中心一楼防城港中燃城市燃气发展有限公司获得“水电气”专窗\n...展开\n更多地点",
+        "handle_time": "工作日：上午9∶00—12∶00，下午13∶30—16∶30，（法定节假日除外）...展开",
+        "consult_way": "电话咨询：0770-2870105、0770-6161333、0770-2825999、0770-95007...展开",
+        "complaint_way": "监督投诉电话：0770-2883116、0770-2828682...展开",
+        "query_way": "电话查询,现场查询,网上查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105258",
+        "source_item_id": "5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+        "raw_payload": {
+          "list_item": {
+            "id": "75d8e31f240c6bc9d3751db042c9914e",
+            "parentId": "a2b0c0b8-b3e3-4c0f-887f-69c08bae3650",
+            "name": "用气过户",
+            "obj": {
+              "id": "5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+              "itemName": "用气过户",
+              "implementSubjectName": "防城港中燃城市燃气发展有限公司",
+              "applyWay": "1,2,3",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1113536592183&syncUserType=true",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "20",
+              "applyExpress": "4946a8a2-1c42-4de6-a98e-54b858def77c"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "ea0c9b6a-8d83-4937-9ada-0237c6a7bbb3",
+              "itemDetailId": "5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+              "materialName": "不动产证明",
+              "materialType": "4",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "4",
+              "blankFilePath": "",
+              "sampleFilePath": "",
+              "acceptStandard": "填写完整，内容真实有效",
+              "fillNotice": "线下使用纸质材料，线上办理由申请人填报房产信息自动核验",
+              "remark": "",
+              "createDate": "2025-04-12 00:50:28",
+              "createUserId": "98197c8c-8c69-48c7-b6ab-4818b3466686",
+              "updateDate": "2025-04-12 00:50:28",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 1,
+              "paperFormat": "A4",
+              "paperNum": "2",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 1,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "用气过户",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+            "parent_name": "获得用气服务"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "不动产证明",
+          "is_required": true,
+          "material_form": "纸质或电子",
+          "original_num": 1,
+          "copy_num": 1,
+          "note": "类型：原件或复印件\n来源渠道：政府部门核发\n填报须知：线下使用纸质材料，线上办理由申请人填报房产信息自动核验\n受理标准：填写完整，内容真实有效\n纸质规格：A4\n是否需要签章：否"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：同意...展开\n审查标准：审查方式及标准： 一、审查方式：书面审查。标准如下： （一）申请书（表）的审查标准 1.申请人应如实填写各项内容，对提交材料的真实性、完整性负责，不得虚构、伪造、编造事实； 2.文书应使用钢笔和能够长期保持字迹的墨水填写、打印，做到字迹清楚、文字规范、文面整洁，不得涂改。文书设定的栏目，应逐项填写完整、准确； 3.申请材料中的表格应使用国际标准A4纸对开正面印制； 4.申请表格应由申请相对人、申请单位填写并本人签名、加盖单位公章。 （二）复印件的审查标准 1.提交的材料应使用国际标准A4型纸打印、复印并按照A4型纸的规格装订； 2.所提交的复印件需原件核验； 3.申请单位（个人）提供的材料应齐全并符合法定形式。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：符合条件，予通过，并打印结果...展开\n审查标准：审查方式及标准： 一、审查方式：书面审查。标准如下： （一）申请书（表）的审查标准 1.申请人应如实填写各项内容，对提交材料的真实性、完整性负责，不得虚构、伪造、编造事实； 2.文书应使用钢笔和能够长期保持字迹的墨水填写、打印，做到字迹清楚、文字规范、文面整洁，不得涂改。文书设定的栏目，应逐项填写完整、准确； 3.申请材料中的表格应使用国际标准A4纸对开正面印制； 4.申请表格应由申请相对人、申请单位填写并本人签名、加盖单位公章。 （二）复印件的审查标准 1.提交的材料应使用国际标准A4型纸打印、复印并按照A4型纸的规格装订； 2.所提交的复印件需原件核验； 3.申请单位（个人）提供的材料应齐全并符合法定形式。...展开",
+          "sort": 2
+        }
+      ],
+      "vector_text": "事项名称：用气过户\n办理部门：防城港中燃城市燃气发展有限公司\n服务对象：\n受理条件：户内燃气设施符合安全使用条件，无安全隐患。...展开\n办理形式：窗口办理,网上办理,快递申请\n办理地点：防城港市港口区江山大道88号市政务服务中心一楼防城港中燃城市燃气发展有限公司获得“水电气”专窗\n...展开\n更多地点\n办理时间：工作日：上午9∶00—12∶00，下午13∶30—16∶30，（法定节假日除外）...展开\n申请材料：不动产证明\n办理流程：收件与受理；审查与决定",
+      "raw_payload": {
+        "list_item": {
+          "id": "75d8e31f240c6bc9d3751db042c9914e",
+          "parentId": "a2b0c0b8-b3e3-4c0f-887f-69c08bae3650",
+          "name": "用气过户",
+          "obj": {
+            "id": "5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+            "itemName": "用气过户",
+            "implementSubjectName": "防城港中燃城市燃气发展有限公司",
+            "applyWay": "1,2,3",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1113536592183&syncUserType=true",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "20",
+            "applyExpress": "4946a8a2-1c42-4de6-a98e-54b858def77c"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "ea0c9b6a-8d83-4937-9ada-0237c6a7bbb3",
+            "itemDetailId": "5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+            "materialName": "不动产证明",
+            "materialType": "4",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "4",
+            "blankFilePath": "",
+            "sampleFilePath": "",
+            "acceptStandard": "填写完整，内容真实有效",
+            "fillNotice": "线下使用纸质材料，线上办理由申请人填报房产信息自动核验",
+            "remark": "",
+            "createDate": "2025-04-12 00:50:28",
+            "createUserId": "98197c8c-8c69-48c7-b6ab-4818b3466686",
+            "updateDate": "2025-04-12 00:50:28",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 1,
+            "paperFormat": "A4",
+            "paperNum": "2",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 1,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "用气过户",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=5c088a3d-e497-4f6d-b4dc-3236b602c20c",
+          "parent_name": "获得用气服务"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "用气报装",
+        "department": "防城港中燃城市燃气发展有限公司",
+        "service_object": null,
+        "promise_days": 14,
+        "legal_days": 14,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "符合周边有燃气管道覆盖，符合安全安装条件...展开",
+        "general_scope": "全市",
+        "handle_form": "窗口办理,网上办理,自助办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区江山大道88号市政务服务中心一楼防城港中燃城市燃气发展有限公司获得“水电气”专窗\n...展开\n更多地点",
+        "handle_time": "工作日：上午9∶00—12∶00，下午13∶30—16∶30，（法定节假日除外）...展开",
+        "consult_way": "电话咨询：0770-2870105、0770-6161333、0770-2825999、0770-95007...展开",
+        "complaint_way": "监督投诉电话：0770-2883116、0770-2828682...展开",
+        "query_way": "电话查询,现场查询,网上查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105258",
+        "source_item_id": "f56d5560-b8c7-49eb-814f-d0939970aaae",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=f56d5560-b8c7-49eb-814f-d0939970aaae",
+        "raw_payload": {
+          "list_item": {
+            "id": "9d56505b190aaec1742c21da8411314c",
+            "parentId": "a2b0c0b8-b3e3-4c0f-887f-69c08bae3650",
+            "name": "用气报装",
+            "obj": {
+              "id": "f56d5560-b8c7-49eb-814f-d0939970aaae",
+              "itemName": "用气报装",
+              "implementSubjectName": "防城港中燃城市燃气发展有限公司",
+              "applyWay": "1,2,4",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1113574592253&syncUserType=true",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "20",
+              "applyExpress": "e8f19205-d17b-447f-86cf-4156a72b27c9"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "192dad39-b592-453f-a5a4-d33445159e42",
+              "itemDetailId": "f56d5560-b8c7-49eb-814f-d0939970aaae",
+              "materialName": "不动产证明",
+              "materialType": "4",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "4",
+              "blankFilePath": "",
+              "sampleFilePath": "",
+              "acceptStandard": "填写完整，内容真实有效",
+              "fillNotice": "线下使用纸质材料，线上办理由申请人填报房产信息自动核验",
+              "remark": "",
+              "createDate": "2025-04-12 00:50:29",
+              "createUserId": "fccdde63-8822-46af-8b6a-e6ee52dd5666",
+              "updateDate": "2025-04-12 00:50:29",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 1,
+              "paperFormat": "A4",
+              "paperNum": "2",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 1,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "用气报装",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=f56d5560-b8c7-49eb-814f-d0939970aaae",
+            "parent_name": "获得用气服务"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "不动产证明",
+          "is_required": true,
+          "material_form": "纸质或电子",
+          "original_num": 1,
+          "copy_num": 1,
+          "note": "类型：原件或复印件\n来源渠道：政府部门核发\n填报须知：线下使用纸质材料，线上办理由申请人填报房产信息自动核验\n受理标准：填写完整，内容真实有效\n纸质规格：A4\n是否需要签章：否"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：申请材料齐全，符合法定形式，当场决定受理承办人提出审查意见并受理通过; 申请材料不齐全、\n不符合法定形式的\n当场一次性告知申请人补正的全部内容;\n不属于本厅\n职权范围的\n作出不予受理决定，并告知向有关单位申请....展开\n审查标准：审查方式及标准： 一、审查方式：书面审查。标准如下： （一）申请书（表）的审查标准 1.申请人应如实填写各项内容，对提交材料的真实性、完整性负责，不得虚构、伪造、编造事实； 2.文书应使用钢笔和能够长期保持字迹的墨水填写、打印，做到字迹清楚、文字规范、文面整洁，不得涂改。文书设定的栏目，应逐项填写完整、准确； 3.申请材料中的表格应使用国际标准A4纸对开正面印制； 4.申请表格应由申请相对人、申请单位填写并本人签名、加盖单位公章。 （二）复印件的审查标准 1.提交的材料应使用国际标准A4型纸打印、复印并按照A4型纸的规格装订； 2.所提交的复印件需原件核验； 3.申请单位（个人）提供的材料应齐全并符合法定形式。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：符合条件，予通过。...展开\n审查标准：现场符合条件安装管道燃气。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：用气报装\n办理部门：防城港中燃城市燃气发展有限公司\n服务对象：\n受理条件：符合周边有燃气管道覆盖，符合安全安装条件...展开\n办理形式：窗口办理,网上办理,自助办理\n办理地点：防城港市港口区江山大道88号市政务服务中心一楼防城港中燃城市燃气发展有限公司获得“水电气”专窗\n...展开\n更多地点\n办理时间：工作日：上午9∶00—12∶00，下午13∶30—16∶30，（法定节假日除外）...展开\n申请材料：不动产证明\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "9d56505b190aaec1742c21da8411314c",
+          "parentId": "a2b0c0b8-b3e3-4c0f-887f-69c08bae3650",
+          "name": "用气报装",
+          "obj": {
+            "id": "f56d5560-b8c7-49eb-814f-d0939970aaae",
+            "itemName": "用气报装",
+            "implementSubjectName": "防城港中燃城市燃气发展有限公司",
+            "applyWay": "1,2,4",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1113574592253&syncUserType=true",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "20",
+            "applyExpress": "e8f19205-d17b-447f-86cf-4156a72b27c9"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "192dad39-b592-453f-a5a4-d33445159e42",
+            "itemDetailId": "f56d5560-b8c7-49eb-814f-d0939970aaae",
+            "materialName": "不动产证明",
+            "materialType": "4",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "4",
+            "blankFilePath": "",
+            "sampleFilePath": "",
+            "acceptStandard": "填写完整，内容真实有效",
+            "fillNotice": "线下使用纸质材料，线上办理由申请人填报房产信息自动核验",
+            "remark": "",
+            "createDate": "2025-04-12 00:50:29",
+            "createUserId": "fccdde63-8822-46af-8b6a-e6ee52dd5666",
+            "updateDate": "2025-04-12 00:50:29",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 1,
+            "paperFormat": "A4",
+            "paperNum": "2",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 1,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "用气报装",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=f56d5560-b8c7-49eb-814f-d0939970aaae",
+          "parent_name": "获得用气服务"
+        }
+      }
+    }
+  ]
+}

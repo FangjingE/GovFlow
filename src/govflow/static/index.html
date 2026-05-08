@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>政务通 · 政务办事助手</title>
+    <title>GovFlow · 政务事项检索</title>
     <style>
       :root {
         --bg: #f4f6f8;
@@ -12,10 +12,8 @@
         --text: #1a2333;
         --muted: #5a6b7c;
         --primary: #1565a8;
-        --primary-hover: #0f4d82;
         --user-bubble: #e3f0fc;
         --bot-bubble: #eef1f4;
-        --kind: #3d6a9a;
         --err: #b3261e;
       }
       * {
@@ -40,253 +38,100 @@
         flex: 1;
         min-height: 0;
       }
-      .layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-        flex: 1;
-        min-height: 0;
-        align-items: stretch;
-      }
-      .layout.with-zwt {
-        grid-template-columns: 1fr minmax(13rem, 20rem);
-      }
-      @media (max-width: 52rem) {
-        .layout.with-zwt {
-          grid-template-columns: 1fr;
-        }
-      }
-      .chat-col {
-        display: flex;
-        flex-direction: column;
-        min-height: 0;
-        min-width: 0;
-      }
-      .zwt-aside {
-        display: none;
-        flex-direction: column;
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 0.5rem;
-        padding: 0.65rem 0.7rem;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-        min-height: 10rem;
-        max-height: 70vh;
-      }
-      .layout.with-zwt .zwt-aside {
-        display: flex;
-      }
-      @media (max-width: 52rem) {
-        .layout.with-zwt .zwt-aside {
-          max-height: 36vh;
-        }
-      }
-      .zwt-aside h2 {
-        font-size: 0.85rem;
-        margin: 0 0 0.35rem 0;
-        font-weight: 600;
-        color: var(--muted);
-      }
-      .zwt-aside-hint {
-        font-size: 0.78rem;
-        color: var(--muted);
-        margin: 0 0 0.4rem 0;
-        line-height: 1.45;
-      }
-      .zwt-form-scroll {
-        flex: 1;
-        overflow: auto;
-        min-height: 4rem;
-      }
-      .zwt-form-scroll pre {
-        margin: 0;
-        font-size: 0.78rem;
-        line-height: 1.45;
-        font-family: ui-monospace, "Cascadia Code", monospace;
-        white-space: pre-wrap;
-        word-break: break-word;
-        color: var(--text);
-      }
-      header {
-        margin-bottom: 0.75rem;
-      }
-      .header-top {
+      header .header-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 0.75rem;
-        margin-bottom: 0.2rem;
         flex-wrap: wrap;
       }
-      .header-top h1 {
-        margin: 0;
-        flex: 1 1 12rem;
-        min-width: 0;
-      }
       h1 {
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin: 0 0 0.2rem 0;
-      }
-      button#new-chat {
-        padding: 0.4rem 0.75rem;
-        font: inherit;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--primary);
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 0.4rem;
-        cursor: pointer;
-        white-space: nowrap;
-      }
-      button#new-chat:hover:not(:disabled) {
-        background: #e8f0f8;
-        border-color: #9bb8d4;
-      }
-      button#new-chat:disabled {
-        opacity: 0.55;
-        cursor: not-allowed;
+        margin: 0;
+        font-size: 1.35rem;
       }
       .sub {
-        font-size: 0.8rem;
+        margin: 0.35rem 0 0;
         color: var(--muted);
-        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+      .doc {
+        font-size: 0.88rem;
+        color: var(--primary);
       }
       #log {
         flex: 1;
         overflow: auto;
-        background: var(--panel);
         border: 1px solid var(--border);
         border-radius: 0.5rem;
+        background: var(--panel);
         padding: 0.75rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.65rem;
+        margin-top: 0.75rem;
         min-height: 12rem;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-      }
-      .msg {
-        max-width: 100%;
-        padding: 0.5rem 0.65rem;
-        border-radius: 0.4rem;
-        line-height: 1.5;
-        font-size: 0.95rem;
-        white-space: pre-wrap;
-        word-break: break-word;
-      }
-      .msg.user {
-        align-self: flex-end;
-        background: var(--user-bubble);
-        border: 1px solid #b8d4f0;
-      }
-      .msg.assistant {
-        align-self: flex-start;
-        background: var(--bot-bubble);
-        border: 1px solid #cbd4dc;
-      }
-      .msg.system {
-        align-self: center;
-        font-size: 0.85rem;
-        color: var(--muted);
-        background: #fafbfc;
-        border: 1px dashed var(--border);
-      }
-      .msg.error {
-        color: var(--err);
-        border-color: #e8a4a0;
-        background: #fff5f5;
-      }
-      .meta {
-        font-size: 0.75rem;
-        color: var(--muted);
-        margin-top: 0.35rem;
-        padding-top: 0.35rem;
-        border-top: 1px solid #dde3e8;
-      }
-      .meta span {
-        display: inline-block;
-        margin-right: 0.75rem;
-      }
-      .badge {
-        display: inline-block;
-        font-size: 0.7rem;
-        padding: 0.1rem 0.35rem;
-        border-radius: 0.25rem;
-        background: #e8f0f8;
-        color: var(--kind);
-        font-weight: 500;
-      }
-      .sources {
-        margin-top: 0.4rem;
-        font-size: 0.8rem;
-      }
-      .sources ul {
-        margin: 0.2rem 0 0 1.1rem;
-        padding: 0;
       }
       .row {
         display: flex;
         gap: 0.5rem;
-        margin-top: 0.65rem;
+        margin-top: 0.6rem;
         align-items: flex-end;
       }
       textarea {
         flex: 1;
-        min-height: 2.6rem;
+        resize: vertical;
+        min-height: 2.5rem;
         max-height: 8rem;
         padding: 0.5rem 0.6rem;
-        font: inherit;
         border: 1px solid var(--border);
         border-radius: 0.4rem;
-        resize: vertical;
+        font: inherit;
       }
-      textarea:focus {
-        outline: 2px solid #a8c4e0;
-        border-color: var(--primary);
+      button {
+        font: inherit;
+        padding: 0.45rem 0.9rem;
+        border-radius: 0.4rem;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        cursor: pointer;
       }
       button#send {
-        padding: 0.5rem 0.9rem;
-        font: inherit;
-        font-weight: 500;
-        color: #fff;
         background: var(--primary);
-        border: none;
-        border-radius: 0.4rem;
-        cursor: pointer;
-        white-space: nowrap;
-        height: 2.6rem;
+        color: #fff;
+        border-color: var(--primary);
       }
-      button#send:disabled {
+      button:disabled {
         opacity: 0.55;
         cursor: not-allowed;
       }
-      button#send:hover:not(:disabled) {
-        background: var(--primary-hover);
+      .msg {
+        margin-bottom: 0.65rem;
+        padding: 0.55rem 0.65rem;
+        border-radius: 0.45rem;
+        max-width: 100%;
       }
-      footer {
-        width: 100%;
-        max-width: 56rem;
-        font-size: 0.7rem;
+      .msg.user {
+        background: var(--user-bubble);
+        margin-left: 2rem;
+      }
+      .msg.assistant {
+        background: var(--bot-bubble);
+        margin-right: 2rem;
+      }
+      .msg.system {
         color: var(--muted);
-        padding: 0.5rem 0.25rem 0.6rem;
-        text-align: center;
+        font-size: 0.9rem;
       }
-      code {
-        font-size: 0.7rem;
-        background: #e8ebef;
-        padding: 0.1rem 0.25rem;
-        border-radius: 0.2rem;
-        word-break: break-all;
+      .msg.system.error {
+        color: var(--err);
       }
-      a.doc {
-        font-size: 0.8rem;
-        color: var(--primary);
-        text-decoration: none;
-        margin-left: 0.4rem;
+      .markdown-body {
+        line-height: 1.5;
+        white-space: pre-wrap;
+        word-break: break-word;
       }
-      a.doc:hover {
-        text-decoration: underline;
+      .meta {
+        margin-top: 0.35rem;
+        font-size: 0.78rem;
+        color: var(--muted);
       }
       .visually-hidden {
         position: absolute;
@@ -298,42 +143,36 @@
         clip: rect(0, 0, 0, 0);
         border: 0;
       }
+      footer {
+        margin: 0.6rem 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
     </style>
   </head>
   <body>
     <div class="shell">
       <header>
         <div class="header-top">
-          <h1>政务通</h1>
+          <h1>GovFlow</h1>
           <button type="button" id="new-chat" title="清除当前消息并开始新会话">新对话</button>
         </div>
         <p class="sub">
-          基于本地知识库的问答与澄清。<strong>互市进口、跨境农产品</strong>等会先说明并询问是否开始辅助填写；<strong>办企业、公司设立</strong>等可进入企业设立流程演示（mock 外部接口）。回复「是」或「开始」后，右侧会显示对应进度预览。社保、材料等其它政务问题也在此输入。
+          从事项库中检索<strong>最相关的一条</strong>政务事项，并按固定模板返回（当前不接大模型生成）。输入例如「身份证」「户口簿」等关键词。
         </p>
         <a class="doc" href="/docs" target="_blank" rel="noopener">OpenAPI 文档</a>
       </header>
-      <div class="layout" id="layout">
-        <div class="chat-col">
-          <div id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
-          <form class="row" id="f" novalidate>
-            <label for="input" class="visually-hidden">输入</label>
-            <textarea
-              id="input"
-              rows="1"
-              placeholder="在此输入问题，按 Enter 发送，Shift+Enter 换行"
-              autocomplete="off"
-            ></textarea>
-            <button type="submit" id="send">发送</button>
-          </form>
-        </div>
-        <aside id="zwt-aside" class="zwt-aside" aria-hidden="true">
-          <h2 id="zwt-aside-title">政务通 · 申报预览</h2>
-          <p class="zwt-aside-hint" id="zwt-aside-hint">当您进入互市填报或企业设立演示时，此处会同步显示当前进度（演示）。</p>
-          <div class="zwt-form-scroll">
-            <pre id="zwt-form-pre" style="display: none"></pre>
-          </div>
-        </aside>
-      </div>
+      <div id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <form class="row" id="f" novalidate>
+        <label for="input" class="visually-hidden">输入</label>
+        <textarea
+          id="input"
+          rows="1"
+          placeholder="在此输入问题，按 Enter 发送，Shift+Enter 换行"
+          autocomplete="off"
+        ></textarea>
+        <button type="submit" id="send">发送</button>
+      </form>
     </div>
     <footer>
       <span id="foot-session">未建立会话</span>
@@ -346,15 +185,18 @@
         var sendBtn = document.getElementById("send");
         var newChatBtn = document.getElementById("new-chat");
         var foot = document.getElementById("foot-session");
-        var layout = document.getElementById("layout");
-        var zwtAside = document.getElementById("zwt-aside");
-        var zwtFormPre = document.getElementById("zwt-form-pre");
-        var zwtAsideHint = document.getElementById("zwt-aside-hint");
         var sessionId = null;
         var sending = false;
-        var zwtAsideTitle = document.getElementById("zwt-aside-title");
         var WELCOME =
-          "你好，这里是政务通。可问社保、办事材料、互市进口、办企业等政务问题；涉及分步填报或企业设立演示时，助手会先说明并询问是否开始，您回复「是」或「开始」后右侧会出现进度预览。";
+          "你好。请输入与政务事项相关的问题，系统将返回匹配度最高的一条事项信息（模板展示）。咨询电话见回复文末。";
+
+        function escapeHtml(s) {
+          return String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
 
         function el(tag, cls, text) {
           var n = document.createElement(tag);
@@ -364,13 +206,21 @@
         }
 
         function appendUser(text) {
-          var m = el("div", "msg user", text);
+          var m = el("div", "msg user", "");
+          var body = document.createElement("div");
+          body.className = "markdown-body";
+          body.textContent = text;
+          m.appendChild(body);
           log.appendChild(m);
           log.scrollTop = log.scrollHeight;
         }
 
         function appendSystem(text) {
-          var m = el("div", "msg system", text);
+          var m = el("div", "msg system", "");
+          var body = document.createElement("div");
+          body.className = "markdown-body";
+          body.textContent = text;
+          m.appendChild(body);
           log.appendChild(m);
           log.scrollTop = log.scrollHeight;
         }
@@ -381,99 +231,20 @@
           log.scrollTop = log.scrollHeight;
         }
 
-        function formatSources(sources) {
-          if (!sources || !sources.length) return "";
-          var s = el("div", "sources");
-          s.appendChild(el("div", null, "参考来源"));
-          var ul = document.createElement("ul");
-          sources.forEach(function (o) {
-            var li = document.createElement("li");
-            li.textContent = o.title + (o.score != null ? " (" + o.score + ")" : "");
-            ul.appendChild(li);
-          });
-          s.appendChild(ul);
-          return s;
-        }
-
-        function appendZwtRagSources(list) {
-          if (!list || !list.length) return null;
-          var s = el("div", "sources");
-          s.appendChild(el("div", null, "政务通知识库引用"));
-          var ul = document.createElement("ul");
-          list.forEach(function (o, i) {
-            var li = document.createElement("li");
-            var t = (o && o.title) || "来源" + (i + 1);
-            li.textContent = t + (o.score != null ? " (" + o.score + ")" : "");
-            ul.appendChild(li);
-          });
-          s.appendChild(ul);
-          return s;
-        }
-
         function appendAssistant(data) {
           var wrap = el("div", "msg assistant", "");
-          var main = el("div", null, data.reply);
+          var main = document.createElement("div");
+          main.className = "markdown-body";
+          main.innerHTML = escapeHtml(data.reply || "").replace(/\n/g, "<br>");
           wrap.appendChild(main);
           if (data.official_hotline) {
-            var hot = el("div", "meta", "咨询电话：" + data.official_hotline);
-            wrap.appendChild(hot);
+            wrap.appendChild(el("div", "meta", "咨询电话：" + data.official_hotline));
           }
-          var meta = el("div", "meta", "");
-          var k = el("span", null, "");
-          var badge = el("span", "badge", "kind: " + data.kind);
-          k.appendChild(badge);
-          if (data.zwt_step) {
-            k.appendChild(el("span", null, "填报步骤: " + data.zwt_step));
+          if (data.kind) {
+            wrap.appendChild(el("div", "meta", "kind: " + data.kind));
           }
-          if (data.company_step) {
-            k.appendChild(el("span", null, "企业设立步骤: " + data.company_step));
-          }
-          if (data.stages_executed && data.stages_executed.length) {
-            var st = el("span", null, "阶段: " + data.stages_executed.join(" → "));
-            k.appendChild(st);
-          }
-          meta.appendChild(k);
-          wrap.appendChild(meta);
-          var src = formatSources(data.sources);
-          if (src) wrap.appendChild(src);
-          var br = appendZwtRagSources(data.zwt_rag_sources);
-          if (br) wrap.appendChild(br);
           log.appendChild(wrap);
           log.scrollTop = log.scrollHeight;
-        }
-
-        function syncZwtPanel(j) {
-          if (!layout || !zwtAside || !zwtFormPre || !zwtAsideHint) return;
-          var show = j && (j.zwt_sidebar_visible || j.company_sidebar_visible);
-          if (show) {
-            layout.classList.add("with-zwt");
-            zwtAside.setAttribute("aria-hidden", "false");
-            if (zwtAsideTitle) {
-              zwtAsideTitle.textContent = j.company_sidebar_visible
-                ? "政务通 · 企业设立进度"
-                : "政务通 · 申报预览";
-            }
-            var fp =
-              (j.company_progress_preview && String(j.company_progress_preview).trim()) ||
-              (j.zwt_form_preview && String(j.zwt_form_preview).trim()) ||
-              "";
-            if (fp) {
-              zwtFormPre.textContent = fp;
-              zwtFormPre.style.display = "block";
-              zwtAsideHint.style.display = "none";
-            } else {
-              zwtFormPre.textContent = "";
-              zwtFormPre.style.display = "none";
-              zwtAsideHint.style.display = "block";
-            }
-          } else {
-            layout.classList.remove("with-zwt");
-            zwtAside.setAttribute("aria-hidden", "true");
-            if (zwtAsideTitle) zwtAsideTitle.textContent = "政务通 · 申报预览";
-            zwtFormPre.textContent = "";
-            zwtFormPre.style.display = "none";
-            zwtAsideHint.style.display = "block";
-          }
         }
 
         function setSession(id) {
@@ -486,7 +257,6 @@
           log.innerHTML = "";
           appendSystem(WELCOME);
           setSession(null);
-          syncZwtPanel({});
           input.value = "";
           input.focus();
         }
@@ -516,17 +286,11 @@
             }
             if (!res.ok) {
               var d = (j && j.detail) || (j && j.message) || JSON.stringify(j);
-              if (res.status === 404 && d && String(d).indexOf("session") >= 0) {
-                setSession(null);
-                appendError("会话已失效，已清空。请重试。");
-              } else {
-                appendError("请求失败 (" + res.status + "): " + d);
-              }
+              appendError("请求失败 (" + res.status + "): " + d);
               return;
             }
             if (j.session_id) setSession(j.session_id);
             appendAssistant(j);
-            syncZwtPanel(j);
           } catch (e) {
             appendError("网络错误: " + (e && e.message ? e.message : String(e)));
           } finally {

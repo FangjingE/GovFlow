@@ -1,0 +1,1484 @@
+{
+  "source_platform": "gxzwfw",
+  "source_region_code": "3113105210",
+  "list_page_id": "d0144e0713974fa886c580945ed17165",
+  "detail_page_id": "d0349fe94d1c4d139b006db643fb9e52",
+  "total_items": 7,
+  "failed_items": 0,
+  "items": [
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证停业",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询,现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "3312b17e-f062-474f-bcb2-73367836b89b",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=3312b17e-f062-474f-bcb2-73367836b89b",
+        "raw_payload": {
+          "list_item": {
+            "id": "0a1a8b17a1751cb045b052218eeb28ae",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证停业",
+            "obj": {
+              "id": "3312b17e-f062-474f-bcb2-73367836b89b",
+              "itemName": "烟草专卖零售许可证停业",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "af9bcbbe-e9d6-4d66-9054-561936df4599"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "8d5b01ea-5500-43c3-9639-a215b9a191a6",
+              "itemDetailId": "3312b17e-f062-474f-bcb2-73367836b89b",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "915657e5-649c-4285-9c50-98b899a89603",
+              "sampleFilePath": "ce85d22e-4ebd-45b1-bbaf-e7b0bf362ea6",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "0473ad04-4e1c-4e00-9f3b-9fad9d4f7c18",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证停业",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=3312b17e-f062-474f-bcb2-73367836b89b",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n示例样表：ce85d22e-4ebd-45b1-bbaf-e7b0bf362ea6\n空白表格：915657e5-649c-4285-9c50-98b899a89603"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》；\n当场办结的，可以不出具本书面受理凭证...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（二）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（三）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：审批机关经过审查，认为申请人的烟草专卖许可证申请符合法定条件，决定准予许可...展开\n审查标准：持证人需要暂停生产经营行为的，应当在停业前7日内提出停业申请。停业期限最长不得超过1年且不得超过许可证的有效期。\n烟草专卖局审批发放烟草专卖零售许可证，应当自受理之日起20日内作出行政许可决定。对外承诺缩减期限的，以承诺期限为准。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：烟草专卖零售许可证...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证停业\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：身份证明\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "0a1a8b17a1751cb045b052218eeb28ae",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证停业",
+          "obj": {
+            "id": "3312b17e-f062-474f-bcb2-73367836b89b",
+            "itemName": "烟草专卖零售许可证停业",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "af9bcbbe-e9d6-4d66-9054-561936df4599"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "8d5b01ea-5500-43c3-9639-a215b9a191a6",
+            "itemDetailId": "3312b17e-f062-474f-bcb2-73367836b89b",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "915657e5-649c-4285-9c50-98b899a89603",
+            "sampleFilePath": "ce85d22e-4ebd-45b1-bbaf-e7b0bf362ea6",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "0473ad04-4e1c-4e00-9f3b-9fad9d4f7c18",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证停业",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=3312b17e-f062-474f-bcb2-73367836b89b",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证变更",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询,现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+        "raw_payload": {
+          "list_item": {
+            "id": "2e8eb48ee2fb9b3a2ca81edbf7796570",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证变更",
+            "obj": {
+              "id": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+              "itemName": "烟草专卖零售许可证变更",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "eb2b6959-75e3-4b04-80ff-5fc699eef289"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "6e66d143-6a61-4885-add9-938cdcdafc2e",
+              "itemDetailId": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "54723ac7-9c9d-467d-a6a8-f22a88cb1dbd",
+              "sampleFilePath": "",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "fbbb0412-7a93-426c-b24a-1fe8ceaf8655",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            },
+            {
+              "id": "65118ada-9aa5-46e5-afdb-e4badbdce1b3",
+              "itemDetailId": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+              "materialName": "营业执照",
+              "materialType": "2",
+              "sourceChannel": "20",
+              "materialNum": 0,
+              "necessity": 0,
+              "materialFormal": "4",
+              "blankFilePath": "cc157dc8-b472-4d88-8c80-285efb2bb822",
+              "sampleFilePath": "23a8b310-095b-4dba-8fbf-51d582cf9b38",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "47deb5ee-fdd2-4275-b0b3-fae4711e219d",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 1,
+              "paperFormat": "A4",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 8,
+              "copyAmount": 1,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 1
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证变更",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n空白表格：54723ac7-9c9d-467d-a6a8-f22a88cb1dbd"
+        },
+        {
+          "material_name": "营业执照",
+          "is_required": false,
+          "material_form": "纸质或电子",
+          "original_num": 0,
+          "copy_num": 1,
+          "note": "类型：复印件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n纸质规格：A4\n是否需要签章：否\n示例样表：23a8b310-095b-4dba-8fbf-51d582cf9b38\n空白表格：cc157dc8-b472-4d88-8c80-285efb2bb822"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》；\n当场办结的，可以不出具本书面受理凭证...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（二）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（三）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：审查实地核查：1.烟草专卖局对烟草专卖零售许可证新办申请以及认为需要实地核查的其他申请，在进行实地核查后填写制作《烟草专卖零售许可证实地核查记录表》； 2.无需核查的，即时审查。决定：1.审批机关经过审查，认为申请人的烟草专卖许可证申请符合法定条件，决定准予许可； 2.审批机关经过审查，认为申请人的烟草专卖许可证申请不符合法定条件，决定不予许可。...展开\n审查标准：实地核查环节属特别程序 ，与审批环节共计为8个工作日。\n烟草专卖许可证有效期内，企业名称、个体工商户名称、法定代表人或其他组织负责人、经营者姓名以及经营地址名称等登记事项发生改变，或者因道路规划、城市建设等客观原因造成经营地址变化的,持证人应当及时提出变更申请。变更许可范围的，持证人应当提前提出变更申请；家庭经营的个体工商户，持证人在家庭成员间变化的，可以申请变更烟草专卖零售许可证。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：烟草专卖零售许可证...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证变更\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：身份证明；营业执照\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "2e8eb48ee2fb9b3a2ca81edbf7796570",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证变更",
+          "obj": {
+            "id": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+            "itemName": "烟草专卖零售许可证变更",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "eb2b6959-75e3-4b04-80ff-5fc699eef289"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "6e66d143-6a61-4885-add9-938cdcdafc2e",
+            "itemDetailId": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "54723ac7-9c9d-467d-a6a8-f22a88cb1dbd",
+            "sampleFilePath": "",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "fbbb0412-7a93-426c-b24a-1fe8ceaf8655",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          },
+          {
+            "id": "65118ada-9aa5-46e5-afdb-e4badbdce1b3",
+            "itemDetailId": "d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+            "materialName": "营业执照",
+            "materialType": "2",
+            "sourceChannel": "20",
+            "materialNum": 0,
+            "necessity": 0,
+            "materialFormal": "4",
+            "blankFilePath": "cc157dc8-b472-4d88-8c80-285efb2bb822",
+            "sampleFilePath": "23a8b310-095b-4dba-8fbf-51d582cf9b38",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "47deb5ee-fdd2-4275-b0b3-fae4711e219d",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 1,
+            "paperFormat": "A4",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 8,
+            "copyAmount": 1,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 1
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证变更",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=d0c7e7ca-8242-4f97-b9e3-5ed75eb5eac2",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证歇业",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询,现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+        "raw_payload": {
+          "list_item": {
+            "id": "387e926c121efb5e1b945cf70af1d587",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证歇业",
+            "obj": {
+              "id": "27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+              "itemName": "烟草专卖零售许可证歇业",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1114167751721&syncUserType=true",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "96a51ce9-b328-4b1c-99f8-b278605475e0"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "8fecdc94-ca89-442e-84b1-6b4f0e170166",
+              "itemDetailId": "27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "7aa490cc-a654-4bce-9409-52d9f5b9ceb9",
+              "sampleFilePath": "cec61167-c5e9-4107-9e3a-f4d9456fdd17",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "94c61415-f44a-41c0-be25-9c81d827c375",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证歇业",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n示例样表：cec61167-c5e9-4107-9e3a-f4d9456fdd17\n空白表格：7aa490cc-a654-4bce-9409-52d9f5b9ceb9"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》；\n当场办结的，可以不出具本书面受理凭证...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（二）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（三）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：审批机关经过审查，认为申请人的烟草专卖许可证申请符合法定条件，决定准予许可...展开\n审查标准：持证人在许可证有效期限内不再从事生产经营活动的，应当及时提出歇业申请。烟草专卖局审批发放烟草专卖零售许可证，应当自受理之日起20日内作出行政许可决定。对外承诺缩减期限的，以承诺期限为准。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：烟草专卖零售许可证...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证歇业\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：身份证明\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "387e926c121efb5e1b945cf70af1d587",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证歇业",
+          "obj": {
+            "id": "27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+            "itemName": "烟草专卖零售许可证歇业",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1114167751721&syncUserType=true",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "96a51ce9-b328-4b1c-99f8-b278605475e0"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "8fecdc94-ca89-442e-84b1-6b4f0e170166",
+            "itemDetailId": "27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "7aa490cc-a654-4bce-9409-52d9f5b9ceb9",
+            "sampleFilePath": "cec61167-c5e9-4107-9e3a-f4d9456fdd17",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "94c61415-f44a-41c0-be25-9c81d827c375",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证歇业",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=27cc6f23-7b6a-4313-a4b0-60b6120cfe3f",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证延续",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区北部湾大道148号市政务服务中心一楼15号窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=aa9d6315-21d3-4836-b088-f1aee4bc958f",
+        "raw_payload": {
+          "list_item": {
+            "id": "428ec8c837ad8d6d3879a75b44d61642",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证延续",
+            "obj": {
+              "id": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+              "itemName": "烟草专卖零售许可证延续",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1115113650294&syncUserType=true",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "28291a77-8daa-42e1-9b4b-0956792e174b"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "4a7670ee-524a-4e80-8578-b9fb545e5cc3",
+              "itemDetailId": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "746fce4c-624d-4342-aa05-a61bec092ed1",
+              "sampleFilePath": "",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "9159e02e-e3a1-45f1-9222-257c79d278fb",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            },
+            {
+              "id": "5108cd5b-abf0-4516-82d6-869fec4f817c",
+              "itemDetailId": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+              "materialName": "营业执照",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "2",
+              "blankFilePath": "b7537dba-2b6d-4947-a655-70c226d31bf4",
+              "sampleFilePath": "b3c23a71-81ab-4493-bac1-92dd33bb73b7",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "9e1b42d8-0196-401f-9ad0-03076441b4f6",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 1,
+              "paperFormat": "",
+              "paperNum": "0",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证延续",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=aa9d6315-21d3-4836-b088-f1aee4bc958f",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n空白表格：746fce4c-624d-4342-aa05-a61bec092ed1"
+        },
+        {
+          "material_name": "营业执照",
+          "is_required": true,
+          "material_form": "电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n示例样表：b3c23a71-81ab-4493-bac1-92dd33bb73b7\n空白表格：b7537dba-2b6d-4947-a655-70c226d31bf4"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》；\n当场办结的，可以不出具本书面受理凭证...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（二）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（三）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：审查实地核查：1.烟草专卖局对烟草专卖零售许可证新办申请以及认为需要实地核查的其他申请，在进行实地核查后填写制作《烟草专卖零售许可证实地核查记录表》；2.无需核查的，即时审查。决定：1.审批机关经过审查，认为申请人的烟草专卖许可证申请符合法定条件，决定准予许可；2.审批机关经过审查，认为申请人的烟草专卖许可证申请不符合法定条件，决定不予许可。...展开\n审查标准：实地 核查环节属特别程序 ，与审批环节共计为8个工作日。\n烟草专卖许可证有效期届满后需要继续生产经营的，持证人应当在有效期届满30日前提出延续申请。\n烟草专卖许可证有效期届满需要继续生产经营的，因生产经营能力、条件发生重大变化导致不符合法定条件的或者有严重违法行为的，不予延续。\n烟草专卖局审批发放烟草专卖零售许可证，应当自受理之日起20日内作出行政许可决定。对外承诺缩减期限的，以承诺期限为准。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：决定书...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证延续\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市港口区北部湾大道148号市政务服务中心一楼15号窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：身份证明；营业执照\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "428ec8c837ad8d6d3879a75b44d61642",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证延续",
+          "obj": {
+            "id": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+            "itemName": "烟草专卖零售许可证延续",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1115113650294&syncUserType=true",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "28291a77-8daa-42e1-9b4b-0956792e174b"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "4a7670ee-524a-4e80-8578-b9fb545e5cc3",
+            "itemDetailId": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "746fce4c-624d-4342-aa05-a61bec092ed1",
+            "sampleFilePath": "",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "9159e02e-e3a1-45f1-9222-257c79d278fb",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          },
+          {
+            "id": "5108cd5b-abf0-4516-82d6-869fec4f817c",
+            "itemDetailId": "aa9d6315-21d3-4836-b088-f1aee4bc958f",
+            "materialName": "营业执照",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "2",
+            "blankFilePath": "b7537dba-2b6d-4947-a655-70c226d31bf4",
+            "sampleFilePath": "b3c23a71-81ab-4493-bac1-92dd33bb73b7",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "9e1b42d8-0196-401f-9ad0-03076441b4f6",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 1,
+            "paperFormat": "",
+            "paperNum": "0",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证延续",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=aa9d6315-21d3-4836-b088-f1aee4bc958f",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证新办",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市港口区北部湾大道148号市政务服务中心一楼15号窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+        "raw_payload": {
+          "list_item": {
+            "id": "89e681725b3c39add89681095350f3be",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证新办",
+            "obj": {
+              "id": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+              "itemName": "烟草专卖零售许可证新办",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1114169557894&syncUserType=true",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "1e2e0316-3655-417d-8c84-e6129fbb74d5"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "1c81d028-fd66-40a8-8f2d-b2acb8c92bc1",
+              "itemDetailId": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+              "materialName": "营业执照",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "2",
+              "blankFilePath": "785169d0-f38a-45b4-a892-c706559a5af2",
+              "sampleFilePath": "1efeb6dc-7503-45ad-a561-12928e26cd3b",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "df611f2c-b62b-4443-a166-949fd5fe79f4",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 1,
+              "paperFormat": "",
+              "paperNum": "0",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            },
+            {
+              "id": "d92295fb-2fa6-487e-a612-c3dfcbb64137",
+              "itemDetailId": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "c5d6038e-6af8-436b-92c8-c0df9e429063",
+              "sampleFilePath": "31818a8b-2bbe-4bca-92ba-6bd61f48c637",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "ae324b33-3666-447f-8ea6-ffb2fccadae7",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证新办",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "营业执照",
+          "is_required": true,
+          "material_form": "电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n示例样表：1efeb6dc-7503-45ad-a561-12928e26cd3b\n空白表格：785169d0-f38a-45b4-a892-c706559a5af2"
+        },
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n示例样表：31818a8b-2bbe-4bca-92ba-6bd61f48c637\n空白表格：c5d6038e-6af8-436b-92c8-c0df9e429063"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请事项依法不需要取得烟草专卖许可证的，应当即时告知申请人不受理；\n（二）申请事项不属于本烟草专卖局法定职权范围的，应当即时作出不予受理的决定，并告知申请人向有关行政机关申请；\n（三）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（四）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（五）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：...展开\n审查标准：...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：决定书、送达回证；如准予许可的，含烟草专卖零售许可证。...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证新办\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市港口区北部湾大道148号市政务服务中心一楼15号窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：营业执照；身份证明\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "89e681725b3c39add89681095350f3be",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证新办",
+          "obj": {
+            "id": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+            "itemName": "烟草专卖零售许可证新办",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "https://recept.zwfw.gxzf.gov.cn/online/accept#/accept/entry?matterType=single&matterId=1114169557894&syncUserType=true",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "1e2e0316-3655-417d-8c84-e6129fbb74d5"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "1c81d028-fd66-40a8-8f2d-b2acb8c92bc1",
+            "itemDetailId": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+            "materialName": "营业执照",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "2",
+            "blankFilePath": "785169d0-f38a-45b4-a892-c706559a5af2",
+            "sampleFilePath": "1efeb6dc-7503-45ad-a561-12928e26cd3b",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "df611f2c-b62b-4443-a166-949fd5fe79f4",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 1,
+            "paperFormat": "",
+            "paperNum": "0",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          },
+          {
+            "id": "d92295fb-2fa6-487e-a612-c3dfcbb64137",
+            "itemDetailId": "fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "c5d6038e-6af8-436b-92c8-c0df9e429063",
+            "sampleFilePath": "31818a8b-2bbe-4bca-92ba-6bd61f48c637",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "ae324b33-3666-447f-8ea6-ffb2fccadae7",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证新办",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=fe58bcb5-5016-4931-8a74-dd0b3d969ac4",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证补办",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询,现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+        "raw_payload": {
+          "list_item": {
+            "id": "eba9935fd993ccdfb31806f3bcadb891",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证补办",
+            "obj": {
+              "id": "1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+              "itemName": "烟草专卖零售许可证补办",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "8ad81d6a-989b-4f4c-9716-1c012116108d"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "f7c59adb-c094-4354-8b6e-ea4113deea11",
+              "itemDetailId": "1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "",
+              "sampleFilePath": "73b89c2c-912c-449b-ad7b-5ecd153b2802",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统",
+              "remark": "身份证明包括：身份证、居民户口簿、居住证；材料只需提供其中一项。",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "393d9802-35a2-474c-bb1a-1ceec4bb797d",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证补办",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统\n受理标准：有即可\n备注：身份证明包括：身份证、居民户口簿、居住证；材料只需提供其中一项。\n是否需要签章：否\n示例样表：73b89c2c-912c-449b-ad7b-5ecd153b2802"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》；\n当场办结的，可以不出具本书面受理凭证...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（二）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（三）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：审批机关经过审查，认为申请人的烟草专卖许可证补办申请符合法定条件，决定准予许可。...展开\n审查标准：持证人在有效期内遗失或者损毁烟草专卖许可证的，应当及时提出补办申请。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：烟草专卖零售许可证...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证补办\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：身份证明\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "eba9935fd993ccdfb31806f3bcadb891",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证补办",
+          "obj": {
+            "id": "1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+            "itemName": "烟草专卖零售许可证补办",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "8ad81d6a-989b-4f4c-9716-1c012116108d"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "f7c59adb-c094-4354-8b6e-ea4113deea11",
+            "itemDetailId": "1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "",
+            "sampleFilePath": "73b89c2c-912c-449b-ad7b-5ecd153b2802",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统",
+            "remark": "身份证明包括：身份证、居民户口簿、居住证；材料只需提供其中一项。",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "393d9802-35a2-474c-bb1a-1ceec4bb797d",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证补办",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=1b4eaf82-c7d7-4526-a0fc-6c0ef8b93bff",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    },
+    {
+      "service": {
+        "service_name": "烟草专卖零售许可证恢复营业",
+        "department": "防城港市烟草局",
+        "service_object": null,
+        "promise_days": 8,
+        "legal_days": 20,
+        "on_site_times": 0,
+        "is_charge": false,
+        "accept_condition": "申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开",
+        "general_scope": "-",
+        "handle_form": "窗口办理,网上办理",
+        "item_type": "承诺件",
+        "handle_address": "防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点",
+        "handle_time": "工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开",
+        "consult_way": "咨询电话：0770-2822990...展开",
+        "complaint_way": "监督投诉电话：0770-2829414，防城港市烟草专卖局专卖监督管理科...展开",
+        "query_way": "电话查询,现场查询...展开",
+        "source_platform": "gxzwfw",
+        "source_region_code": "3113105210",
+        "source_item_id": "8774ef10-e02d-4246-a4c6-fe87cb51988f",
+        "source_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=8774ef10-e02d-4246-a4c6-fe87cb51988f",
+        "raw_payload": {
+          "list_item": {
+            "id": "fc50b0dd624dfd6625b7af6a4a5464d1",
+            "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+            "name": "烟草专卖零售许可证恢复营业",
+            "obj": {
+              "id": "8774ef10-e02d-4246-a4c6-fe87cb51988f",
+              "itemName": "烟草专卖零售许可证恢复营业",
+              "implementSubjectName": "防城港市烟草局",
+              "applyWay": "1,2",
+              "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+              "isExternalLink": 0,
+              "externalLinkUrl": "",
+              "extStr7": "01",
+              "applyExpress": "b7d8b406-8b7f-449e-aa85-78ef1f43b5ff"
+            },
+            "ojbType": 1,
+            "children": null,
+            "newMark": true,
+            "showQingdan": true
+          },
+          "materials": [
+            {
+              "id": "e79a2ede-fc78-4bd2-b30b-09ac5b7585b4",
+              "itemDetailId": "8774ef10-e02d-4246-a4c6-fe87cb51988f",
+              "materialName": "身份证明",
+              "materialType": "1",
+              "sourceChannel": "20",
+              "materialNum": 1,
+              "necessity": 1,
+              "materialFormal": "3",
+              "blankFilePath": "3cb89f25-df28-45c5-b7ea-6011362113ae",
+              "sampleFilePath": "a4caea03-702f-4bf7-b5f1-4f5e62be1873",
+              "acceptStandard": "有即可",
+              "fillNotice": "上传系统或提供给窗口办事人员即可",
+              "remark": "",
+              "createDate": "2026-04-03 23:08:20",
+              "createUserId": "c6195478-cb77-4139-a0ce-7b6022cdc3c7",
+              "updateDate": "2026-04-03 23:08:20",
+              "updateUserId": "1",
+              "isNeedSign": 0,
+              "isExemption": 0,
+              "exemptionAfterType": "",
+              "isShare": 0,
+              "paperFormat": "-",
+              "paperNum": "1",
+              "isRelationCerttype": 1,
+              "isMatchScene": 1,
+              "isTd": 0,
+              "copyAmount": 0,
+              "signRequirement": "",
+              "parentId": "-1",
+              "leaf": 1,
+              "childList": null,
+              "sortId": 0
+            }
+          ],
+          "detail_extract": {
+            "source_title": "烟草专卖零售许可证恢复营业",
+            "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=8774ef10-e02d-4246-a4c6-fe87cb51988f",
+            "parent_name": "烟草专卖零售许可证核发"
+          }
+        }
+      },
+      "materials": [
+        {
+          "material_name": "身份证明",
+          "is_required": true,
+          "material_form": "纸质和电子",
+          "original_num": 1,
+          "copy_num": 0,
+          "note": "类型：原件\n来源渠道：政府部门核发\n填报须知：上传系统或提供给窗口办事人员即可\n受理标准：有即可\n是否需要签章：否\n示例样表：a4caea03-702f-4bf7-b5f1-4f5e62be1873\n空白表格：3cb89f25-df28-45c5-b7ea-6011362113ae"
+        }
+      ],
+      "processes": [
+        {
+          "step_name": "收件与受理",
+          "step_desc": "办理步骤\n办理结果：材料齐全符合法定形式的、材料不齐全或不符合法定形式的、不属于许可范畴或者不属于本机关受理范围的，烟草专卖局受理或不受理烟草专卖许可证申请，出具《受理单》；\n当场办结的，可以不出具本书面受理凭证...展开\n审查标准：对申请材料进行初步审核。\n对申请人提出的申请，应当根据下列情况分别作出处理：\n（一）申请材料存在可以当场更正的错误的，应当允许申请人当场更正；\n（二）申请材料不齐全或者不符合法定形式的，应当当场或者在五日内以书面形式一次告知申请人需要补正的全部内容，逾期不告知的，自收到申请材料之日起即为受理；\n（三）申请事项属于本烟草专卖局法定职权范围，申请材料齐全、符合法定形式，或者申请人按照烟草专卖局的要求提交全部补正申请材料的，烟草专卖局应当受理烟草专卖许可证申请。...展开",
+          "sort": 1
+        },
+        {
+          "step_name": "审查与决定",
+          "step_desc": "办理步骤\n办理结果：审批机关经过审查，认为申请人的烟草专卖许可证申请符合法定条件，决定准予许可...展开\n审查标准：停业期满或者提前恢复营业的，持证人应当及时提出恢复营业申请。\n烟草专卖局审批发放烟草专卖零售许可证，应当自受理之日起20日内作出行政许可决定。对外承诺缩减期限的，以承诺期限为准。...展开",
+          "sort": 2
+        },
+        {
+          "step_name": "颁证与送达",
+          "step_desc": "办理步骤\n办理结果：烟草专卖零售许可证...展开\n审查标准：...展开",
+          "sort": 3
+        }
+      ],
+      "vector_text": "事项名称：烟草专卖零售许可证恢复营业\n办理部门：防城港市烟草局\n服务对象：\n受理条件：申请事项属于本行政机关职权范围，申请材料齐全、符合法定形式，或者申请人按照本行政机关的要求提交全部补正申请材料。...展开\n办理形式：窗口办理,网上办理\n办理地点：防城港市江山大道88号市民中心三楼烟草窗口\n...展开\n更多地点\n办理时间：工作日上午 9:00--12:00 下午 13:30--16:30 （法定节假日除外）...展开\n申请材料：身份证明\n办理流程：收件与受理；审查与决定；颁证与送达",
+      "raw_payload": {
+        "list_item": {
+          "id": "fc50b0dd624dfd6625b7af6a4a5464d1",
+          "parentId": "36d1e50b-33df-11e9-89bc-fa163ea9bf82",
+          "name": "烟草专卖零售许可证恢复营业",
+          "obj": {
+            "id": "8774ef10-e02d-4246-a4c6-fe87cb51988f",
+            "itemName": "烟草专卖零售许可证恢复营业",
+            "implementSubjectName": "防城港市烟草局",
+            "applyWay": "1,2",
+            "onlineUrl": "http://www--tobacco--gov--cn-019d383963.zipv6.gxzf.gov.cn/",
+            "isExternalLink": 0,
+            "externalLinkUrl": "",
+            "extStr7": "01",
+            "applyExpress": "b7d8b406-8b7f-449e-aa85-78ef1f43b5ff"
+          },
+          "ojbType": 1,
+          "children": null,
+          "newMark": true,
+          "showQingdan": true
+        },
+        "materials": [
+          {
+            "id": "e79a2ede-fc78-4bd2-b30b-09ac5b7585b4",
+            "itemDetailId": "8774ef10-e02d-4246-a4c6-fe87cb51988f",
+            "materialName": "身份证明",
+            "materialType": "1",
+            "sourceChannel": "20",
+            "materialNum": 1,
+            "necessity": 1,
+            "materialFormal": "3",
+            "blankFilePath": "3cb89f25-df28-45c5-b7ea-6011362113ae",
+            "sampleFilePath": "a4caea03-702f-4bf7-b5f1-4f5e62be1873",
+            "acceptStandard": "有即可",
+            "fillNotice": "上传系统或提供给窗口办事人员即可",
+            "remark": "",
+            "createDate": "2026-04-03 23:08:20",
+            "createUserId": "c6195478-cb77-4139-a0ce-7b6022cdc3c7",
+            "updateDate": "2026-04-03 23:08:20",
+            "updateUserId": "1",
+            "isNeedSign": 0,
+            "isExemption": 0,
+            "exemptionAfterType": "",
+            "isShare": 0,
+            "paperFormat": "-",
+            "paperNum": "1",
+            "isRelationCerttype": 1,
+            "isMatchScene": 1,
+            "isTd": 0,
+            "copyAmount": 0,
+            "signRequirement": "",
+            "parentId": "-1",
+            "leaf": 1,
+            "childList": null,
+            "sortId": 0
+          }
+        ],
+        "detail_extract": {
+          "source_title": "烟草专卖零售许可证恢复营业",
+          "detail_url": "https://zwfw.gxzf.gov.cn/eportal/ui?pageId=d0349fe94d1c4d139b006db643fb9e52&itemDetailId=8774ef10-e02d-4246-a4c6-fe87cb51988f",
+          "parent_name": "烟草专卖零售许可证核发"
+        }
+      }
+    }
+  ]
+}

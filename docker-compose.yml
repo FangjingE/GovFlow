@@ -1,0 +1,25 @@
+# 本地 PostgreSQL + pgvector（可选）
+# 启动：docker compose up -d
+# 连接串示例：postgresql://govflow:govflow@127.0.0.1:5433/govflow（主机 5433 → 容器 5432）
+
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: govflow
+      POSTGRES_PASSWORD: govflow
+      POSTGRES_DB: govflow
+    ports:
+      - "5433:5432"
+    volumes:
+      - govflow_pgdata:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - db
+    ports:
+      - "8081:8080"
+
+volumes:
+  govflow_pgdata:
