@@ -158,7 +158,7 @@
           <button type="button" id="new-chat" title="清除当前消息并开始新会话">新对话</button>
         </div>
         <p class="sub">
-          从事项库中检索<strong>最相关的一条</strong>政务事项，并按固定模板返回（当前不接大模型生成）。输入例如「身份证」「户口簿」等关键词。
+          从事项库中检索候选政务事项，并按置信度直接回答或先发起澄清。输入例如「身份证」「户口簿」等关键词。
         </p>
         <a class="doc" href="/docs" target="_blank" rel="noopener">OpenAPI 文档</a>
       </header>
@@ -188,7 +188,7 @@
         var sessionId = null;
         var sending = false;
         var WELCOME =
-          "你好。请输入与政务事项相关的问题，系统将返回匹配度最高的一条事项信息（模板展示）。咨询电话见回复文末。";
+          "你好。请输入与政务事项相关的问题，系统会在高置信度时直接返回事项信息，低置信度时先请你确认候选事项。咨询电话见回复文末。";
 
         function escapeHtml(s) {
           return String(s)

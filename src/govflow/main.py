@@ -32,7 +32,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="GovFlow",
     version="0.2.0",
-    description="政务事项存储与检索：Top-1 匹配 + 固定模板输出（不接大模型生成）",
+    description="政务事项存储与检索：候选判定 + 澄清/模板输出（不接大模型生成）",
     lifespan=lifespan,
 )
 

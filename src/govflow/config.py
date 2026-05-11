@@ -27,10 +27,15 @@ class Settings(BaseSettings):
     )
     # vector：仅向量检索；text：pg_trgm + ILIKE（调试用途）
     retrieval_mode: RetrievalMode = Field(default="vector")
+    retrieval_candidate_limit: int = Field(default=3, ge=2, le=50)
+    retrieval_clarify_min_score_gap: float = Field(default=0.03, ge=0.0, le=1.0)
+    retrieval_keyword_ranking_enabled: bool = Field(default=False)
     # 文本检索最低得分，低于此视为未命中（见 service_embedding / gov_service 相似度）
     text_match_min_score: float = Field(default=0.05, ge=0.0, le=1.0)
     # ivfflat 召回探测桶数（越大召回越准，查询越慢）
     vector_ivfflat_probes: int = Field(default=10, ge=1, le=10000)
+    vector_fallback_min_score: float = Field(default=0.70, ge=0.0, le=1.0)
+    vector_answer_min_score: float = Field(default=0.78, ge=0.0, le=1.0)
     # 自动向量化检索配置（OpenAI 兼容 Embeddings API）
     embedding_enabled: bool = Field(default=True)
     embedding_provider: EmbeddingProvider = Field(default="local")
@@ -38,6 +43,15 @@ class Settings(BaseSettings):
     embedding_base_url: str = Field(default="https://api.openai.com/v1")
     embedding_model: str = Field(default="text-embedding-3-small")
     embedding_timeout_seconds: int = Field(default=20, ge=1, le=120)
+    # 候选判定（LLM）配置：只用于在候选中选择 best_id，不直接生成政策回答
+    llm_ranker_enabled: bool = Field(default=False)
+    llm_ranker_api_key: str | None = Field(default=None)
+    llm_ranker_base_url: str = Field(default="https://api.openai.com/v1")
+    llm_ranker_model: str = Field(default="gpt-4.1-mini")
+    llm_ranker_timeout_seconds: int = Field(default=20, ge=1, le=120)
+    llm_ranker_top_k: int = Field(default=10, ge=3, le=30)
+    llm_ranker_answer_threshold: float = Field(default=0.80, ge=0.0, le=1.0)
+    llm_ranker_clarify_threshold: float = Field(default=0.60, ge=0.0, le=1.0)
     # 本地向量化配置（sentence-transformers）
     embedding_local_model: str = Field(default="BAAI/bge-base-zh-v1.5")
     embedding_local_device: str = Field(default="auto")

@@ -5,6 +5,7 @@ from __future__ import annotations
 from jinja2 import Environment, BaseLoader, select_autoescape
 
 from govflow.services.gov_types import GovServiceRow, MaterialRow, ProcessRow
+from govflow.services.retrieval_policy import build_clarify_question, build_option_label
 
 _TEMPLATE = """事项名称：{{ service_name }}
 办理部门：{{ department }}
@@ -86,3 +87,47 @@ def render_service_answer(
         "query": query.strip(),
     }
     return _env.from_string(_TEMPLATE).render(**ctx).strip() + "\n"
+
+
+def render_clarify_prompt(
+    *,
+    candidates: list[GovServiceRow],
+    hotline: str,
+) -> tuple[str, str, list[str]]:
+    question = build_clarify_question(candidates)
+    show_department = len({svc.department for svc in candidates if svc.department}) > 1
+    show_service_object = len({svc.service_object for svc in candidates if svc.service_object}) > 1
+    option_labels = [
+        build_option_label(
+            svc,
+            show_department=show_department,
+            show_service_object=show_service_object,
+        )
+        for svc in candidates
+    ]
+    lines = [question, "你要查询的是否是以下事项之一？"]
+    lines.extend(f"{idx}. {label}" for idx, label in enumerate(option_labels, start=1))
+    lines.append("你可以直接发送更接近的事项名称，或补充更具体的关键词。")
+    lines.append(f"咨询电话：{hotline}")
+    return "\n".join(lines), question, option_labels
+
+
+def render_fallback_prompt(
+    *,
+    candidates: list[GovServiceRow],
+    hotline: str,
+) -> str:
+    lines = ["未在事项库中匹配到足够相关的一条政务事项。"]
+    if candidates:
+        show_department = len({svc.department for svc in candidates if svc.department}) > 1
+        show_service_object = len({svc.service_object for svc in candidates if svc.service_object}) > 1
+        lines.append("如果接近你的问题，可参考以下事项：")
+        lines.extend(
+            f"{idx}. {build_option_label(svc, show_department=show_department, show_service_object=show_service_object)}"
+            for idx, svc in enumerate(candidates, start=1)
+        )
+    else:
+        lines.append("请尝试补充更准确的事项关键词。")
+    lines.append("请尝试更准确地描述，或拨打政务服务热线咨询。")
+    lines.append(f"咨询电话：{hotline}")
+    return "\n".join(lines)

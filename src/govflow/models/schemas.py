@@ -21,10 +21,18 @@ class SourceRef(BaseModel):
     score: float | None = None
 
 
+class ClarifyOption(BaseModel):
+    service_id: int
+    label: str
+    value: str
+
+
 class ChatResponse(BaseModel):
     session_id: str
     reply: str
-    kind: str = Field(description="answer | fallback")
+    kind: str = Field(description="answer | clarify | fallback")
     sources: list[SourceRef] = Field(default_factory=list)
     official_hotline: str
+    clarify_question: str | None = None
+    clarify_options: list[ClarifyOption] = Field(default_factory=list)
     stages_executed: list[str] = Field(default_factory=list)

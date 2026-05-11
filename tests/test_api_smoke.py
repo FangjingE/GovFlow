@@ -48,6 +48,9 @@ def test_chat_fallback_contains_suggestions() -> None:
         r = client.post("/v1/chat", json={"message": "随便测试一个极不相关的查询词"})
         assert r.status_code == 200
         data = r.json()
-        if data["kind"] == "fallback":
-            assert "你要查询的是否是：" in data["reply"]
+        assert data["kind"] in {"clarify", "fallback"}
+        if data["kind"] == "clarify":
+            assert data["clarify_options"]
+            assert "你要查询的是否是以下事项之一？" in data["reply"]
+        else:
             assert "请尝试更准确地描述" in data["reply"]

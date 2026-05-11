@@ -1,6 +1,6 @@
 # GovFlow
 
-政务事项 **PostgreSQL + pgvector** 存储与 **Top-1** 检索：命中后按 `docs/ARCHITECTURE.md` 第六节模板直接返回正文，**不接大模型生成**。
+政务事项 **PostgreSQL + pgvector** 存储与检索：高置信度命中后按 `docs/ARCHITECTURE.md` 第六节模板直接返回正文，低置信度时先发起澄清，**不接大模型生成**。
 
 ## 环境
 
@@ -70,8 +70,10 @@ pytest -q tests/test_api_smoke.py
 
 ## 检索说明
 
-- 后端默认会尝试用**本地 embedding 模型**把用户问题自动转成 **768 维向量**，并执行 `pgvector` 余弦距离 Top-1 检索。
+- 后端默认会尝试用**本地 embedding 模型**把用户问题自动转成 **768 维向量**，并执行 `pgvector` 候选召回。
 - 当前默认使用**严格向量检索**（`GOVFLOW_RETRIEVAL_MODE=vector`），不回退文本检索。
+- 检索阶段会先取 Top-K 候选，再根据相关性阈值决定是直接回答、发起澄清，还是返回 fallback。
+- 当前主召回文本已收窄为高区分度字段：事项名称、办理部门、服务对象、受理条件、办件类型、办理形式。办理地点、办理时间等展示字段不再进入主向量文本。
 - 向量检索使用 `ivfflat` 索引，默认 `GOVFLOW_VECTOR_IVFFLAT_PROBES=100` 以提升召回准确率（可按时延继续调优）。
 - 若请求体提供 `query_vector`（768 维），则优先使用该向量。
 - 若后端自动向量化不可用，会直接返回错误提示（请检查本地模型配置或直接传 `query_vector`）。
@@ -85,7 +87,19 @@ GOVFLOW_EMBEDDING_LOCAL_MODEL=BAAI/bge-base-zh-v1.5
 GOVFLOW_EMBEDDING_LOCAL_DEVICE=auto
 GOVFLOW_EMBEDDING_LOCAL_FILES_ONLY=true
 GOVFLOW_VECTOR_IVFFLAT_PROBES=100
+GOVFLOW_RETRIEVAL_CANDIDATE_LIMIT=3
+GOVFLOW_RETRIEVAL_KEYWORD_RANKING_ENABLED=false
+GOVFLOW_VECTOR_FALLBACK_MIN_SCORE=0.70
+GOVFLOW_VECTOR_ANSWER_MIN_SCORE=0.78
+GOVFLOW_RETRIEVAL_CLARIFY_MIN_SCORE_GAP=0.03
 GOVFLOW_EMBEDDING_TIMEOUT_SECONDS=20
+```
+
+若你已入库旧数据，调整检索文本后建议先重建 `vector_text` 再重新回填向量：
+
+```bash
+python scripts/rebuild_vector_texts.py --region-code 3113105254
+python scripts/backfill_embeddings.py --region-code 3113105254 --all
 ```
 
 若你要切回在线 API：

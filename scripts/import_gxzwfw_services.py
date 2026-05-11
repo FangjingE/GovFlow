@@ -212,6 +212,8 @@ class ParsedService:
     materials: list[dict[str, Any]]
     processes: list[dict[str, Any]]
     vector_text: str
+    vector_text_main: str
+    vector_text_aux: str
     raw_payload: dict[str, Any]
 
 
@@ -426,12 +428,15 @@ def parse_detail_html(
         "source_url": detail_url,
         "raw_payload": raw_payload,
     }
-    vector_text = build_vector_text(service, materials, processes)
+    vector_text_main, vector_text_aux = build_vector_text_parts(service, materials, processes)
+    vector_text = vector_text_main if vector_text_main.strip() else vector_text_aux
     return ParsedService(
         service=service,
         materials=materials,
         processes=processes,
         vector_text=vector_text,
+        vector_text_main=vector_text_main,
+        vector_text_aux=vector_text_aux,
         raw_payload=raw_payload,
     )
 
@@ -495,18 +500,30 @@ def build_vector_text(
     materials: list[dict[str, Any]],
     processes: list[dict[str, Any]],
 ) -> str:
-    lines = [
+    main_text, aux_text = build_vector_text_parts(service, materials, processes)
+    return main_text if main_text.strip() else aux_text
+
+
+def build_vector_text_parts(
+    service: dict[str, Any],
+    materials: list[dict[str, Any]],
+    processes: list[dict[str, Any]],
+) -> tuple[str, str]:
+    main_lines = [
         f"事项名称：{service.get('service_name') or ''}",
         f"办理部门：{service.get('department') or ''}",
         f"服务对象：{service.get('service_object') or ''}",
         f"受理条件：{service.get('accept_condition') or ''}",
+        f"办件类型：{service.get('item_type') or ''}",
         f"办理形式：{service.get('handle_form') or ''}",
-        f"办理地点：{service.get('handle_address') or ''}",
-        f"办理时间：{service.get('handle_time') or ''}",
+    ]
+    aux_lines = [
         "申请材料：" + "；".join(m["material_name"] for m in materials if m.get("material_name")),
         "办理流程：" + "；".join(p["step_name"] for p in processes if p.get("step_name")),
     ]
-    return "\n".join(line for line in lines if line.strip())
+    main_text = "\n".join(line for line in main_lines if line.strip())
+    aux_text = "\n".join(line for line in aux_lines if line.strip())
+    return main_text, aux_text
 
 
 def upsert_service(conn: Any, parsed: ParsedService) -> int:
@@ -645,6 +662,22 @@ def import_services(args: argparse.Namespace) -> None:
                             row.get("materials") or [],
                             row.get("processes") or [],
                         ),
+                        vector_text_main=(
+                            row.get("vector_text_main")
+                            or build_vector_text_parts(
+                                service,
+                                row.get("materials") or [],
+                                row.get("processes") or [],
+                            )[0]
+                        ),
+                        vector_text_aux=(
+                            row.get("vector_text_aux")
+                            or build_vector_text_parts(
+                                service,
+                                row.get("materials") or [],
+                                row.get("processes") or [],
+                            )[1]
+                        ),
                         raw_payload=row.get("raw_payload") or service.get("raw_payload") or {},
                     )
                     service_id = upsert_service(conn, parsed)
@@ -698,6 +731,8 @@ def import_services(args: argparse.Namespace) -> None:
                         "materials": parsed.materials,
                         "processes": parsed.processes,
                         "vector_text": parsed.vector_text,
+                        "vector_text_main": parsed.vector_text_main,
+                        "vector_text_aux": parsed.vector_text_aux,
                         "raw_payload": parsed.raw_payload,
                     }
                 )

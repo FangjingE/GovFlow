@@ -27,6 +27,7 @@ class GovServiceRow:
     complaint_way: str | None
     query_way: str | None
     match_score: float | None = None
+    keyword_hits: int | None = None
 
 
 @dataclass
