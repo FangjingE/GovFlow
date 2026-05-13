@@ -10,6 +10,7 @@ def test_render_uses_architecture_shape() -> None:
     svc = GovServiceRow(
         id=1,
         service_name="测试事项",
+        source_url=None,
         department="测试局",
         service_object="自然人",
         promise_days=1,
@@ -41,6 +42,7 @@ def test_render_clarify_prompt_lists_options() -> None:
         GovServiceRow(
             id=1,
             service_name="居民身份证申领",
+            source_url=None,
             department="公安局",
             service_object="自然人",
             promise_days=None,
@@ -61,6 +63,7 @@ def test_render_clarify_prompt_lists_options() -> None:
         GovServiceRow(
             id=2,
             service_name="居民身份证换领",
+            source_url=None,
             department="公安局",
             service_object="自然人",
             promise_days=None,
@@ -92,6 +95,7 @@ def test_render_fallback_prompt_shows_reference_candidates() -> None:
         GovServiceRow(
             id=3,
             service_name="社会保险登记",
+            source_url=None,
             department="人社局",
             service_object="企业法人",
             promise_days=None,

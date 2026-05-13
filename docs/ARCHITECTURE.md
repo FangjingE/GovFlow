@@ -172,6 +172,66 @@ SELECT * FROM service_process WHERE service_id = ? ORDER BY sort;
 
 ---
 
+## 四点五、当前 Chat 链路流程图（实际代码）
+
+```mermaid
+flowchart TD
+    A[POST /v1/chat] --> B[读取 session_id/message]
+    B --> C{命中 clarify 会话状态?}
+
+    C -->|是| C1[clarify_resume: 取上轮候选+槽位]
+    C1 --> C2[LLM 抽取槽位并合并]
+    C2 --> C3[LLM 复判 best_id/confidence]
+    C3 --> C4{confidence >= answer_threshold 且 best_id有效?}
+    C4 -->|是| C5[加载事项详情]
+    C5 --> C6{LLM 软回答成功?}
+    C6 -->|是| C7[kind=answer, llm_soft_template]
+    C6 -->|否| C8[kind=answer, 固定模板]
+    C4 -->|否| C9{confidence >= clarify_threshold?}
+    C9 -->|是| C10[LLM 软澄清追问]
+    C10 --> C11[kind=clarify, 保持会话状态]
+    C9 -->|否| C12[清理会话状态, 继续新检索]
+
+    C -->|否| D[常规链路]
+    C12 --> D
+    D --> E{query_vector 可用?}
+    E -->|是| F[向量检索 TopK]
+    E -->|否| G[文本检索 TopK]
+    F --> H[LLM 候选判定 best_id/confidence]
+    G --> H
+    H --> I{llm_rank 有结果?}
+
+    I -->|是| J{best_id有效?}
+    J -->|否| K[kind=fallback]
+    J -->|是| L{confidence < clarify_threshold?}
+    L -->|是| K
+    L -->|否| M{confidence < answer_threshold?}
+    M -->|是| N[LLM 软澄清]
+    N --> N1{软澄清成功?}
+    N1 -->|是| N2[保存 clarify 会话状态]
+    N2 --> N3[kind=clarify]
+    N1 -->|否| N4[kind=clarify, 固定模板]
+    M -->|否| O[加载 best_id 事项详情]
+    O --> P{LLM 软回答成功?}
+    P -->|是| Q[kind=answer, llm_soft_template]
+    P -->|否| R[kind=answer, 固定模板]
+
+    I -->|否| S[纯检索策略 choose_retrieval_decision]
+    S --> T{decision}
+    T -->|fallback| K
+    T -->|clarify| N4
+    T -->|answer| U[加载 top1 详情]
+    U --> R
+```
+
+补充说明：
+
+1. `fallback_min_score` 仅在 `llm_rank=None`（走纯检索策略）时生效。  
+2. `retrieval_candidate_limit` 控制展示/返回数量；给 LLM 的候选数量由 `llm_ranker_top_k` 控制。  
+3. `clarify` 会话状态按 `session_id` 命中；前端“新对话”或刷新页面若丢失 `session_id`，会按新问题处理。  
+
+---
+
 ## 五、推荐技术配置
 
 - 向量模型：`BAAI/bge-base-zh-v1.5`（维度768）

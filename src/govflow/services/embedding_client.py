@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from functools import lru_cache
+import os
 from typing import Any
 
 import httpx
@@ -20,6 +21,11 @@ def _build_url(base_url: str) -> str:
 
 @lru_cache
 def _get_local_model(model_name: str, device: str, local_files_only: bool):
+    # Force offline behavior to avoid background hub/network calls in restricted envs.
+    os.environ.setdefault("HF_HUB_OFFLINE", "1")
+    os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+    os.environ.setdefault("HF_HUB_DISABLE_TELEMETRY", "1")
+    os.environ.setdefault("HF_HUB_DISABLE_IMPLICIT_TOKEN", "1")
     from sentence_transformers import SentenceTransformer
 
     return SentenceTransformer(model_name, device=device, local_files_only=local_files_only)

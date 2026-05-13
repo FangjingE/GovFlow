@@ -36,6 +36,7 @@ __all__ = [
 _SERVICE_SELECT_COLUMNS = """
     gs.id,
     gs.service_name,
+    gs.source_url,
     gs.department,
     gs.service_object,
     gs.promise_days,

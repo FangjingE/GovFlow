@@ -3,6 +3,7 @@
 from functools import lru_cache
 from typing import Literal
 
+from pydantic import model_validator
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -43,11 +44,14 @@ class Settings(BaseSettings):
     embedding_base_url: str = Field(default="https://api.openai.com/v1")
     embedding_model: str = Field(default="text-embedding-3-small")
     embedding_timeout_seconds: int = Field(default=20, ge=1, le=120)
+    # 旧版 LLM 配置（兼容）：将映射到 llm_ranker_*，避免已有 .env 失效
+    llm_provider: str | None = Field(default=None)
+    llm_api_key: str | None = Field(default=None)
     # 候选判定（LLM）配置：只用于在候选中选择 best_id，不直接生成政策回答
     llm_ranker_enabled: bool = Field(default=False)
     llm_ranker_api_key: str | None = Field(default=None)
-    llm_ranker_base_url: str = Field(default="https://api.openai.com/v1")
-    llm_ranker_model: str = Field(default="gpt-4.1-mini")
+    llm_ranker_base_url: str = Field(default="https://api.deepseek.com/v1")
+    llm_ranker_model: str = Field(default="deepseek-v4-pro")
     llm_ranker_timeout_seconds: int = Field(default=20, ge=1, le=120)
     llm_ranker_top_k: int = Field(default=10, ge=3, le=30)
     llm_ranker_answer_threshold: float = Field(default=0.80, ge=0.0, le=1.0)
@@ -56,6 +60,28 @@ class Settings(BaseSettings):
     embedding_local_model: str = Field(default="BAAI/bge-base-zh-v1.5")
     embedding_local_device: str = Field(default="auto")
     embedding_local_files_only: bool = Field(default=True)
+
+    @model_validator(mode="after")
+    def _apply_llm_compat(self) -> "Settings":
+        # 1) API Key：优先新变量，缺失时回退旧变量
+        if not self.llm_ranker_api_key and self.llm_api_key:
+            self.llm_ranker_api_key = self.llm_api_key
+
+        # 2) Provider/Base URL：仅在未显式配置 llm_ranker_base_url 时尝试推断
+        default_ranker_base = "https://api.openai.com/v1"
+        if (
+            self.llm_provider
+            and self.llm_ranker_base_url.strip() == default_ranker_base
+        ):
+            p = self.llm_provider.strip().lower()
+            if p == "deepseek":
+                self.llm_ranker_base_url = "https://api.deepseek.com/v1"
+
+        # 3) 自动启用：如果已有可用 key 且用户配置了 provider，则默认启用 ranker
+        if not self.llm_ranker_enabled and self.llm_ranker_api_key and self.llm_provider:
+            self.llm_ranker_enabled = True
+
+        return self
 
 
 @lru_cache

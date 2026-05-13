@@ -6,6 +6,7 @@
 """
 
 from contextlib import asynccontextmanager
+import logging
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -16,6 +17,11 @@ from govflow.config import get_settings
 from govflow.db.pool import create_pool
 
 _STATIC_DIR = Path(__file__).resolve().parent / "static"
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s [%(name)s] %(message)s",
+)
 
 
 @asynccontextmanager

@@ -111,6 +111,20 @@ GOVFLOW_EMBEDDING_BASE_URL=https://api.openai.com/v1
 GOVFLOW_EMBEDDING_MODEL=text-embedding-3-small
 ```
 
+LLM 候选判定（用于在 Top-K 候选里选 `best_id`，不直接生成政策回答）：
+
+```bash
+GOVFLOW_LLM_RANKER_ENABLED=true
+GOVFLOW_LLM_RANKER_API_KEY=sk-...
+GOVFLOW_LLM_RANKER_BASE_URL=https://api.openai.com/v1
+GOVFLOW_LLM_RANKER_MODEL=gpt-4.1-mini
+GOVFLOW_LLM_RANKER_TOP_K=10
+GOVFLOW_LLM_RANKER_ANSWER_THRESHOLD=0.80
+GOVFLOW_LLM_RANKER_CLARIFY_THRESHOLD=0.60
+```
+
+兼容说明：若你仍使用旧变量 `GOVFLOW_LLM_PROVIDER` / `GOVFLOW_LLM_API_KEY`，系统会自动映射到新的 `llm_ranker_*` 配置；其中 `GOVFLOW_LLM_PROVIDER=deepseek` 会自动推断 `https://api.deepseek.com/v1` 作为 ranker base URL（未显式配置新变量时）。
+
 ## 架构
 
 见 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)。

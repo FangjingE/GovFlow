@@ -11,6 +11,7 @@ EMBEDDING_DIM = 768
 class GovServiceRow:
     id: int
     service_name: str
+    source_url: str | None
     department: str | None
     service_object: str | None
     promise_days: int | None
