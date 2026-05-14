@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     llm_ranker_api_key: str | None = Field(default=None)
     llm_ranker_base_url: str = Field(default="https://api.deepseek.com/v1")
     llm_ranker_model: str = Field(default="deepseek-v4-pro")
-    llm_ranker_timeout_seconds: int = Field(default=20, ge=1, le=120)
+    llm_ranker_timeout_seconds: int = Field(default=40, ge=1, le=120)
     llm_ranker_top_k: int = Field(default=10, ge=3, le=30)
     llm_ranker_answer_threshold: float = Field(default=0.80, ge=0.0, le=1.0)
     llm_ranker_clarify_threshold: float = Field(default=0.60, ge=0.0, le=1.0)

@@ -34,6 +34,9 @@ def _settings(**overrides):
         "vector_answer_min_score": 0.78,
         "embedding_enabled": True,
         "llm_ranker_enabled": False,
+        "llm_ranker_api_key": "test-key",
+        "llm_ranker_base_url": "https://api.deepseek.com/v1",
+        "llm_ranker_model": "deepseek-chat",
         "llm_ranker_top_k": 10,
         "llm_ranker_answer_threshold": 0.80,
         "llm_ranker_clarify_threshold": 0.60,
@@ -126,9 +129,9 @@ def test_post_chat_returns_fallback_for_low_confidence(monkeypatch) -> None:
     resp = chat.post_chat(ChatRequest(message="随便测试一个极不相关的查询词"), pool=_FakePool())
 
     assert resp.kind == "fallback"
-    assert "未在事项库中匹配到足够相关的一条政务事项。" in resp.reply
+    assert "LLM 决策不可用" in resp.reply
     assert resp.clarify_options == []
-    assert resp.stages_executed == ["retrieve_vector", "template_fallback"]
+    assert resp.stages_executed == ["retrieve_vector", "reason_fallback"]
 
 
 def test_post_chat_returns_answer_for_exact_service_name(monkeypatch) -> None:
@@ -184,21 +187,29 @@ def test_post_chat_uses_llm_ranker_for_answer(monkeypatch) -> None:
     monkeypatch.setattr(chat.gr, "load_processes", lambda *_args, **_kwargs: [])
     monkeypatch.setattr(
         chat,
-        "generate_soft_answer_with_llm",
+        "decide_dialog_with_llm",
         lambda *_args, **_kwargs: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMSoftAnswerResult"]
-        ).LLMSoftAnswerResult(
-            answer="建议先申请大型群众性活动安全许可。",
+            "govflow.services.llm_ranker", fromlist=["LLMDialogDecision"]
+        ).LLMDialogDecision(
+            action="answer",
+            best_id=1,
+            reply="建议先申请大型群众性活动安全许可。",
             follow_up_question="",
             cited_ids=[1],
+            reason="命中",
         ),
+    )
+    monkeypatch.setattr(
+        chat,
+        "generate_service_answer_with_llm",
+        lambda *_args, **_kwargs: "建议先申请大型群众性活动安全许可。",
     )
 
     resp = chat.post_chat(ChatRequest(message="我要开大型演唱会怎么审批"), pool=_FakePool())
 
     assert resp.kind == "answer"
     assert "大型群众性活动安全许可" in resp.reply
-    assert resp.stages_executed == ["retrieve_vector", "rank_llm", "load_detail", "llm_soft_template"]
+    assert resp.stages_executed == ["retrieve_vector", "decide_llm", "load_detail", "llm_freeform_answer"]
     assert resp.sources[0].uri == "https://example.com/services/1"
 
 
@@ -224,18 +235,26 @@ def test_post_chat_uses_llm_ranker_for_fallback(monkeypatch) -> None:
             _service(3, "大型户外广告审批", 0.70),
         ],
     )
+    monkeypatch.setattr(chat, "rank_candidates_with_llm", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
         chat,
-        "rank_candidates_with_llm",
-        lambda _msg, _cands, _settings: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMRankResult"]
-        ).LLMRankResult(best_id=1, confidence=0.30, reason="不确定"),
+        "decide_dialog_with_llm",
+        lambda *_args, **_kwargs: __import__(
+            "govflow.services.llm_ranker", fromlist=["LLMDialogDecision"]
+        ).LLMDialogDecision(
+            action="fallback",
+            best_id=None,
+            reply="这个问题我暂时无法准确判断对应事项，建议拨打政务服务热线咨询：12345",
+            follow_up_question="",
+            cited_ids=[],
+            reason="差距过大",
+        ),
     )
 
     resp = chat.post_chat(ChatRequest(message="我要开大型演唱会怎么审批"), pool=_FakePool())
 
     assert resp.kind == "fallback"
-    assert "未在事项库中匹配到足够相关的一条政务事项。" in resp.reply
+    assert "建议拨打政务服务热线咨询" in resp.reply
 
 
 def test_post_chat_uses_llm_soft_clarify(monkeypatch) -> None:
@@ -260,22 +279,19 @@ def test_post_chat_uses_llm_soft_clarify(monkeypatch) -> None:
             _service(3, "企业参保登记", 0.78),
         ],
     )
+    monkeypatch.setattr(chat, "rank_candidates_with_llm", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
         chat,
-        "rank_candidates_with_llm",
-        lambda _msg, _cands, _settings: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMRankResult"]
-        ).LLMRankResult(best_id=1, confidence=0.70, reason="中等把握"),
-    )
-    monkeypatch.setattr(
-        chat,
-        "generate_soft_answer_with_llm",
+        "decide_dialog_with_llm",
         lambda *_args, **_kwargs: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMSoftAnswerResult"]
-        ).LLMSoftAnswerResult(
-            answer="我初步判断是企业社会保险登记，但还需要确认参保主体类型。",
+            "govflow.services.llm_ranker", fromlist=["LLMDialogDecision"]
+        ).LLMDialogDecision(
+            action="clarify",
+            best_id=None,
+            reply="我初步判断是企业社会保险登记，但还需要确认参保主体类型。",
             follow_up_question="请问你是企业首次参保登记，还是机关事业单位登记？",
             cited_ids=[1, 2],
+            reason="信息不足",
         ),
     )
 
@@ -285,4 +301,4 @@ def test_post_chat_uses_llm_soft_clarify(monkeypatch) -> None:
     assert "企业社会保险登记" in resp.reply
     assert "企业首次参保登记" in (resp.clarify_question or "")
     assert resp.clarify_options == []
-    assert resp.stages_executed == ["retrieve_vector", "rank_llm", "llm_soft_clarify"]
+    assert resp.stages_executed == ["retrieve_vector", "decide_llm", "llm_freeform_clarify"]

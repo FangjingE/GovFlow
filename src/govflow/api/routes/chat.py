@@ -17,14 +17,16 @@ from govflow.services.embedding_client import embed_query
 from govflow.services import gov_retrieval as gr
 from govflow.services.gov_types import EMBEDDING_DIM
 from govflow.services.llm_ranker import (
+    decide_dialog_with_llm,
+    explain_fallback_with_llm,
     extract_slots_with_llm,
-    generate_soft_answer_with_llm,
+    generate_service_answer_with_llm,
+    get_last_llm_decide_error,
     rank_candidates_with_llm,
 )
 from govflow.services.retrieval_policy import choose_retrieval_decision
 from govflow.services.template_render import (
     render_clarify_prompt,
-    render_fallback_prompt,
     render_service_answer,
 )
 
@@ -129,18 +131,22 @@ def _fallback_response(
     base_stages: list[str],
     candidates: list[gr.GovServiceRow],
     limit: int,
+    reason: str,
 ) -> ChatResponse:
-    reply = render_fallback_prompt(
-        candidates=candidates[:limit],
+    llm_reply = explain_fallback_with_llm(
+        query="",
+        error_reason=reason,
         hotline=hotline,
+        settings=get_settings(),
     )
+    reply = llm_reply or f"{reason}\n建议拨打政务服务热线咨询：{hotline}"
     return ChatResponse(
         session_id=session_id,
         reply=reply,
         kind="fallback",
         sources=_build_sources(candidates, limit=limit),
         official_hotline=hotline,
-        stages_executed=base_stages + ["template_fallback"],
+        stages_executed=base_stages + ["reason_fallback"],
     )
 
 
@@ -236,76 +242,57 @@ def post_chat(body: ChatRequest, pool: ConnectionPool = Depends(get_pool)) -> Ch
                 rank_query = f"{msg}\n已知条件: " + "；".join(
                     f"{k}={v}" for k, v in clarify_state.slots.items()
                 )
-            llm_rank = rank_candidates_with_llm(rank_query, llm_candidates, settings)
-            _log_llm_rank(session_id, "clarify_resume_rank", llm_rank)
-            if llm_rank is not None:
+            decision = decide_dialog_with_llm(
+                rank_query,
+                llm_candidates,
+                settings=settings,
+                slots=clarify_state.slots,
+            )
+            if decision is not None:
                 valid_ids = {svc.id for svc in llm_candidates}
-                if (
-                    llm_rank.best_id is not None
-                    and llm_rank.best_id in valid_ids
-                    and llm_rank.confidence >= settings.llm_ranker_answer_threshold
-                ):
-                    selected = next((svc for svc in llm_candidates if svc.id == llm_rank.best_id), None)
+                picked = [svc for svc in llm_candidates if svc.id in set(decision.cited_ids) & valid_ids]
+                if decision.action == "answer" and decision.best_id in valid_ids:
+                    selected = next((svc for svc in llm_candidates if svc.id == decision.best_id), None)
                     if selected is not None:
                         materials = gr.load_materials(conn, selected.id)
                         processes = gr.load_processes(conn, selected.id)
-                        soft = generate_soft_answer_with_llm(
-                            msg,
-                            llm_candidates,
-                            confidence=llm_rank.confidence,
-                            mode="answer",
-                            settings=settings,
-                        )
+                        reply = generate_service_answer_with_llm(
+                            msg, selected, materials, processes, settings=settings
+                        ) or decision.reply
                         _clear_clarify_state(session_id)
-                        if soft is not None:
-                            picked = [
-                                row for row in llm_candidates if row.id in set(soft.cited_ids) & valid_ids
-                            ]
-                            source_rows = picked or [selected]
-                            return ChatResponse(
-                                session_id=session_id,
-                                reply=soft.answer,
-                                kind="answer",
-                                sources=_build_sources(
-                                    source_rows, limit=settings.retrieval_candidate_limit
-                                ),
-                                official_hotline=hotline,
-                                stages_executed=["clarify_resume", "rank_llm", "load_detail", "llm_soft_template"],
-                            )
-                        reply = render_service_answer(
-                            service=selected, materials=materials, processes=processes, query=msg
-                        )
                         return ChatResponse(
                             session_id=session_id,
                             reply=reply,
                             kind="answer",
-                            sources=_build_sources([selected], limit=1),
+                            sources=_build_sources(picked or [selected], limit=settings.retrieval_candidate_limit),
                             official_hotline=hotline,
-                            stages_executed=["clarify_resume", "rank_llm", "load_detail", "template"],
+                            stages_executed=["clarify_resume", "decide_llm", "load_detail", "llm_freeform_answer"],
                         )
-                if llm_rank.confidence >= settings.llm_ranker_clarify_threshold:
-                    soft = generate_soft_answer_with_llm(
-                        msg,
-                        llm_candidates,
-                        confidence=llm_rank.confidence,
-                        mode="clarify",
-                        settings=settings,
+                if decision.action == "clarify":
+                    return ChatResponse(
+                        session_id=session_id,
+                        reply=decision.reply,
+                        kind="clarify",
+                        sources=_build_sources(
+                            picked or llm_candidates, limit=settings.retrieval_candidate_limit
+                        ),
+                        official_hotline=hotline,
+                        clarify_question=decision.follow_up_question or "请再补充一点关键信息。",
+                        clarify_options=[],
+                        stages_executed=["clarify_resume", "decide_llm", "llm_freeform_clarify"],
                     )
-                    if soft is not None:
-                        return ChatResponse(
-                            session_id=session_id,
-                            reply=soft.answer,
-                            kind="clarify",
-                            sources=_build_sources(
-                                llm_candidates, limit=settings.retrieval_candidate_limit
-                            ),
-                            official_hotline=hotline,
-                            clarify_question=soft.follow_up_question
-                            or "请补充一个最关键的信息，我就能为你确认具体事项。",
-                            clarify_options=[],
-                            stages_executed=["clarify_resume", "rank_llm", "llm_soft_clarify"],
-                        )
                 _clear_clarify_state(session_id)
+                return ChatResponse(
+                    session_id=session_id,
+                    reply=decision.reply or f"我暂时无法从当前候选中判断出准确事项，建议拨打政务服务热线咨询：{hotline}",
+                    kind="fallback",
+                    sources=_build_sources(
+                        picked or llm_candidates, limit=settings.retrieval_candidate_limit
+                    ),
+                    official_hotline=hotline,
+                    stages_executed=["clarify_resume", "decide_llm", "llm_freeform_fallback"],
+                )
+            _clear_clarify_state(session_id)
 
         if use_vector:
             query_vec = body.query_vector if body.query_vector is not None else auto_vector
@@ -338,72 +325,54 @@ def post_chat(body: ChatRequest, pool: ConnectionPool = Depends(get_pool)) -> Ch
         llm_candidates = candidates[: settings.llm_ranker_top_k]
         llm_rank = rank_candidates_with_llm(msg, llm_candidates, settings)
         _log_llm_rank(session_id, "rank_llm", llm_rank)
-        if llm_rank is not None:
+        decision = decide_dialog_with_llm(msg, llm_candidates, settings=settings, slots={})
+        if decision is not None:
             valid_ids = {svc.id for svc in llm_candidates}
-            if llm_rank.best_id is None or llm_rank.best_id not in valid_ids:
-                return _fallback_response(
-                    session_id=session_id,
-                    hotline=hotline,
-                    base_stages=base_stages + ["rank_llm"],
-                    candidates=candidates,
-                    limit=settings.retrieval_candidate_limit,
-                )
-            if llm_rank.confidence < settings.llm_ranker_clarify_threshold:
-                return _fallback_response(
-                    session_id=session_id,
-                    hotline=hotline,
-                    base_stages=base_stages + ["rank_llm"],
-                    candidates=candidates,
-                    limit=settings.retrieval_candidate_limit,
-                )
-            if llm_rank.confidence < settings.llm_ranker_answer_threshold:
-                soft = generate_soft_answer_with_llm(
-                    msg,
-                    llm_candidates,
-                    confidence=llm_rank.confidence,
-                    mode="clarify",
-                    settings=settings,
-                )
-                if soft is not None:
-                    valid_ids = {svc.id for svc in llm_candidates}
-                    picked = [svc for svc in llm_candidates if svc.id in set(soft.cited_ids) & valid_ids]
-                    source_rows = picked or candidates[: settings.retrieval_candidate_limit]
-                    _save_clarify_state(
-                        session_id=session_id,
-                        candidates=llm_candidates,
-                        slots={},
-                    )
+            picked = [svc for svc in llm_candidates if svc.id in set(decision.cited_ids) & valid_ids]
+            if decision.action == "answer" and decision.best_id in valid_ids:
+                selected = next((svc for svc in llm_candidates if svc.id == decision.best_id), None)
+                if selected is not None:
+                    materials = gr.load_materials(conn, selected.id)
+                    processes = gr.load_processes(conn, selected.id)
+                    reply = generate_service_answer_with_llm(
+                        msg, selected, materials, processes, settings=settings
+                    ) or decision.reply
+                    _clear_clarify_state(session_id)
                     return ChatResponse(
                         session_id=session_id,
-                        reply=soft.answer,
-                        kind="clarify",
-                        sources=_build_sources(source_rows, limit=settings.retrieval_candidate_limit),
+                        reply=reply,
+                        kind="answer",
+                        sources=_build_sources(
+                            picked or [selected], limit=settings.retrieval_candidate_limit
+                        ),
                         official_hotline=hotline,
-                        clarify_question=soft.follow_up_question or "请补充更具体的办理场景（对象、部门或关键条件）。",
-                        clarify_options=[],
-                        stages_executed=base_stages + ["rank_llm", "llm_soft_clarify"],
+                        stages_executed=base_stages + ["decide_llm", "load_detail", "llm_freeform_answer"],
                     )
-                return _clarify_response(
+            if decision.action == "clarify":
+                _save_clarify_state(session_id=session_id, candidates=llm_candidates, slots={})
+                return ChatResponse(
                     session_id=session_id,
-                    hotline=hotline,
-                    base_stages=base_stages + ["rank_llm"],
-                    candidates=candidates,
-                    limit=settings.retrieval_candidate_limit,
+                    reply=decision.reply,
+                    kind="clarify",
+                    sources=_build_sources(
+                        picked or llm_candidates, limit=settings.retrieval_candidate_limit
+                    ),
+                    official_hotline=hotline,
+                    clarify_question=decision.follow_up_question or "请再补充一点关键信息。",
+                    clarify_options=[],
+                    stages_executed=base_stages + ["decide_llm", "llm_freeform_clarify"],
                 )
             _clear_clarify_state(session_id)
-            selected = next((svc for svc in llm_candidates if svc.id == llm_rank.best_id), None)
-            if selected is None:
-                return _fallback_response(
-                    session_id=session_id,
-                    hotline=hotline,
-                    base_stages=base_stages + ["rank_llm"],
-                    candidates=candidates,
-                    limit=settings.retrieval_candidate_limit,
-                )
-            materials = gr.load_materials(conn, selected.id)
-            processes = gr.load_processes(conn, selected.id)
-            svc = selected
-            llm_stage = ["rank_llm"]
+            return ChatResponse(
+                session_id=session_id,
+                reply=decision.reply or f"我暂时无法从当前候选中判断出准确事项，建议拨打政务服务热线咨询：{hotline}",
+                kind="fallback",
+                sources=_build_sources(
+                    picked or llm_candidates, limit=settings.retrieval_candidate_limit
+                ),
+                official_hotline=hotline,
+                stages_executed=base_stages + ["decide_llm", "llm_freeform_fallback"],
+            )
         else:
             decision = choose_retrieval_decision(
                 candidates,
@@ -416,12 +385,16 @@ def post_chat(body: ChatRequest, pool: ConnectionPool = Depends(get_pool)) -> Ch
                 clarify_min_score_gap=settings.retrieval_clarify_min_score_gap,
             )
             if decision.kind == "fallback":
+                raw_reason = get_last_llm_decide_error() or "llm_decide unavailable"
                 return _fallback_response(
                     session_id=session_id,
                     hotline=hotline,
                     base_stages=base_stages,
                     candidates=candidates,
                     limit=settings.retrieval_candidate_limit,
+                    reason=(
+                        f"LLM 决策不可用（{raw_reason}），且检索结果相关性不足，暂时无法确认具体政务事项。"
+                    ),
                 )
             if decision.kind == "clarify":
                 return _clarify_response(
@@ -445,26 +418,6 @@ def post_chat(body: ChatRequest, pool: ConnectionPool = Depends(get_pool)) -> Ch
         service=svc, materials=materials, processes=processes, query=msg
     )
     stages = base_stages + llm_stage + ["load_detail", "template"]
-    if llm_stage:
-        soft = generate_soft_answer_with_llm(
-            msg,
-            llm_candidates,
-            confidence=1.0,
-            mode="answer",
-            settings=settings,
-        )
-        if soft is not None:
-            valid_ids = {svc.id for svc in llm_candidates}
-            picked = [row for row in llm_candidates if row.id in set(soft.cited_ids) & valid_ids]
-            source_rows = picked or [svc]
-            return ChatResponse(
-                session_id=session_id,
-                reply=soft.answer,
-                kind="answer",
-                sources=_build_sources(source_rows, limit=settings.retrieval_candidate_limit),
-                official_hotline=hotline,
-                stages_executed=base_stages + llm_stage + ["load_detail", "llm_soft_template"],
-            )
     score = svc.match_score
     sources = [
         SourceRef(

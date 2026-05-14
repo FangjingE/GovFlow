@@ -198,6 +198,24 @@
             .replace(/"/g, "&quot;");
         }
 
+        function renderMarkdown(text) {
+          var html = escapeHtml(text || "");
+          html = html.replace(/\r\n/g, "\n");
+          html = html.replace(/`([^`\n]+)`/g, "<code>$1</code>");
+          html = html.replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>");
+          html = html.replace(/\*([^*\n]+)\*/g, "<em>$1</em>");
+          html = html.replace(/(?:^|\n)- (.+?)(?=\n|$)/g, function (m, p1, offset, str) {
+            var start = offset === 0 || str[offset - 1] === "\n";
+            return (start ? "\n" : "") + "<li>" + p1 + "</li>";
+          });
+          html = html.replace(/(<li>.*<\/li>)/g, function (m) {
+            if (m.indexOf("<ul>") >= 0) return m;
+            return "<ul>" + m + "</ul>";
+          });
+          html = html.replace(/\n/g, "<br>");
+          return html;
+        }
+
         function el(tag, cls, text) {
           var n = document.createElement(tag);
           if (cls) n.className = cls;
@@ -235,7 +253,7 @@
           var wrap = el("div", "msg assistant", "");
           var main = document.createElement("div");
           main.className = "markdown-body";
-          main.innerHTML = escapeHtml(data.reply || "").replace(/\n/g, "<br>");
+          main.innerHTML = renderMarkdown(data.reply || "");
           wrap.appendChild(main);
           if (data.official_hotline) {
             wrap.appendChild(el("div", "meta", "咨询电话：" + data.official_hotline));
