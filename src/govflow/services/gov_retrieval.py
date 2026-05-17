@@ -23,6 +23,7 @@ __all__ = [
     "MaterialRow",
     "ProcessRow",
     "find_service_by_exact_name",
+    "find_service_by_id",
     "find_topk_services_text",
     "find_topk_services_vector",
     "find_top1_service_text",
@@ -151,6 +152,23 @@ ORDER BY gs.id;
     if len(matches) != 1:
         return None
     return matches[0]
+
+
+def find_service_by_id(conn: Any, service_id: int) -> GovServiceRow | None:
+    stmt = f"""
+SELECT
+{_SERVICE_SELECT_COLUMNS}
+FROM gov_service gs
+WHERE gs.status = true
+  AND gs.id = %(sid)s
+LIMIT 1;
+"""
+    with conn.cursor(row_factory=dict_row) as cur:
+        cur.execute(stmt, {"sid": int(service_id)})
+        row = cur.fetchone()
+    if row is None:
+        return None
+    return GovServiceRow(**row, match_score=1.0)
 
 
 def find_topk_services_text(conn: Any, query: str, *, limit: int = 3) -> list[GovServiceRow]:

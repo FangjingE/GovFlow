@@ -54,3 +54,23 @@ def test_chat_fallback_contains_suggestions() -> None:
             assert "你要查询的是否是以下事项之一？" in data["reply"]
         else:
             assert "请尝试更准确地描述" in data["reply"]
+
+
+@pytest.mark.skipif(not _db_reachable(), reason="PostgreSQL 不可用，跳过集成测试")
+def test_tools_search_and_detail_routes() -> None:
+    get_settings.cache_clear()
+    with TestClient(app) as client:
+        search_resp = client.post("/v1/tools/search-services", json={"query": "我要办身份证", "top_k": 3})
+        assert search_resp.status_code == 200
+        search_data = search_resp.json()
+        assert search_data["candidates"]
+
+        service_id = search_data["candidates"][0]["id"]
+        detail_resp = client.post(
+            "/v1/tools/service-detail",
+            json={"service_id": service_id, "include": ["basic", "materials"]},
+        )
+        assert detail_resp.status_code == 200
+        detail_data = detail_resp.json()
+        assert detail_data["service_id"] == service_id
+        assert detail_data["basic"] is not None

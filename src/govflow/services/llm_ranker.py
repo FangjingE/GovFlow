@@ -49,6 +49,25 @@ class LLMDialogDecision:
     reason: str
 
 
+@dataclass(frozen=True)
+class LLMIntentAssessment:
+    is_clear: bool
+    rewritten_query: str
+    reply: str
+    missing_info: list[str]
+    reason: str
+
+
+@dataclass(frozen=True)
+class LLMNextStepDecision:
+    action: str  # answer | clarify | retry_search | fallback
+    best_id: int | None
+    reply: str
+    rewritten_query: str
+    cited_ids: list[int]
+    reason: str
+
+
 def _chat_url(base_url: str) -> str:
     base = (base_url or "").rstrip("/")
     if base.endswith("/chat/completions"):
@@ -61,6 +80,15 @@ def _clip(text: str | None, *, limit: int = 220) -> str:
     if len(s) <= limit:
         return s
     return s[: limit - 1] + "…"
+
+
+def _short_candidates(candidates: list[GovServiceRow], *, limit: int = 15) -> str:
+    if not candidates:
+        return "EMPTY"
+    return " | ".join(
+        f"{svc.id}:{_clip(svc.service_name, limit=24)}"
+        for svc in candidates[:limit]
+    )
 
 
 def _build_prompt(query: str, candidates: list[GovServiceRow]) -> str:
@@ -98,6 +126,12 @@ def rank_candidates_with_llm(
 
     url = _chat_url(settings.llm_ranker_base_url)
     prompt = _build_prompt(query, candidates)
+    logger.info(
+        "[llm_rank][start] query=%s candidates=%s model=%s",
+        _clip(query, limit=160),
+        _short_candidates(candidates),
+        settings.llm_ranker_model,
+    )
     headers = {
         "Authorization": f"Bearer {settings.llm_ranker_api_key}",
         "Content-Type": "application/json",
@@ -125,8 +159,15 @@ def rank_candidates_with_llm(
         best_id = int(best_id_raw) if isinstance(best_id_raw, int) else None
         confidence = float(conf_raw) if isinstance(conf_raw, (int, float)) else 0.0
         confidence = max(0.0, min(1.0, confidence))
+        logger.info(
+            "[llm_rank][parsed] best_id=%s confidence=%.4f reason=%s",
+            best_id,
+            confidence,
+            _clip(reason, limit=240),
+        )
         return LLMRankResult(best_id=best_id, confidence=confidence, reason=reason)
     except Exception:
+        logger.exception("[llm_rank][error] query=%s", _clip(query, limit=160))
         return None
 
 
@@ -181,6 +222,13 @@ def generate_soft_answer_with_llm(
 
     url = _chat_url(settings.llm_ranker_base_url)
     prompt = _build_answer_prompt(query, candidates, confidence=confidence, mode=mode)
+    logger.info(
+        "[llm_soft_answer][start] mode=%s query=%s candidates=%s confidence=%.4f",
+        mode,
+        _clip(query, limit=160),
+        _short_candidates(candidates),
+        confidence,
+    )
     headers = {
         "Authorization": f"Bearer {settings.llm_ranker_api_key}",
         "Content-Type": "application/json",
@@ -207,12 +255,19 @@ def generate_soft_answer_with_llm(
         cited_ids = [int(x) for x in cited_raw if isinstance(x, int)] if isinstance(cited_raw, list) else []
         if not answer:
             return None
+        logger.info(
+            "[llm_soft_answer][parsed] answer=%s follow_up=%s cited=%s",
+            _clip(answer, limit=240),
+            _clip(follow_up, limit=160),
+            cited_ids,
+        )
         return LLMSoftAnswerResult(
             answer=answer,
             follow_up_question=follow_up,
             cited_ids=cited_ids,
         )
     except Exception:
+        logger.exception("[llm_soft_answer][error] mode=%s query=%s", mode, _clip(query, limit=160))
         return None
 
 
@@ -232,6 +287,12 @@ def extract_slots_with_llm(
 
     existing = existing_slots or {}
     url = _chat_url(settings.llm_ranker_base_url)
+    logger.info(
+        "[llm_slots][start] query=%s candidates=%s existing=%s",
+        _clip(query, limit=160),
+        _short_candidates(candidates),
+        json.dumps(existing, ensure_ascii=False),
+    )
     lines = [
         "你是政务对话槽位提取器。请从用户补充信息中抽取有助于事项判定的槽位。",
         "你必须只输出 JSON，不要输出任何额外文本。",
@@ -276,8 +337,14 @@ def extract_slots_with_llm(
                 if isinstance(k, str) and isinstance(v, str) and k.strip() and v.strip():
                     slots[k.strip()] = v.strip()
         summary = str(obj.get("summary") or "").strip()
+        logger.info(
+            "[llm_slots][parsed] slots=%s summary=%s",
+            json.dumps(slots, ensure_ascii=False),
+            _clip(summary, limit=240),
+        )
         return LLMSlotExtractResult(slots=slots, summary=summary)
     except Exception:
+        logger.exception("[llm_slots][error] query=%s", _clip(query, limit=160))
         return None
 
 
@@ -303,6 +370,12 @@ def decide_dialog_with_llm(
         return None
 
     slot_json = json.dumps(slots or {}, ensure_ascii=False)
+    logger.info(
+        "[llm_decide][start] query=%s candidates=%s slots=%s",
+        _clip(query, limit=160),
+        _short_candidates(candidates),
+        slot_json,
+    )
     lines = [
         "你是政务助手裁定器。必须仅基于候选事项与用户输入做决策。",
         "你必须只输出 JSON。",
@@ -381,6 +454,15 @@ def decide_dialog_with_llm(
             _LAST_LLM_DECIDE_ERROR = "llm_decide empty reply"
             logger.warning("[llm_decide] empty reply | raw=%s", _clip(raw, limit=600))
             return None
+        logger.info(
+            "[llm_decide][parsed] action=%s best_id=%s cited=%s reason=%s reply=%s follow_up=%s",
+            action,
+            best_id,
+            cited_ids,
+            _clip(reason, limit=220),
+            _clip(reply, limit=220),
+            _clip(follow_up, limit=160),
+        )
         return LLMDialogDecision(
             action=action,
             best_id=best_id,
@@ -399,6 +481,200 @@ def get_last_llm_decide_error() -> str | None:
     return _LAST_LLM_DECIDE_ERROR
 
 
+def assess_user_intent_with_llm(
+    query: str,
+    *,
+    settings: Settings,
+    session_summary: str = "",
+) -> LLMIntentAssessment | None:
+    enabled = bool(getattr(settings, "llm_ranker_enabled", False))
+    api_key = getattr(settings, "llm_ranker_api_key", None)
+    if not enabled or not api_key:
+        return None
+
+    logger.info(
+        "[llm_intent][start] query=%s summary=%s",
+        _clip(query, limit=160),
+        _clip(session_summary, limit=220),
+    )
+    lines = [
+        "你是政务对话入口判定器。",
+        "任务：判断用户当前输入是否已经把想咨询的政务事项表述得足够清楚，可以直接进入检索。",
+        "你必须只输出 JSON。",
+        (
+            'JSON 格式: {"is_clear":<true|false>,"rewritten_query":"<整理后的检索问题>",'
+            '"reply":"<给用户的话>","missing_info":["<缺失信息>",...],"reason":"<简述依据>"}'
+        ),
+        "规则：",
+        "1) is_clear=true 时，rewritten_query 必须是更规范、更利于检索的查询句。",
+        "2) is_clear=false 时，reply 必须直接对用户发问，追问最关键的信息，不要模板腔。",
+        "3) 不要编造用户未提供的事实。",
+        "4) 如果已有上下文能补足当前省略表达，可以判定为 clear。",
+        f"历史摘要: {session_summary or '无'}",
+        f"用户输入: {query}",
+    ]
+    payload = {
+        "model": getattr(settings, "llm_ranker_model", "gpt-4.1-mini"),
+        "temperature": 0.2,
+        "response_format": {"type": "json_object"},
+        "messages": [
+            {"role": "system", "content": "仅输出JSON对象。"},
+            {"role": "user", "content": "\n".join(lines)},
+        ],
+    }
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    try:
+        with httpx.Client(timeout=getattr(settings, "llm_ranker_timeout_seconds", 20)) as client:
+            resp = client.post(
+                _chat_url(getattr(settings, "llm_ranker_base_url", "")),
+                headers=headers,
+                json=payload,
+            )
+            resp.raise_for_status()
+        data = resp.json()
+        raw = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+        obj = json.loads(raw) if isinstance(raw, str) else {}
+        is_clear = bool(obj.get("is_clear"))
+        rewritten_query = str(obj.get("rewritten_query") or "").strip()
+        reply = str(obj.get("reply") or "").strip()
+        reason = str(obj.get("reason") or "").strip()
+        missing_raw = obj.get("missing_info")
+        missing_info = [str(x).strip() for x in missing_raw if str(x).strip()] if isinstance(missing_raw, list) else []
+        if is_clear and not rewritten_query:
+            rewritten_query = query.strip()
+        if not is_clear and not reply:
+            return None
+        logger.info(
+            "[llm_intent][parsed] is_clear=%s rewritten=%s missing=%s reason=%s reply=%s",
+            is_clear,
+            _clip(rewritten_query, limit=220),
+            missing_info,
+            _clip(reason, limit=220),
+            _clip(reply, limit=220),
+        )
+        return LLMIntentAssessment(
+            is_clear=is_clear,
+            rewritten_query=rewritten_query,
+            reply=reply,
+            missing_info=missing_info,
+            reason=reason,
+        )
+    except Exception:
+        return None
+
+
+def plan_next_step_with_llm(
+    query: str,
+    candidates: list[GovServiceRow],
+    *,
+    settings: Settings,
+    session_summary: str = "",
+    retry_count: int = 0,
+) -> LLMNextStepDecision | None:
+    enabled = bool(getattr(settings, "llm_ranker_enabled", False))
+    api_key = getattr(settings, "llm_ranker_api_key", None)
+    if not enabled or not api_key:
+        return None
+
+    logger.info(
+        "[llm_plan][start] query=%s candidates=%s retry=%d summary=%s",
+        _clip(query, limit=160),
+        _short_candidates(candidates),
+        retry_count,
+        _clip(session_summary, limit=220),
+    )
+    lines = [
+        "你是政务事项对话规划器。",
+        "任务：基于用户问题和当前检索到的候选事项，决定下一步应该直接回答、继续追问、改写后重新检索，还是兜底。",
+        "你必须只输出 JSON。",
+        (
+            'JSON 格式: {"action":"answer|clarify|retry_search|fallback","best_id":<int|null>,'
+            '"reply":"<给用户的话>","rewritten_query":"<重试检索用问题，可空>",'
+            '"cited_ids":[<int>,...],"reason":"<简述依据>"}'
+        ),
+        "规则：",
+        "1) answer: 当前候选足够支撑回答，best_id 必须来自候选。",
+        "2) clarify: 需要继续向用户追问；reply 里直接问最关键的问题。",
+        "3) retry_search: 当前候选不够好，但可以把上下文整理成一个更适合检索的新问题再次查询；rewritten_query 必填。",
+        "4) fallback: 多次尝试后仍不足以回答；reply 必须明确说明失败原因，不要套模板。",
+        "5) 不要编造候选外事实；只有 answer 才能基于事项内容给办理指引。",
+        f"当前重试次数: {retry_count}",
+        f"历史摘要: {session_summary or '无'}",
+        f"用户问题: {query}",
+        "候选事项:",
+    ]
+    if candidates:
+        for svc in candidates:
+            lines.append(
+                f"- id={svc.id} | 名称={svc.service_name} | 部门={_clip(svc.department, limit=80)} "
+                f"| 对象={_clip(svc.service_object, limit=80)} | 条件={_clip(svc.accept_condition)} "
+                f"| 办理方式={_clip(svc.handle_form, limit=80)} | 地点={_clip(svc.handle_address, limit=80)}"
+            )
+    else:
+        lines.append("- 无候选事项")
+
+    payload = {
+        "model": getattr(settings, "llm_ranker_model", "gpt-4.1-mini"),
+        "temperature": 0.2,
+        "response_format": {"type": "json_object"},
+        "messages": [
+            {"role": "system", "content": "仅输出JSON对象。"},
+            {"role": "user", "content": "\n".join(lines)},
+        ],
+    }
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+    try:
+        with httpx.Client(timeout=getattr(settings, "llm_ranker_timeout_seconds", 20)) as client:
+            resp = client.post(
+                _chat_url(getattr(settings, "llm_ranker_base_url", "")),
+                headers=headers,
+                json=payload,
+            )
+            resp.raise_for_status()
+        data = resp.json()
+        raw = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+        obj = json.loads(raw) if isinstance(raw, str) else {}
+        action = str(obj.get("action") or "").strip().lower()
+        if action not in {"answer", "clarify", "retry_search", "fallback"}:
+            return None
+        best_raw = obj.get("best_id")
+        best_id = int(best_raw) if isinstance(best_raw, int) else None
+        reply = str(obj.get("reply") or "").strip()
+        rewritten_query = str(obj.get("rewritten_query") or "").strip()
+        reason = str(obj.get("reason") or "").strip()
+        cited_raw = obj.get("cited_ids")
+        cited_ids = [int(x) for x in cited_raw if isinstance(x, int)] if isinstance(cited_raw, list) else []
+        if action in {"clarify", "fallback", "answer"} and not reply:
+            return None
+        if action == "retry_search" and not rewritten_query:
+            return None
+        logger.info(
+            "[llm_plan][parsed] action=%s best_id=%s rewritten=%s cited=%s reason=%s reply=%s",
+            action,
+            best_id,
+            _clip(rewritten_query, limit=220),
+            cited_ids,
+            _clip(reason, limit=220),
+            _clip(reply, limit=220),
+        )
+        return LLMNextStepDecision(
+            action=action,
+            best_id=best_id,
+            reply=reply,
+            rewritten_query=rewritten_query,
+            cited_ids=cited_ids,
+            reason=reason,
+        )
+    except Exception:
+        return None
+
+
 def explain_fallback_with_llm(
     query: str,
     error_reason: str,
@@ -410,6 +686,12 @@ def explain_fallback_with_llm(
     api_key = getattr(settings, "llm_ranker_api_key", None)
     if not enabled or not api_key:
         return None
+    logger.info(
+        "[llm_fallback][start] query=%s reason=%s hotline=%s",
+        _clip(query, limit=160),
+        _clip(error_reason, limit=240),
+        hotline,
+    )
     payload = {
         "model": getattr(settings, "llm_ranker_model", "gpt-4.1-mini"),
         "temperature": 0.2,
@@ -443,8 +725,10 @@ def explain_fallback_with_llm(
         data = resp.json()
         text = data.get("choices", [{}])[0].get("message", {}).get("content", "")
         out = str(text or "").strip()
+        logger.info("[llm_fallback][parsed] reply=%s", _clip(out, limit=240))
         return out or None
     except Exception:
+        logger.exception("[llm_fallback][error] query=%s", _clip(query, limit=160))
         return None
 
 
@@ -460,6 +744,13 @@ def generate_service_answer_with_llm(
     api_key = getattr(settings, "llm_ranker_api_key", None)
     if not enabled or not api_key:
         return None
+    logger.info(
+        "[llm_answer][start] query=%s service=%s materials=%d processes=%d",
+        _clip(query, limit=160),
+        _clip(service.service_name, limit=160),
+        len(materials),
+        len(processes),
+    )
     material_names = [m.material_name for m in materials if m.material_name][:8]
     step_names = [p.step_name for p in processes if p.step_name][:6]
     lines = [
@@ -507,6 +798,8 @@ def generate_service_answer_with_llm(
         data = resp.json()
         text = data.get("choices", [{}])[0].get("message", {}).get("content", "")
         out = str(text or "").strip()
+        logger.info("[llm_answer][parsed] reply=%s", _clip(out, limit=240))
         return out or None
     except Exception:
+        logger.exception("[llm_answer][error] query=%s service=%s", _clip(query, limit=160), _clip(service.service_name, limit=120))
         return None

@@ -12,8 +12,8 @@ sys.modules.setdefault("psycopg", psycopg_mod)
 sys.modules.setdefault("psycopg.rows", rows_mod)
 
 from govflow.api.routes import chat
-from govflow.models.schemas import ChatRequest
-from govflow.services.gov_types import EMBEDDING_DIM, GovServiceRow
+from govflow.models.schemas import ChatRequest, GetServiceDetailRequest, SearchServicesRequest
+from govflow.services.gov_types import EMBEDDING_DIM, GovServiceRow, MaterialRow, ProcessRow
 
 
 class _FakePool:
@@ -40,6 +40,8 @@ def _settings(**overrides):
         "llm_ranker_top_k": 10,
         "llm_ranker_answer_threshold": 0.80,
         "llm_ranker_clarify_threshold": 0.60,
+        "conversation_session_ttl_minutes": 30,
+        "conversation_max_retries": 3,
     }
     base.update(overrides)
     return SimpleNamespace(**base)
@@ -69,8 +71,8 @@ def _service(service_id: int, name: str, score: float) -> GovServiceRow:
     )
 
 
-def test_post_chat_returns_answer_for_high_confidence(monkeypatch) -> None:
-    monkeypatch.setattr(chat, "get_settings", lambda: _settings())
+def test_post_chat_legacy_answer_for_high_confidence(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings(llm_ranker_enabled=False))
     monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
     monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
@@ -88,13 +90,13 @@ def test_post_chat_returns_answer_for_high_confidence(monkeypatch) -> None:
     resp = chat.post_chat(ChatRequest(message="我要办身份证"), pool=_FakePool())
 
     assert resp.kind == "answer"
+    assert resp.session_state == "answer"
     assert resp.reply.startswith("事项名称：居民身份证申领")
-    assert resp.clarify_options == []
     assert resp.stages_executed == ["retrieve_vector", "load_detail", "template"]
 
 
-def test_post_chat_returns_clarify_for_close_candidates(monkeypatch) -> None:
-    monkeypatch.setattr(chat, "get_settings", lambda: _settings())
+def test_post_chat_legacy_clarify_for_close_candidates(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings(llm_ranker_enabled=False))
     monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
     monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
@@ -110,14 +112,14 @@ def test_post_chat_returns_clarify_for_close_candidates(monkeypatch) -> None:
     resp = chat.post_chat(ChatRequest(message="我要办身份证"), pool=_FakePool())
 
     assert resp.kind == "clarify"
+    assert resp.session_state == "clarify"
     assert resp.clarify_question is not None
     assert len(resp.clarify_options) == 3
-    assert resp.clarify_options[0].value == "居民身份证申领"
-    assert resp.stages_executed == ["retrieve_vector", "template_clarify"]
+    assert resp.stages_executed == ["retrieve_vector", "plain_clarify"]
 
 
-def test_post_chat_returns_fallback_for_low_confidence(monkeypatch) -> None:
-    monkeypatch.setattr(chat, "get_settings", lambda: _settings())
+def test_post_chat_legacy_fallback_for_low_confidence(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings(llm_ranker_enabled=False))
     monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
     monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
@@ -129,176 +131,228 @@ def test_post_chat_returns_fallback_for_low_confidence(monkeypatch) -> None:
     resp = chat.post_chat(ChatRequest(message="随便测试一个极不相关的查询词"), pool=_FakePool())
 
     assert resp.kind == "fallback"
+    assert resp.session_state == "fallback"
     assert "LLM 决策不可用" in resp.reply
-    assert resp.clarify_options == []
-    assert resp.stages_executed == ["retrieve_vector", "reason_fallback"]
+    assert resp.stages_executed == ["retrieve_vector", "plain_fallback"]
 
 
-def test_post_chat_returns_answer_for_exact_service_name(monkeypatch) -> None:
+def test_post_chat_react_clarifies_when_user_not_clear(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings(llm_ranker_enabled=True))
+    monkeypatch.setattr(
+        chat,
+        "assess_user_intent_with_llm",
+        lambda *_args, **_kwargs: __import__(
+            "govflow.services.llm_ranker", fromlist=["LLMIntentAssessment"]
+        ).LLMIntentAssessment(
+            is_clear=False,
+            rewritten_query="",
+            reply="你要咨询的是新办、补办还是换领？",
+            missing_info=["办理阶段"],
+            reason="事项不够明确",
+        ),
+    )
+
+    resp = chat.post_chat(ChatRequest(message="我要办身份证"), pool=_FakePool())
+
+    assert resp.kind == "clarify"
+    assert resp.session_state == "clarify"
+    assert resp.reply == "你要咨询的是新办、补办还是换领？"
+    assert resp.retry_count == 0
+    assert resp.stages_executed == ["assess_intent", "llm_clarify"]
+
+
+def test_post_chat_react_answers_after_search(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings(llm_ranker_enabled=True))
+    monkeypatch.setattr(
+        chat,
+        "assess_user_intent_with_llm",
+        lambda *_args, **_kwargs: __import__(
+            "govflow.services.llm_ranker", fromlist=["LLMIntentAssessment"]
+        ).LLMIntentAssessment(
+            is_clear=True,
+            rewritten_query="居民身份证换领办理",
+            reply="",
+            missing_info=[],
+            reason="已明确到事项阶段",
+        ),
+    )
+    monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
+    monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        chat.gr,
+        "find_topk_services_vector",
+        lambda *_args, **_kwargs: [
+            _service(2, "居民身份证换领", 0.80),
+            _service(1, "居民身份证申领", 0.79),
+        ],
+    )
+    monkeypatch.setattr(
+        chat,
+        "plan_next_step_with_llm",
+        lambda *_args, **_kwargs: __import__(
+            "govflow.services.llm_ranker", fromlist=["LLMNextStepDecision"]
+        ).LLMNextStepDecision(
+            action="answer",
+            best_id=2,
+            reply="",
+            rewritten_query="",
+            cited_ids=[2],
+            reason="候选足够回答",
+        ),
+    )
+    monkeypatch.setattr(chat.gr, "find_service_by_id", lambda *_args, **_kwargs: _service(2, "居民身份证换领", 1.0))
+    monkeypatch.setattr(chat.gr, "load_materials", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(chat.gr, "load_processes", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(chat, "generate_service_answer_with_llm", lambda *_args, **_kwargs: "可以办理居民身份证换领。")
+
+    resp = chat.post_chat(ChatRequest(message="身份证到期了怎么办"), pool=_FakePool())
+
+    assert resp.kind == "answer"
+    assert resp.session_state == "answer"
+    assert resp.reply == "可以办理居民身份证换领。"
+    assert resp.sources[0].title == "居民身份证换领"
+    assert resp.stages_executed == ["assess_intent", "retrieve_vector", "llm_plan", "load_detail", "llm_answer"]
+
+
+def test_post_chat_react_retries_then_fallback(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings(llm_ranker_enabled=True, conversation_max_retries=1))
+    monkeypatch.setattr(
+        chat,
+        "assess_user_intent_with_llm",
+        lambda *_args, **_kwargs: __import__(
+            "govflow.services.llm_ranker", fromlist=["LLMIntentAssessment"]
+        ).LLMIntentAssessment(
+            is_clear=True,
+            rewritten_query="社保办理",
+            reply="",
+            missing_info=[],
+            reason="可先检索",
+        ),
+    )
+    monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
+    monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(chat.gr, "find_topk_services_vector", lambda *_args, **_kwargs: [_service(1, "社会保险登记", 0.70)])
+
+    decisions = iter(
+        [
+            __import__("govflow.services.llm_ranker", fromlist=["LLMNextStepDecision"]).LLMNextStepDecision(
+                action="retry_search",
+                best_id=None,
+                reply="",
+                rewritten_query="企业社会保险登记办理",
+                cited_ids=[],
+                reason="当前问题太宽泛",
+            ),
+            __import__("govflow.services.llm_ranker", fromlist=["LLMNextStepDecision"]).LLMNextStepDecision(
+                action="fallback",
+                best_id=None,
+                reply="我暂时无法准确定位到唯一事项，原因是当前候选仍然过于宽泛。",
+                rewritten_query="",
+                cited_ids=[],
+                reason="多次重试后仍不确定",
+            ),
+        ]
+    )
+    monkeypatch.setattr(chat, "plan_next_step_with_llm", lambda *_args, **_kwargs: next(decisions))
+    monkeypatch.setattr(chat, "explain_fallback_with_llm", lambda *_args, **_kwargs: "我暂时无法准确定位到唯一事项，原因是当前候选仍然过于宽泛。")
+
+    resp = chat.post_chat(ChatRequest(message="社保怎么办"), pool=_FakePool())
+
+    assert resp.kind == "fallback"
+    assert resp.session_state == "fallback"
+    assert resp.retry_count == 1
+    assert "原因是当前候选仍然过于宽泛" in resp.reply
+    assert resp.stages_executed == [
+        "assess_intent",
+        "retrieve_vector",
+        "llm_plan",
+        "rewrite_query",
+        "retrieve_vector",
+        "llm_plan",
+        "llm_fallback",
+    ]
+
+
+def test_search_services_returns_exact_match(monkeypatch) -> None:
     monkeypatch.setattr(chat, "get_settings", lambda: _settings())
     monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: None)
     monkeypatch.setattr(
         chat.gr,
         "find_service_by_exact_name",
-        lambda *_args, **_kwargs: _service(7, "企业社会保险登记", 1.0),
+        lambda *_args, **_kwargs: _service(8, "居民身份证申领", 1.0),
     )
-    monkeypatch.setattr(chat.gr, "load_materials", lambda *_args, **_kwargs: [])
-    monkeypatch.setattr(chat.gr, "load_processes", lambda *_args, **_kwargs: [])
-    monkeypatch.setattr(chat, "render_service_answer", lambda **_kwargs: "事项名称：企业社会保险登记\n")
 
-    resp = chat.post_chat(ChatRequest(message="企业社会保险登记"), pool=_FakePool())
-
-    assert resp.kind == "answer"
-    assert resp.reply.startswith("事项名称：企业社会保险登记")
-    assert resp.clarify_options == []
-    assert resp.stages_executed == ["retrieve_exact_name", "load_detail", "template"]
-
-
-def test_post_chat_uses_llm_ranker_for_answer(monkeypatch) -> None:
-    monkeypatch.setattr(
-        chat,
-        "get_settings",
-        lambda: _settings(
-            llm_ranker_enabled=True,
-            llm_ranker_top_k=3,
-            llm_ranker_answer_threshold=0.80,
-            llm_ranker_clarify_threshold=0.60,
-        ),
+    resp = chat.search_services(
+        SearchServicesRequest(query="居民身份证申领"),
+        pool=_FakePool(),
     )
+
+    assert resp.search_mode == "exact"
+    assert resp.suggested_action == "answer"
+    assert resp.exact_match_hit is True
+    assert resp.candidates[0].service_name == "居民身份证申领"
+    assert resp.stages_executed == ["retrieve_exact_name"]
+
+
+def test_search_services_returns_clarify_hint(monkeypatch) -> None:
+    monkeypatch.setattr(chat, "get_settings", lambda: _settings())
     monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
     monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
         chat.gr,
         "find_topk_services_vector",
         lambda *_args, **_kwargs: [
-            _service(1, "大型活动审批", 0.73),
-            _service(2, "大型群众活动许可", 0.72),
-            _service(3, "大型户外广告审批", 0.70),
+            _service(1, "居民身份证申领", 0.80),
+            _service(2, "居民身份证换领", 0.79),
+            _service(3, "临时居民身份证申领", 0.78),
         ],
     )
-    monkeypatch.setattr(
-        chat,
-        "rank_candidates_with_llm",
-        lambda _msg, _cands, _settings: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMRankResult"]
-        ).LLMRankResult(best_id=1, confidence=0.91, reason="语义最接近"),
-    )
-    monkeypatch.setattr(chat.gr, "load_materials", lambda *_args, **_kwargs: [])
-    monkeypatch.setattr(chat.gr, "load_processes", lambda *_args, **_kwargs: [])
-    monkeypatch.setattr(
-        chat,
-        "decide_dialog_with_llm",
-        lambda *_args, **_kwargs: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMDialogDecision"]
-        ).LLMDialogDecision(
-            action="answer",
-            best_id=1,
-            reply="建议先申请大型群众性活动安全许可。",
-            follow_up_question="",
-            cited_ids=[1],
-            reason="命中",
-        ),
-    )
-    monkeypatch.setattr(
-        chat,
-        "generate_service_answer_with_llm",
-        lambda *_args, **_kwargs: "建议先申请大型群众性活动安全许可。",
+
+    resp = chat.search_services(
+        SearchServicesRequest(query="我要办身份证", top_k=3),
+        pool=_FakePool(),
     )
 
-    resp = chat.post_chat(ChatRequest(message="我要开大型演唱会怎么审批"), pool=_FakePool())
+    assert resp.search_mode == "vector"
+    assert resp.suggested_action == "clarify"
+    assert resp.clarify_hint is not None
+    assert len(resp.candidates) == 3
+    assert resp.stages_executed == ["retrieve_vector", "decide_retrieval"]
 
-    assert resp.kind == "answer"
-    assert "大型群众性活动安全许可" in resp.reply
-    assert resp.stages_executed == ["retrieve_vector", "decide_llm", "load_detail", "llm_freeform_answer"]
-    assert resp.sources[0].uri == "https://example.com/services/1"
 
-
-def test_post_chat_uses_llm_ranker_for_fallback(monkeypatch) -> None:
-    monkeypatch.setattr(
-        chat,
-        "get_settings",
-        lambda: _settings(
-            llm_ranker_enabled=True,
-            llm_ranker_top_k=3,
-            llm_ranker_answer_threshold=0.80,
-            llm_ranker_clarify_threshold=0.60,
-        ),
-    )
-    monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
-    monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
+def test_get_service_detail_returns_requested_sections(monkeypatch) -> None:
+    monkeypatch.setattr(chat.gr, "find_service_by_id", lambda *_args, **_kwargs: _service(11, "企业社保登记", 1.0))
     monkeypatch.setattr(
         chat.gr,
-        "find_topk_services_vector",
+        "load_materials",
         lambda *_args, **_kwargs: [
-            _service(1, "大型活动审批", 0.73),
-            _service(2, "大型群众活动许可", 0.72),
-            _service(3, "大型户外广告审批", 0.70),
+            MaterialRow(
+                material_name="营业执照",
+                is_required=True,
+                material_form="电子",
+                original_num=0,
+                copy_num=0,
+                note="原件扫描件",
+            )
         ],
     )
-    monkeypatch.setattr(chat, "rank_candidates_with_llm", lambda *_args, **_kwargs: None)
-    monkeypatch.setattr(
-        chat,
-        "decide_dialog_with_llm",
-        lambda *_args, **_kwargs: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMDialogDecision"]
-        ).LLMDialogDecision(
-            action="fallback",
-            best_id=None,
-            reply="这个问题我暂时无法准确判断对应事项，建议拨打政务服务热线咨询：12345",
-            follow_up_question="",
-            cited_ids=[],
-            reason="差距过大",
-        ),
-    )
-
-    resp = chat.post_chat(ChatRequest(message="我要开大型演唱会怎么审批"), pool=_FakePool())
-
-    assert resp.kind == "fallback"
-    assert "建议拨打政务服务热线咨询" in resp.reply
-
-
-def test_post_chat_uses_llm_soft_clarify(monkeypatch) -> None:
-    monkeypatch.setattr(
-        chat,
-        "get_settings",
-        lambda: _settings(
-            llm_ranker_enabled=True,
-            llm_ranker_top_k=3,
-            llm_ranker_answer_threshold=0.80,
-            llm_ranker_clarify_threshold=0.60,
-        ),
-    )
-    monkeypatch.setattr(chat, "embed_query", lambda _msg, _settings: [0.0] * EMBEDDING_DIM)
-    monkeypatch.setattr(chat.gr, "find_service_by_exact_name", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
         chat.gr,
-        "find_topk_services_vector",
+        "load_processes",
         lambda *_args, **_kwargs: [
-            _service(1, "企业社会保险登记", 0.80),
-            _service(2, "机关事业单位社会保险登记", 0.79),
-            _service(3, "企业参保登记", 0.78),
+            ProcessRow(step_name="提交申请", step_desc="线上提交", sort=1),
         ],
     )
-    monkeypatch.setattr(chat, "rank_candidates_with_llm", lambda *_args, **_kwargs: None)
-    monkeypatch.setattr(
-        chat,
-        "decide_dialog_with_llm",
-        lambda *_args, **_kwargs: __import__(
-            "govflow.services.llm_ranker", fromlist=["LLMDialogDecision"]
-        ).LLMDialogDecision(
-            action="clarify",
-            best_id=None,
-            reply="我初步判断是企业社会保险登记，但还需要确认参保主体类型。",
-            follow_up_question="请问你是企业首次参保登记，还是机关事业单位登记？",
-            cited_ids=[1, 2],
-            reason="信息不足",
-        ),
+
+    resp = chat.get_service_detail(
+        GetServiceDetailRequest(service_id=11, include=["basic", "materials"]),
+        pool=_FakePool(),
     )
 
-    resp = chat.post_chat(ChatRequest(message="企业社会保险登记"), pool=_FakePool())
-
-    assert resp.kind == "clarify"
-    assert "企业社会保险登记" in resp.reply
-    assert "企业首次参保登记" in (resp.clarify_question or "")
-    assert resp.clarify_options == []
-    assert resp.stages_executed == ["retrieve_vector", "decide_llm", "llm_freeform_clarify"]
+    assert resp.service_id == 11
+    assert resp.basic is not None
+    assert resp.basic.service_name == "企业社保登记"
+    assert len(resp.materials) == 1
+    assert resp.processes == []
+    assert resp.included_sections == ["basic", "materials"]
+    assert resp.stages_executed == ["load_basic", "load_materials"]

@@ -177,58 +177,57 @@ SELECT * FROM service_process WHERE service_id = ? ORDER BY sort;
 ```mermaid
 flowchart TD
     A[POST /v1/chat] --> B[读取 session_id/message]
-    B --> C{命中 clarify 会话状态?}
+    B --> C{query_vector 长度合法?}
+    C -->|否| C1[HTTP 400]
+    C -->|是| D[若无 query_vector, 尝试 embed_query]
+    D --> E[exact_name 精确匹配]
+    E -->|命中| E1[load_detail + render_service_answer]
+    E1 --> E2[kind=answer]
+    E -->|未命中| F{命中 clarify 会话状态?}
 
-    C -->|是| C1[clarify_resume: 取上轮候选+槽位]
-    C1 --> C2[LLM 抽取槽位并合并]
-    C2 --> C3[LLM 复判 best_id/confidence]
-    C3 --> C4{confidence >= answer_threshold 且 best_id有效?}
-    C4 -->|是| C5[加载事项详情]
-    C5 --> C6{LLM 软回答成功?}
-    C6 -->|是| C7[kind=answer, llm_soft_template]
-    C6 -->|否| C8[kind=answer, 固定模板]
-    C4 -->|否| C9{confidence >= clarify_threshold?}
-    C9 -->|是| C10[LLM 软澄清追问]
-    C10 --> C11[kind=clarify, 保持会话状态]
-    C9 -->|否| C12[清理会话状态, 继续新检索]
+    F -->|是| F1[clarify_resume: 取上轮 candidates+slots]
+    F1 --> F2[LLM extract_slots 并合并]
+    F2 --> F3[LLM decide_dialog]
+    F3 --> F4{decision.action}
+    F4 -->|answer 且 best_id 有效| F5[load_detail + generate_service_answer_with_llm]
+    F5 --> F6[清理 clarify 会话]
+    F6 --> F7[kind=answer]
+    F4 -->|clarify| F8[kind=clarify]
+    F4 -->|fallback| F9[清理 clarify 会话]
+    F9 --> F10[kind=fallback]
+    F3 -->|None| F11[清理 clarify 会话并进入新检索]
 
-    C -->|否| D[常规链路]
-    C12 --> D
-    D --> E{query_vector 可用?}
-    E -->|是| F[向量检索 TopK]
-    E -->|否| G[文本检索 TopK]
-    F --> H[LLM 候选判定 best_id/confidence]
-    G --> H
-    H --> I{llm_rank 有结果?}
+    F -->|否| G[进入新检索]
+    F11 --> G
+    G --> H{use_vector?}
+    H -->|是| I[find_topk_services_vector]
+    H -->|否| J[find_topk_services_text]
+    I --> K[LLM rank_candidates]
+    J --> K
+    K --> L[LLM decide_dialog]
+    L --> M{decision 是否存在?}
 
-    I -->|是| J{best_id有效?}
-    J -->|否| K[kind=fallback]
-    J -->|是| L{confidence < clarify_threshold?}
-    L -->|是| K
-    L -->|否| M{confidence < answer_threshold?}
-    M -->|是| N[LLM 软澄清]
-    N --> N1{软澄清成功?}
-    N1 -->|是| N2[保存 clarify 会话状态]
-    N2 --> N3[kind=clarify]
-    N1 -->|否| N4[kind=clarify, 固定模板]
-    M -->|否| O[加载 best_id 事项详情]
-    O --> P{LLM 软回答成功?}
-    P -->|是| Q[kind=answer, llm_soft_template]
-    P -->|否| R[kind=answer, 固定模板]
+    M -->|是| N{decision.action}
+    N -->|answer 且 best_id 有效| O[load_detail + generate_service_answer_with_llm]
+    O --> O1[kind=answer]
+    N -->|clarify| P[保存 clarify 会话状态]
+    P --> P1[kind=clarify]
+    N -->|fallback 或 answer无效| Q[kind=fallback]
 
-    I -->|否| S[纯检索策略 choose_retrieval_decision]
-    S --> T{decision}
-    T -->|fallback| K
-    T -->|clarify| N4
-    T -->|answer| U[加载 top1 详情]
-    U --> R
+    M -->|否| R[choose_retrieval_decision]
+    R --> S{decision.kind}
+    S -->|fallback| T[_fallback_response]
+    S -->|clarify| U[_clarify_response]
+    S -->|answer| V[load_detail + render_service_answer]
+    V --> W[kind=answer]
 ```
 
 补充说明：
 
-1. `fallback_min_score` 仅在 `llm_rank=None`（走纯检索策略）时生效。  
-2. `retrieval_candidate_limit` 控制展示/返回数量；给 LLM 的候选数量由 `llm_ranker_top_k` 控制。  
-3. `clarify` 会话状态按 `session_id` 命中；前端“新对话”或刷新页面若丢失 `session_id`，会按新问题处理。  
+1. 当前主决策来自 `decide_dialog_with_llm`；`rank_candidates_with_llm` 主要用于日志观测，不直接决定最终分支。  
+2. `vector_fallback_min_score / vector_answer_min_score / retrieval_clarify_min_score_gap` 仅在 `decide_dialog_with_llm` 返回 `None` 时，由 `choose_retrieval_decision` 生效。  
+3. `retrieval_candidate_limit` 控制返回给前端的 `sources` 数量；传给 LLM 的候选上限由 `llm_ranker_top_k` 控制。  
+4. `clarify` 会话状态按 `session_id` 命中；若丢失 `session_id` 会按新会话处理。  
 
 ---
 

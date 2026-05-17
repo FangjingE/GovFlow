@@ -12,7 +12,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 
-from govflow.api.routes.chat import router as chat_router
+from govflow.api.routes.chat import router as chat_router, tools_router
 from govflow.config import get_settings
 from govflow.db.pool import create_pool
 
@@ -43,6 +43,7 @@ app = FastAPI(
 )
 
 app.include_router(chat_router)
+app.include_router(tools_router)
 
 
 @app.get("/")

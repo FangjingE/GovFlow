@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     )
     # vector：仅向量检索；text：pg_trgm + ILIKE（调试用途）
     retrieval_mode: RetrievalMode = Field(default="vector")
-    retrieval_candidate_limit: int = Field(default=3, ge=2, le=50)
+    retrieval_candidate_limit: int = Field(default=15, ge=2, le=50)
     retrieval_clarify_min_score_gap: float = Field(default=0.03, ge=0.0, le=1.0)
     retrieval_keyword_ranking_enabled: bool = Field(default=False)
     # 文本检索最低得分，低于此视为未命中（见 service_embedding / gov_service 相似度）
@@ -53,9 +53,11 @@ class Settings(BaseSettings):
     llm_ranker_base_url: str = Field(default="https://api.deepseek.com/v1")
     llm_ranker_model: str = Field(default="deepseek-v4-pro")
     llm_ranker_timeout_seconds: int = Field(default=40, ge=1, le=120)
-    llm_ranker_top_k: int = Field(default=10, ge=3, le=30)
+    llm_ranker_top_k: int = Field(default=15, ge=3, le=30)
     llm_ranker_answer_threshold: float = Field(default=0.80, ge=0.0, le=1.0)
     llm_ranker_clarify_threshold: float = Field(default=0.60, ge=0.0, le=1.0)
+    conversation_session_ttl_minutes: int = Field(default=30, ge=1, le=1440)
+    conversation_max_retries: int = Field(default=3, ge=1, le=10)
     # 本地向量化配置（sentence-transformers）
     embedding_local_model: str = Field(default="BAAI/bge-base-zh-v1.5")
     embedding_local_device: str = Field(default="auto")
